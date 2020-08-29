@@ -1,4 +1,11 @@
-# Grupo de PI do 3º semestre Senac Santo Amaro
+# Grupo DevsMaster Senac Santo Amaro
+
+------------
+
+###Loja de Games
+
+------------
+
 ## [Renan da Silva Maciel](https://github.com/renansilvamaciel "Renan da Silva Maciel")
 ## [Marcos Vinicius Santos Souza ](https://github.com/JimmyDead "Marcos Vinicius Santos Souza ")
 ## [Nailson Nascimento](https://github.com/NailsonNascimento-Dev "Nailson Nascimento")
