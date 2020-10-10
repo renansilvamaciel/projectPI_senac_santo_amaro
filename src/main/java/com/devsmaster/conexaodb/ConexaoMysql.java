@@ -18,10 +18,10 @@ public class ConexaoMysql implements ConexaoDbInterface {
     private static String DRIVER = "com.mysql.cj.jdbc.Driver";
 
     private static String SERVER = "localhost";
-    private static String DATABASE = "teste";
+    private static String DATABASE = "coffe_shop";
 
     private static String LOGIN = "root";
-    private static String SENHA = "Bemvindo1";
+    private static String SENHA = "";
 
     private static String URL = "";
 
