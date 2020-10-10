@@ -7,17 +7,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-        
+
     <!--include do cabeçalho-->
     <%@include file="header.jsp" %>
 
     <body class="container">
 
-       
-        
-        
-        
-         <div class="row mt-2 border border-dark" style=" height: 100%">
+
+
+
+
+        <div class="row mt-2 border border-dark" style=" height: 100%">
 
 
             <!--Inicio -- Menu/navBar-->
@@ -35,7 +35,7 @@
 
 
 
-                                   <b><i>Venda</i></b>   <span class="sr-only">(atual)</span>
+                                <b><i>Venda</i></b>   <span class="sr-only">(atual)</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -104,24 +104,24 @@
 
 
             </div>
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
 
             <div class="col 5" style="height: 100%"> 
 
-          <h1 class="text-right"><b>Venda</b></h1><br>
+                <h1 class="text-right"><b>Venda</b></h1><br>
 
                 <form class="form-inline center">
                     <input class="form-control " type="search" placeholder="Pesquisar Produto" aria-label="Pesquisar">
                     <button class="btn btn-outline-success pt-2 " type="submit">Pesquisar</button>
                 </form>
-          
-                  <br>
-          
+
+                <br>
+
                 <h4 class="text-center">Produtos</h4>
                 <table class="table">
                     <tr class="table-item">
@@ -129,7 +129,7 @@
                         <th >Nome</th>
                         <th >Quantidade</th>
                         <th >Preço</th>
-                         <th >Descrição</th>
+                        <th >Descrição</th>
                     </tr>
                     <tr class="table-item">
                         <td></td>
@@ -183,13 +183,13 @@
 
 
             <div class="col 5"> 
-                
+
 
                 <form class="form-inline center" style="margin-top: 21%;">
                     <input class="form-control " type="search" placeholder="Pesquisar cliente" aria-label="Pesquisar">
                     <button class="btn btn-outline-success pt-2 " type="submit">Pesquisar</button>
                 </form>
-                
+
                 <br>
 
                 <div style="text-align: center;">
@@ -221,18 +221,18 @@
                         <option>Anual</option>
                     </select>
                 </div>
-                
+
                 <br>
-                
+
                 <div class="input-group" >
-                   <div class="input-group-prepend">
+                    <div class="input-group-prepend">
                         <span class="input-group-text" >Tipo De pagamento</span>
-                   </div>
-                    <input style="width: 20px; height: 20px; margin-top: 7px;" type="radio" id="cartao" name="cartao" value="cartao" class="form-control">
+                    </div>
+                    <input style="width: 20px; height: 20px; margin-top: 7px;" type="radio" id="cartao" name="pagamento" value="cartao" class="form-control">
                     <label for="cartao">Cartão</label><br>
-                    <input style="width: 20px; height: 20px; margin-top: 7px;" type="radio" id="dinheiro" name="dinheiro" value="dinheiro" class="form-control">
+                    <input style="width: 20px; height: 20px; margin-top: 7px;" type="radio" id="dinheiro" name="pagamento" value="dinheiro" class="form-control">
                     <label for="dinheiro">Dinheiro</label><br>
-                   
+
                 </div>
 
                 <br>
@@ -243,15 +243,15 @@
                 <input type="text" name="valorCaixa" style="margin-left: 7%"><br><br>
 
 
-                <input class="btn btn-danger m-2" type="reset" value="Cancelar">
                 <input class="btn btn-primary" type="submit" value="Finalizar">
+                <input class="btn btn-danger m-2" type="reset" value="Cancelar">
 
 
             </div>
 
-         </div>
+        </div>
         <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
-       <div class="row bg-dark mt-2 text-white " style=" height: 20%;">
+        <div class="row bg-dark mt-2 text-white " style=" height: 20%;">
 
 
             <ul style="list-style-type: none">
@@ -261,7 +261,7 @@
             </ul>
 
         </div> 
-    
+
     </body>
 
 </html>
