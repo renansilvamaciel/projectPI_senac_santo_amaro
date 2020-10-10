@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Azazel
+ * @author Marcos Vinicius Santos Souza
  */
 public class ConexaoMysql implements ConexaoDbInterface {
 
