@@ -14,7 +14,7 @@
         </div><!--final -- Corpo central--> 
 
         
-        <div class="row bg-dark mt-2 text-white " style=" height: 80px;">
+        <div class="row bg-dark mt-2 text-white " style=" height: 20%;">
 
 
             <ul style="list-style-type: none">

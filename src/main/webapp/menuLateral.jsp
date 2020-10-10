@@ -10,7 +10,7 @@
 
     <body>
                <!--Inicio -- Corpo central-->
-        <div class="row mt-2 border border-dark" style=" height: 520px">
+        <div class="row mt-2 border border-dark" style=" height: 100%">
 
 
             <!--Inicio -- Menu/navBar-->
@@ -19,7 +19,7 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active text-white" href="#">
+                            <a class="nav-link active text-white" href="venda.jsp">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
                                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
                                      stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9"
