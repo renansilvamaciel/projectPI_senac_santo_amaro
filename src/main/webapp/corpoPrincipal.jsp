@@ -12,7 +12,7 @@
         
          <div class="col 5"> 
 
-                <h1 class="text-right" >Venda</h1><br>
+                <h1 class="text-right" >Cliente</h1><br>
 
                 <form class="form-inline center">
                     <input class="form-control " type="search" placeholder="Pesquisar" aria-label="Pesquisar">
@@ -122,9 +122,6 @@
 
             
             
-            
-            <!--não remover essa div ............--> 
-        </div><!--final -- Corpo central--> 
-       
+
     </body>
 </html>
