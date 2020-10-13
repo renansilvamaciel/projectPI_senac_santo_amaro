@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-        
+
     <!--include do cabeçalho-->
     <%@include file="header.jsp" %>
 
@@ -17,14 +17,57 @@
         <%@include file="menuLateral.jsp" %>
 
 
-        <h1 class="text-right">Relatório</h1>
-        
+        <div class="col 5"  style="height: 100%"> 
+
+            <h1 class="text-right">Relatório</h1>
+            <div>
+                <label>Filial</label>
+                <select class="form-control form-control-sm">
+                    <option>Todas</option>
+                    <option>Matriz</option>
+                    <option>Filial 1</option>
+                    <option>Filial 2</option>
+                </select>
+            </div>
+
+            <br>
+       
+            <form class="form-inline center">
+                <input id="date" type="date">
+                <input id="date" type="date">
+                <button class="btn btn-outline-success pt-2 " type="submit">Pesquisar</button>
+            </form>
+            <br>
+
+            <table class="table">
+                <tr class="table-item">
+                    <th >Nome</th>
+                    <th >Funcionario</th>
+                    <th >Cliente</th>
+                    <th >Quantidade</th>
+                    <th >Preço</th>
+                    <th >Data</th>
+                    <th >Filial</th>
+                </tr>
+            </table>
+
+            <br>
+
+            <form class="form-inline center" style="margin-left: 90%;">
+                <button type="button" class="btn btn-success">Exportar</button>
+            </form>
+            
+            <br>
+
+        </div>
         
         
 
+
+        
         <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
         <%@include file="rodape.jsp" %>
-    
+
     </body>
 
 </html>
