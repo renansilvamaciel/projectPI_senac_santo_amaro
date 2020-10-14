@@ -31,7 +31,7 @@
             </div>
 
             <br>
-       
+
             <form class="form-inline center">
                 <input id="date" type="date">
                 <input id="date" type="date">
@@ -41,14 +41,29 @@
 
             <table class="table">
                 <tr class="table-item">
-                    <th >Nome</th>
+                    <th >Nº Da venda</th>
                     <th >Funcionario</th>
-                    <th >Cliente</th>
+                    <th >produto</th>
                     <th >Quantidade</th>
                     <th >Preço</th>
                     <th >Data</th>
                     <th >Filial</th>
                 </tr>
+                <tbody> 
+                <c:forEach var="relatorio" items="${listaVenda}">
+                    <tr>
+                        <td>${relatorio.id_venda}</td>
+                        <td>${relatorio.id_vendedor}</td>
+                        <td>${relatorio.modelo}</td>
+                        <td>${relatorio.quantidade}</td>
+                        <td>${relatorio.valor}</td>
+                        <td>${relatorio.data}</td>
+                        <td>${relatorio.filial}</td>
+                    </tr>
+                </c:forEach>
+
+                </tbody>
+
             </table>
 
             <br>
@@ -56,15 +71,15 @@
             <form class="form-inline center" style="margin-left: 90%;">
                 <button type="button" class="btn btn-success">Exportar</button>
             </form>
-            
+
             <br>
 
         </div>
-        
-        
 
 
-        
+
+
+
         <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
         <%@include file="rodape.jsp" %>
 

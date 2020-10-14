@@ -7,6 +7,7 @@ package com.devsmaster.conexaodb;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
@@ -49,5 +50,9 @@ public class ConexaoMysql implements ConexaoDbInterface {
         }
 
         return retorno;
+    }
+
+    public PreparedStatement prepareStatement(String query) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
