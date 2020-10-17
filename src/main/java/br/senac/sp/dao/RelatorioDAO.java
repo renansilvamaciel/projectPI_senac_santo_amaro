@@ -7,6 +7,7 @@ package br.senac.sp.dao;
 
 import br.senac.sp.entidade.Relatorio;
 import br.senac.sp.conexaodb.ConexaoMysql;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,11 +26,12 @@ public class RelatorioDAO {
         List<Relatorio> listaVenda = new ArrayList();
         try {
             ConexaoMysql conexao = new ConexaoMysql();
-            conexao.openConnection();
+            Connection connection = conexao.openConnection();
+            
             String query = "select detalhes.id_venda, venda.id_vendedor, detalhes.modelo_codigo, detalhes.quantidade, venda.valor_total, "
                     + "venda.data_hoje, venda.id_filial from detalhes"
                     + "inner join venda on detalhes.id_venda = venda.id_venda";
-            PreparedStatement ps = conexao.prepareStatement(query);
+            PreparedStatement ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int id_venda = rs.getInt("id_venda");
