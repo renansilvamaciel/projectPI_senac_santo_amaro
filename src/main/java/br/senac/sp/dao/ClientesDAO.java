@@ -21,12 +21,10 @@ import java.util.logging.Logger;
  */
 public class ClientesDAO {
 
-    private ConexaoMysql connectionMysql = new ConexaoMysql();
-    private Connection connection;
-
     public boolean insertClient(Cliente cliente) throws ClassNotFoundException, SQLException {
         boolean success = false;
-        connection = connectionMysql.openConnection();
+        ConexaoMysql connectionMysql = new ConexaoMysql();
+        Connection connection = connectionMysql.openConnection();
         String query = "insert into cliente (nome, sexo, data_nascimento, cpf, rua, cep, numero_casa, bairro, email, telefone, assinatura) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement instructionSql = connection.prepareCall(query);
 
@@ -47,6 +45,7 @@ public class ClientesDAO {
         }
 
         closeStatementAndCloseConnection(instructionSql);
+        connectionMysql.closeConnection();
 
         return success;
     }
@@ -54,7 +53,8 @@ public class ClientesDAO {
     public ArrayList<Cliente> listClients() throws SQLException, ClassNotFoundException {
         ArrayList<Cliente> listarClientes = new ArrayList<>();
 
-        connection = connectionMysql.openConnection();
+        ConexaoMysql connectionMysql = new ConexaoMysql();
+        Connection connection = connectionMysql.openConnection();
         String query = "select * from cliente";
         PreparedStatement instructionSql = connection.prepareCall(query);
 
@@ -79,12 +79,14 @@ public class ClientesDAO {
         }
 
         closeStatementAndCloseConnection(instructionSql);
+        connectionMysql.closeConnection();
         return listarClientes;
     }
 
     public Cliente getClient(int cpf) throws ClassNotFoundException, SQLException {
         Cliente cliente = new Cliente();
-        connection = connectionMysql.openConnection();
+        ConexaoMysql connectionMysql = new ConexaoMysql();
+        Connection connection = connectionMysql.openConnection();
         String query = "select * from cliente where cpf= ?";
         PreparedStatement instructionSql = connection.prepareCall(query);
         instructionSql.setInt(1, cpf);
@@ -106,12 +108,14 @@ public class ClientesDAO {
         }
 
         closeStatementAndCloseConnection(instructionSql);
+        connectionMysql.closeConnection();
         return cliente;
     }
 
     public boolean updateClient(Cliente cliente) throws ClassNotFoundException, SQLException {
         boolean success = false;
-        connection = connectionMysql.openConnection();
+        ConexaoMysql connectionMysql = new ConexaoMysql();
+        Connection connection = connectionMysql.openConnection();
         String query = "update cliente set nome=?, sexo=?, data_nascimento=?, rua=?, cep=?, numero_casa=?, bairro=?, email=?, telefone=?, assinatura=? where cpf=?";
         PreparedStatement instructionSql = connection.prepareCall(query);
 
@@ -132,6 +136,7 @@ public class ClientesDAO {
         }
 
         closeStatementAndCloseConnection(instructionSql);
+        connectionMysql.closeConnection();
         return success;
     }
 
@@ -139,7 +144,6 @@ public class ClientesDAO {
         if (preparedStatement != null) {
             try {
                 preparedStatement.close();
-                connectionMysql.closeConnection();
             } catch (SQLException ex) {
                 Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
