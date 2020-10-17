@@ -32,14 +32,21 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="cliente.jsp">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
-                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
-                                     stroke-linejoin="round" class="feather feather-file">
-                                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
-                                <b><i>Cliente</b></i><span class="sr-only">(atual)</span>
-                            </a>
+                            <div class="btn-group dropright" >
+                                <a class="nav-link text-white" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
+                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+                                         stroke-linejoin="round" class="feather feather-file">
+                                    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                                    <b><i>Cliente</b></i><span class="sr-only">(atual)</span>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="InsertCliente.jsp">Cadastrar Cliente</a>
+                                        <a class="dropdown-item" href="ListarClientesServlet">Listar Clientes</a>
+                                    </div>
+                                </a>
+                            </div>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link text-white" href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
@@ -104,13 +111,7 @@
 
             <div class="col 5">
                 <h1 class="text-center"><b>Cadastrar Cliente</b></h1><br>
-                <form class="form-inline">
-                    <input class="form-control " type="search" placeholder="Pesquisar Cliente" aria-label="Pesquisar">
-                    <button class="btn btn-outline-success pt-2 " type="submit">Pesquisar</button>
-                </form>
                 <br>
-                
-                
                 <form action="InsereClienteServlet" method="POST">
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -150,42 +151,42 @@
                         </div>
                         <div class="form-group col-md-6">
                             <labe>Bairro</label>
-                            <input type="text" class="form-control" name="bairro" required>
+                                <input type="text" class="form-control" name="bairro" required>
+                                </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Email</label>
+                                        <input type="email" class="form-control" name="email" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Telefone</label>
+                                        <input type="text" class="form-control" name="telefone" required>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <select class="form-control form-control-sm" name="assinatura" required>
+                                        <option value="" name="assinatura">Planos</option>
+                                        <option value="ouro" name="assinatura">Ouro</option>
+                                        <option value="prata" name="assinatura">Prata</option>
+                                        <option value="bronze" name="assinatura">Bronze</option>
+                                    </select>
+                                </div>
+
+                                <div style="margin: 5%;">
+                                    <button type="submit" class="btn btn-primary" style="width: 100%;">Cadastrar</button>
+                                </div>
+
+                                </form>
                         </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label>Email</label>
-                            <input type="email" class="form-control" name="email" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Telefone</label>
-                            <input type="text" class="form-control" name="telefone" required>
-                        </div>
-                    </div>
-
-                    <div>
-                        <select class="form-control form-control-sm" name="assinatura" required>
-                            <option value="" name="assinatura">Planos</option>
-                            <option value="ouro" name="assinatura">Ouro</option>
-                            <option value="prata" name="assinatura">Prata</option>
-                            <option value="bronze" name="assinatura">Bronze</option>
-                        </select>
-                    </div>
-
-                    <div style="margin: 5%;">
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Cadastrar</button>
-                    </div>
-
-                </form>
-            </div>
 
 
 
-            <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
-            <%@include file="rodape.jsp" %>
+                        <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
+                        <%@include file="rodape.jsp" %>
 
-    </body>
+                        </body>
 
-</html>
+                        </html>

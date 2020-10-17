@@ -20,7 +20,7 @@
         </form>
         <h1><center>Lista de Clientes</center></h1>
 
-        <table class="table table-hover" style="text-align: center" class="col-md-auto">
+        <table class="table table-hover">
             <thead class="col-md-auto">
             <th>ID</th>
             <th>Nome</th>
@@ -41,13 +41,13 @@
                     <td>${cliente.id_cliente}</td>
                     <td>${cliente.nome}</td>
                     <td>${cliente.sexo}</td>
-                    <td style="width: 10px;">${cliente.data_nascimento}</td>
+                    <td>${cliente.data_nascimento}</td>
                     <td>${cliente.cpf}</td>
                     <td>${cliente.rua}</td>
                     <td>${cliente.cep}</td>
                     <td>${cliente.numero_casa}</td>
                     <td>${cliente.bairro}</td>
-                    <td style="width: 5%;">${cliente.email}</td>
+                    <td>${cliente.email}</td>
                     <td>${cliente.telefone}</td>
                     <td>${cliente.assinatura}</td>
                 </tr>
