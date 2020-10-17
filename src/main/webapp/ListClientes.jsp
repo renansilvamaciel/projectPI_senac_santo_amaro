@@ -14,9 +14,10 @@
     <body class="container">
 
         <br>
-        <form class="form-inline">
-            <input class="form-control " type="search" placeholder="Pesquisar Cliente" aria-label="Pesquisar">
+        <form class="form-inline" action="ListarClienteServlet" method="GET">
+            <input class="form-control " type="search" name="cpf" placeholder="Pesquisar Cliente" aria-label="Pesquisar" required="true">
             <button class="btn btn-outline-success pt-2 " type="submit">Pesquisar</button>
+            <button class="btn btn-outline-success pt-2 "><a href="index.jsp" type="button">Voltar</a></button> 
         </form>
         <h1><center>Lista de Clientes</center></h1>
 
@@ -59,7 +60,6 @@
 
 
     <br/>
-    <button class="btn btn-outline-success pt-2 "><a href="index.jsp" type="button">Voltar</a></button> 
 
     <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
     <%@include file="rodape.jsp" %>
