@@ -6,7 +6,7 @@
 package br.senac.sp.dao;
 
 import br.senac.sp.entidade.Relatorio;
-import com.devsmaster.conexaodb.ConexaoMysql;
+import br.senac.sp.conexaodb.ConexaoMysql;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
