@@ -166,7 +166,7 @@
                     </div>
 
                     <div>
-                        <select class="form-control form-control-sm" required>
+                        <select class="form-control form-control-sm" name="assinatura" required>
                             <option value="" name="assinatura">Planos</option>
                             <option value="ouro" name="assinatura">Ouro</option>
                             <option value="prata" name="assinatura">Prata</option>
