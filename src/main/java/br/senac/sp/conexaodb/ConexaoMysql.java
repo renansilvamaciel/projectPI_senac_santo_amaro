@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.devsmaster.conexaodb;
+package br.senac.sp.conexaodb;
 
+import br.senac.sp.conexaodb.ConexaoDbInterface;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
