@@ -18,7 +18,7 @@
             <div class="row alert-info p-0 m0" style=" height: 100px;">
                 <!-- Imagem e texto -->
                 <nav class="navbar bg-dark  col-12">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="index.jsp">
                         <img src="img/311844-ffffff.svg" width="50" height="50" class="p-0" alt="">
                         <span class="text-white">Coffee Shop</span>
                     </a>
