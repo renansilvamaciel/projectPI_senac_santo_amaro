@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ListarClientesServlet extends HttpServlet {
 
-    @Override
+      @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
