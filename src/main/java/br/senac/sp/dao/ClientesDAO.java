@@ -55,7 +55,7 @@ public class ClientesDAO {
 
         ConexaoMysql connectionMysql = new ConexaoMysql();
         Connection connection = connectionMysql.openConnection();
-        String query = "select * from cliente";
+        String query = "select * from cliente order by id_cliente";
         PreparedStatement instructionSql = connection.prepareCall(query);
 
         ResultSet result = instructionSql.executeQuery();
