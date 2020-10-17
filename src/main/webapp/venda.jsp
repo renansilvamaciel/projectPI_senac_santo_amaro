@@ -39,7 +39,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">
+                            <a class="nav-link text-white" href="cliente.jsp">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
                                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
                                      stroke-linejoin="round" class="feather feather-file">
@@ -251,16 +251,7 @@
 
         </div>
         <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
-        <div class="row bg-dark mt-2 text-white " style=" height: 20%;">
-
-
-            <ul style="list-style-type: none">
-                <li>Coffee Shop © 2020. Todos os direitos reservados.</li>
-                <li>Desenvolvido por -= DevsMaster =-</li>
-
-            </ul>
-
-        </div> 
+        <%@include file="rodape.jsp" %>
 
     </body>
 
