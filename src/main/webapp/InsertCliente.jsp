@@ -109,66 +109,68 @@
                     <button class="btn btn-outline-success pt-2 " type="submit">Pesquisar</button>
                 </form>
                 <br>
-                <form>
+                
+                
+                <form action="InsereClienteServlet" method="POST">
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputEmail4">Nome</label>
-                            <input type="text" class="form-control" id="nome" required>
+                            <label>Nome</label>
+                            <input type="text" class="form-control" name="nome" required>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputText">Sexo</label>
-                            <input type="text" class="form-control" id="sexo" required>
+                            <label>Sexo</label>
+                            <input type="text" class="form-control" name="sexo" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputText">Data De Nascimento</label>
-                            <input type="text" class="form-control" id="data_nascimento" required>
+                            <label>Data De Nascimento</label>
+                            <input type="text" class="form-control" name="data_nascimento" required>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputText">CPF</label>
-                            <input type="text" class="form-control" id="cpf" required>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputText">Rua</label>
-                            <input type="text" class="form-control" id="rua" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputText">CEP</label>
-                            <input type="text" class="form-control" id="cep" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputText">Numero Casa</label>
-                            <input type="number" class="form-control" id="numero_casa" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputText">Bairro</label>
-                            <input type="text" class="form-control" id="bairro" required>
+                            <label>CPF</label>
+                            <input type="text" class="form-control" name="cpf" required>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputEmail4">Email</label>
-                            <input type="email" class="form-control" id="email" required>
+                            <label>Rua</label>
+                            <input type="text" class="form-control" name="rua" required>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputText">Telefone</label>
-                            <input type="text" class="form-control" id="telefone" required>
+                            <label>CEP</label>
+                            <input type="text" class="form-control" name="cep" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Numero Casa</label>
+                            <input type="number" class="form-control" name="numero_casa" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <labe>Bairro</label>
+                            <input type="text" class="form-control" name="bairro" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Email</label>
+                            <input type="email" class="form-control" name="email" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Telefone</label>
+                            <input type="text" class="form-control" name="telefone" required>
                         </div>
                     </div>
 
                     <div>
                         <select class="form-control form-control-sm" required>
-                            <option value="">Planos</option>
-                            <option value="ouro">Ouro</option>
-                            <option value="prata">Prata</option>
-                            <option value="bronze">Bronze</option>
+                            <option value="" name="assinatura">Planos</option>
+                            <option value="ouro" name="assinatura">Ouro</option>
+                            <option value="prata" name="assinatura">Prata</option>
+                            <option value="bronze" name="assinatura">Bronze</option>
                         </select>
                     </div>
 
