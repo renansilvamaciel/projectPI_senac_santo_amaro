@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -83,16 +84,18 @@ public class ClientesDAO {
         return listarClientes;
     }
 
-    public Cliente getClient(int cpf) throws ClassNotFoundException, SQLException {
-        Cliente cliente = new Cliente();
+    public ArrayList<Cliente> getClient(String cpf) throws ClassNotFoundException, SQLException {
+        ArrayList<Cliente> listarCliente = new ArrayList<>();
+
         ConexaoMysql connectionMysql = new ConexaoMysql();
         Connection connection = connectionMysql.openConnection();
         String query = "select * from cliente where cpf= ?";
         PreparedStatement instructionSql = connection.prepareCall(query);
-        instructionSql.setInt(1, cpf);
+        instructionSql.setString(1, cpf);
 
         ResultSet result = instructionSql.executeQuery();
         if (result.next()) {
+            Cliente cliente = new Cliente();
             cliente.setId_cliente(result.getInt("id_cliente"));
             cliente.setNome(result.getString("nome"));
             cliente.setSexo(result.getString("sexo"));
@@ -105,11 +108,13 @@ public class ClientesDAO {
             cliente.setEmail(result.getString("email"));
             cliente.setTelefone(result.getString("telefone"));
             cliente.setAssinatura(result.getString("assinatura"));
+            
+            listarCliente.add(cliente);
         }
 
         closeStatementAndCloseConnection(instructionSql);
         connectionMysql.closeConnection();
-        return cliente;
+        return listarCliente;
     }
 
     public boolean updateClient(Cliente cliente) throws ClassNotFoundException, SQLException {
