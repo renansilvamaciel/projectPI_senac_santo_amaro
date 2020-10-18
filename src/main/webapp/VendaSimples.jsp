@@ -3,7 +3,7 @@
     Created on : 03/10/2020, 19:08:59
     Author     : Nailson Nascimento <nailsonbr@gmail.com>
 --%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -26,17 +26,21 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active text-white" href="venda.jsp">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
-                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
-                                     stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9"
-                                     cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
-                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-
-
-
-                                <b><i>Venda</i></b>   <span class="sr-only">(atual)</span>
-                            </a>
+                            <div class="btn-group dropright" >
+                                <a class="nav-link text-white" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
+                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+                                         stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9"
+                                         cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                                    <b><i>Venda</b></i><span class="sr-only">(atual)</span>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="VendaSimples.jsp">Venda Simples</a>
+                                        <a class="dropdown-item" href="VendaPlanos.jsp">Venda De Planos</a>
+                                        <a class="dropdown-item" href=VendaAssinantes.jsp#">Venda Para Assinantes</a>
+                                    </div>
+                                </a>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <div class="btn-group dropright" >
@@ -121,8 +125,8 @@
 
                 <h1 class="text-right"><b>Venda</b></h1><br>
 
-                <form class="form-inline center">
-                    <input class="form-control " type="search" placeholder="Pesquisar Produto" aria-label="Pesquisar">
+                <form class="form-inline center" >
+                    <input class="form-control " type="search" placeholder="Pesquisar Produto" name="cpf" aria-label="Pesquisar">
                     <button class="btn btn-outline-success pt-2 " type="submit">Pesquisar</button>
                 </form>
 
@@ -186,74 +190,6 @@
 
 
             </div><!-- fim tabelas e pesquisa -->
-
-
-            <div class="col 5"> 
-
-
-                <form class="form-inline center" style="margin-top: 21%;">
-                    <input class="form-control " type="search" placeholder="Pesquisar cliente" aria-label="Pesquisar">
-                    <button class="btn btn-outline-success pt-2 " type="submit">Pesquisar</button>
-                </form>
-
-                <br>
-
-                <div style="text-align: center;">
-                    <h4>Planos</h4>
-                    <select class="form-control form-control-sm">
-                        <option>Selecionar Plano</option>
-                        <option>Ouro</option>
-                        <option>Prata</option>
-                        <option>Bronze</option>
-                    </select>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input position-static" disabled="" type="checkbox" id="blankCheckbox" value="opcao1" aria-label="...">
-                    <label><b>Recorrência</b></label>
-                </div> 
-
-                <div>
-                    <select class="form-control form-control-sm">
-                        <option>Ouro</option>
-                        <option>Prata</option>
-                        <option>Bronze</option>
-                    </select>
-
-                    <select class="form-control form-control-sm">
-                        <option>Mensal</option>
-                        <option>Trimestral</option>
-                        <option>Semestral</option>
-                        <option>Anual</option>
-                    </select>
-                </div>
-
-                <br>
-
-                <div class="input-group" >
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" >Tipo De pagamento</span>
-                    </div>
-                    <input style="width: 20px; height: 20px; margin-top: 7px;" type="radio" id="cartao" name="pagamento" value="cartao" class="form-control">
-                    <label for="cartao">Cartão</label><br>
-                    <input style="width: 20px; height: 20px; margin-top: 7px;" type="radio" id="dinheiro" name="pagamento" value="dinheiro" class="form-control">
-                    <label for="dinheiro">Dinheiro</label><br>
-
-                </div>
-
-                <br>
-                <Lable>Crédito diário: </Lable>
-                <input type="text" name="creditoDiario"><br>
-                <br>
-                <Lable>Valor final:</Lable>
-                <input type="text" name="valorCaixa" style="margin-left: 7%"><br><br>
-
-
-                <input class="btn btn-primary" type="submit" value="Finalizar">
-                <input class="btn btn-danger m-2" type="reset" value="Cancelar">
-
-
-            </div>
 
         </div>
         <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
