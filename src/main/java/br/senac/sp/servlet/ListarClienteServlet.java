@@ -43,10 +43,10 @@ public class ListarClienteServlet extends HttpServlet {
                     .getRequestDispatcher("/ListCliente.jsp");
             requestDispatcher.forward(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(ListarClientesServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ListarClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
             Utils.mostrarTelaErro(ex, request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ListarClientesServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ListarClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
             Utils.mostrarTelaErro(ex, request, response);
         }
     }

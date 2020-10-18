@@ -38,10 +38,10 @@ public class DeleteClienteServlet extends HttpServlet {
             clienteDao.deleteClient(cliente.getCpf());
             response.sendRedirect("Success.jsp");
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(InsereClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeleteClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
             Utils.mostrarTelaErro(ex, request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(InsereClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeleteClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
             Utils.mostrarTelaErro(ex, request, response);
         }
     }
