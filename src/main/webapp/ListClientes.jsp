@@ -19,6 +19,7 @@
             <button class="btn btn-outline-success pt-2 " type="submit">Pesquisar</button>
             <button class="btn btn-outline-success pt-2 "><a href="index.jsp" type="button">Voltar</a></button> 
         </form>
+        <br>
         <h1><center>Lista de Clientes</center></h1>
 
         <table class="table table-hover">
