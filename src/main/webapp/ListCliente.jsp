@@ -17,8 +17,10 @@
         <form class="form-inline" action="ListarClienteServlet" method="GET">
             <input class="form-control " type="search" name="cpf" placeholder="Pesquisar Cliente" aria-label="Pesquisar" required="true">
             <button class="btn btn-outline-success pt-2 " type="submit">Pesquisar</button>
+            <button class="btn btn-outline-success pt-2 "><a href="ListarClientesServlet" type="button">Listar Todos</a></button> 
             <button class="btn btn-outline-success pt-2 "><a href="index.jsp" type="button">Voltar</a></button> 
         </form>
+        <br>
         <h1><center>Lista de Clientes</center></h1>
 
         <table class="table table-hover">
@@ -60,6 +62,31 @@
 
 
     <br/>
+
+    <div>
+        <c:forEach var="cliente" items="${listarCliente}">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-lg-1">
+                        <form class="form-inline" name="cpf" action="AtualizarClienteServlet" method="POST">
+                            <input type="hidden" value="${cliente.cpf}" name="cpf">
+                            <input class="btn btn-primary" type="submit" value="Alterar">
+                        </form>
+
+                    </div>
+                    <div class="col col-lg-1">
+                        <form class="form-inline" action="DeleteClienteServlet" method="POST">
+                            <input type="hidden" value="${cliente.cpf}" name="cpf">
+                            <input class="btn btn-danger m-2" type="submit" value="Excluir">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
+    </div>
+
+
+
 
     <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
     <%@include file="rodape.jsp" %>
