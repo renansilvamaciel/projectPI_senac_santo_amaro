@@ -50,11 +50,11 @@
                     <th >Filial</th>
                 </tr>
                 <tbody> 
-                <c:forEach var="relatorio" items="${listaVenda}">
-                    <tr>
+                <c:forEach var="relatorio" items="${listarVenda}">
+                     <tr class="col-md-auto">
                         <td>${relatorio.id_venda}</td>
                         <td>${relatorio.id_vendedor}</td>
-                        <td>${relatorio.modelo}</td>
+                        <td>${relatorio.nome_produto}</td>
                         <td>${relatorio.quantidade}</td>
                         <td>${relatorio.valor}</td>
                         <td>${relatorio.data}</td>
