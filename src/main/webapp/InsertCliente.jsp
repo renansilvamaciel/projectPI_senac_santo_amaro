@@ -126,7 +126,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Data De Nascimento</label>
-                            <input type="text" class="form-control" name="data_nascimento" required>
+                            <input type="date" class="form-control" name="data_nascimento" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label>CPF</label>
@@ -172,6 +172,7 @@
                                         <option value="ouro" name="assinatura">Ouro</option>
                                         <option value="prata" name="assinatura">Prata</option>
                                         <option value="bronze" name="assinatura">Bronze</option>
+                                        <option value="nenhum" name="assinatura">Nenhum</option>
                                     </select>
                                 </div>
 

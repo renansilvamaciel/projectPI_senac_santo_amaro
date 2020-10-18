@@ -128,7 +128,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Data De Nascimento</label>
-                                <input type="text" value="${cliente.data_nascimento}" class="form-control" name="data_nascimento" required>
+                                <input type="date" value="${cliente.data_nascimento}" class="form-control" name="data_nascimento" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <label>CPF</label>
