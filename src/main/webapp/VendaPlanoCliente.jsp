@@ -168,16 +168,18 @@
 
 
                     <br>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label>Nome</label>
-                            <input type="text" disabled="" class="form-control" name="nome" required>
+                    <c:forEach var="cliente" items="${listarClientes}">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Nome</label>
+                                <input type="text" value="${cliente.nome}" disabled="" class="form-control" name="nome" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>CPF</label>
+                                <input type="text" value="${cliente.cpf}" disabled="" class="form-control" name="cpf" required>
+                            </div>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label>CPF</label>
-                            <input type="text" disabled="" class="form-control" name="cpf" required>
-                        </div>
-                    </div>
+                    </c:forEach>
                     <Lable>Valor final:</Lable>
                     <input type="number" name="valorCaixa" style="margin-left: 7%"><br><br>
 
