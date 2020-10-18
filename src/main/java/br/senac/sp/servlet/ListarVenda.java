@@ -7,6 +7,7 @@ package br.senac.sp.servlet;
 
 import br.senac.sp.dao.RelatorioDAO;
 import br.senac.sp.entidade.Relatorio;
+import br.senac.sp.util.Utils;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -27,18 +28,22 @@ public class ListarVenda extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         RelatorioDAO relatorioDAO = new RelatorioDAO();
 
         try {
-            List<Relatorio> listarVenda = relatorioDAO.getRelatorio();
+            List<Relatorio> listarVenda = relatorioDAO.listVenda();
             request.setAttribute("listarVenda", listarVenda);
-            
+
             RequestDispatcher requestDispatcher = getServletContext()
                     .getRequestDispatcher("/relatorio.jsp");
             requestDispatcher.forward(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(ListarVenda.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ListarClientesServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Utils.mostrarTelaErro(ex, request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ListarClientesServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Utils.mostrarTelaErro(ex, request, response);
         }
     }
 

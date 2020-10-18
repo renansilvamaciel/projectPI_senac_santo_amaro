@@ -12,9 +12,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -22,9 +19,9 @@ import java.util.logging.Logger;
  */
 public class RelatorioDAO {
 
-    public static List<Relatorio> getRelatorio() throws SQLException {
-        List<Relatorio> listarVenda = new ArrayList();
-        try {
+    public ArrayList<Relatorio> listVenda() throws ClassNotFoundException, SQLException {
+        ArrayList<Relatorio> listarVenda = new ArrayList();
+        
             ConexaoMysql conexao = new ConexaoMysql();
             Connection connection = conexao.openConnection();
 
@@ -34,7 +31,7 @@ public class RelatorioDAO {
             PreparedStatement ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
 
-            if (rs.next()) {
+            while (rs.next()) {
                 Relatorio relatorio = new Relatorio();
 
                 relatorio.setId_venda(rs.getInt("id_venda"));
@@ -52,13 +49,6 @@ public class RelatorioDAO {
             conexao.closeConnection();
             return listarVenda;
 
-        } catch (ClassNotFoundException ex) {
-            System.out.println(ex);
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-
-        return listarVenda;
     }
 
 }
