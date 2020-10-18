@@ -3,7 +3,7 @@
     Created on : 03/10/2020, 19:08:59
     Author     : Nailson Nascimento <nailsonbr@gmail.com>
 --%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,14 +22,21 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active text-white" href="venda.jsp">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
-                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
-                                     stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9"
-                                     cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
-                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                                Venda
-                            </a>
+                            <div class="btn-group dropright" >
+                                <a class="nav-link text-white" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
+                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+                                         stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9"
+                                         cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                                    <b><i>Venda</b></i><span class="sr-only">(atual)</span>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="VendaSimples.jsp">Venda Simples</a>
+                                        <a class="dropdown-item" href="VendaPlanos.jsp">Venda De Planos</a>
+                                        <a class="dropdown-item" href=VendaAssinantes.jsp#">Venda Para Assinantes</a>
+                                    </div>
+                                </a>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <div class="btn-group dropright" >
@@ -38,7 +45,7 @@
                                          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
                                          stroke-linejoin="round" class="feather feather-file">
                                     <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
-                                    <b><i>Cliente</b></i><span class="sr-only">(atual)</span>
+                                    Cliente<span class="sr-only">(atual)</span>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="InsertCliente.jsp">Cadastrar Cliente</a>
                                         <a class="dropdown-item" href="ListarClientesServlet">Listar Clientes</a>
@@ -46,7 +53,6 @@
                                 </a>
                             </div>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link text-white" href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
@@ -104,81 +110,91 @@
 
 
             </div>
-            <!--FIM -- Menu/navBar-->
 
 
 
 
-            <div class="col 5">
-                <h1 class="text-center"><b>Cadastrar Cliente</b></h1><br>
+
+
+
+            <div class="col-9" style="height: 100%"> 
+
                 <br>
-                <form action="InsereClienteServlet" method="POST">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label>Nome</label>
-                            <input type="text" class="form-control" name="nome" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Sexo</label>
-                            <input type="text" class="form-control" name="sexo" required>
-                        </div>
+                <h1 class="text-center"><b>Venda de Planos</b></h1><br>
+
+                <div class="col-7"> 
+
+                    <form class="form-inline center" action="VendaPlanoPesquisarClienteServlet" method="GET">
+                        <input class="form-control" name="cpf" type="search" placeholder="Pesquisar cliente" aria-label="Pesquisar">
+                        <button class="btn btn-outline-success pt-2 " type="submit">Pesquisar</button>
+                    </form>
+
+                    <br>
+
+
+                    <h4 class="text-center">Assinaturas</h4>
+
+
+                    <div>
+
+                        <select class="form-control form-control-sm" name="assinatura">
+                            <option value="ouro">Planos</option>
+                            <option value="ouro">Ouro</option>
+                            <option value="prata">Prata</option>
+                            <option value="bronze">Bronze</option>
+                        </select>
+
+                        <select class="form-control form-control-sm" name="tipo_assinatura">
+                            <option value="">Tipo de Assinatura</option>
+                            <option value="mensal">Mensal</option>
+                            <option value="trimestral">Trimestral</option>
+                            <option value="anual">Anual</option>
+                        </select>
+
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label>Data De Nascimento</label>
-                            <input type="date" class="form-control" name="data_nascimento" required>
+
+                    <br>
+
+                    <div class="input-group" >
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" >Tipo De pagamento</span>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label>CPF</label>
-                            <input type="text" class="form-control" name="cpf" required>
-                        </div>
+                        <input style="width: 20px; height: 20px; margin-top: 7px;" type="radio" id="cartao" name="pagamento" value="cartao" class="form-control">
+                        <label for="cartao">Cartão</label><br>
+                        <input style="width: 20px; height: 20px; margin-top: 7px;" type="radio" id="dinheiro" name="pagamento" value="dinheiro" class="form-control">
+                        <label for="dinheiro">Dinheiro</label><br>
+
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label>Rua</label>
-                            <input type="text" class="form-control" name="rua" required>
+
+                    <br>
+                    <c:forEach var="cliente" items="${listarCliente}">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Nome</label>
+                                <input type="text" value="${cliente.nome}" disabled="" class="form-control" name="nome" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>CPF</label>
+                                <input type="text" value="${cliente.cpf}" disabled="" class="form-control" name="cpf" required>
+                            </div>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label>CEP</label>
-                            <input type="text" class="form-control" name="cep" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label>Numero Casa</label>
-                            <input type="number" class="form-control" name="numero_casa" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <labe>Bairro</label>
-                                <input type="text" class="form-control" name="bairro" required>
-                                </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label>Email</label>
-                                        <input type="email" class="form-control" name="email" required>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Telefone</label>
-                                        <input type="text" class="form-control" name="telefone" required>
-                                    </div>
-                                </div>
-
-                               
-                                <div style="margin: 5%;">
-                                    <button type="submit" class="btn btn-primary" style="width: 100%;">Cadastrar</button>
-                                </div>
-
-                                </form>
-                        </div>
+                    </c:forEach>
+                    <Lable>Valor final:</Lable>
+                    <input type="number" name="valorCaixa" style="margin-left: 7%"><br><br>
 
 
 
-                        <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
-                        <%@include file="rodape.jsp" %>
+                    <input class="btn btn-primary" type="submit" value="Finalizar">
+                    <input class="btn btn-danger m-2" type="reset" value="Cancelar">
 
-                        </body>
 
-                        </html>
+                </div>
+
+            </div>
+            <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
+            <%@include file="rodape.jsp" %>
+
+    </body>
+
+</html>

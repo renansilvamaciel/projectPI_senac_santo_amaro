@@ -37,6 +37,7 @@
             <th>Email</th>
             <th>Telefone</th>
             <th>Assinatura</th>
+            <th>Tipo</th>
         </thead>
         <tbody> 
             <c:forEach var="cliente" items="${listarCliente}">
@@ -53,6 +54,7 @@
                     <td>${cliente.email}</td>
                     <td>${cliente.telefone}</td>
                     <td>${cliente.assinatura}</td>
+                    <td>${cliente.tipo_assinatura}</td>
                 </tr>
             </c:forEach>
 

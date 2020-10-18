@@ -5,83 +5,37 @@
  */
 package br.senac.sp.entidade;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  *
  * @author Juliano
  */
+@Getter
+@Setter
 public class Relatorio {
 
     private int id_venda;
     private int id_vendedor;
-    private String modelo;
+    private String nome_produto;
     private int quantidade;
-    private double valor;
-    private String data;
-    private int filial;
+    private double valor_total;
+    private String data_hoje;
+    private int id_filial;
+    
+    public Relatorio(){
+        
+    }
 
-    public Relatorio(int id_venda, int id_vendedor, String modelo, int quantidade, double valor, String data, int filial) {
+    public Relatorio(int id_venda, int id_vendedor, String nome_produto, int quantidade, double valor_total, String data_hoje, int id_filial) {
         this.id_venda = id_venda;
         this.id_vendedor = id_vendedor;
-        this.modelo = modelo;
+        this.nome_produto = nome_produto;
         this.quantidade = quantidade;
-        this.valor = valor;
-        this.data = data;
-        this.filial = filial;
+        this.valor_total = valor_total;
+        this.data_hoje = data_hoje;
+        this.id_filial = id_filial;
     }
 
-    public int getId_venda() {
-        return id_venda;
-    }
-
-    public void setId_venda(int id_venda) {
-        this.id_venda = id_venda;
-    }
-
-    public int getId_vendedor() {
-        return id_vendedor;
-    }
-
-    public void setId_vendedor(int id_vendedor) {
-        this.id_vendedor = id_vendedor;
-    }
-
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
-
-    public int getQauntidade() {
-        return quantidade;
-    }
-
-    public void setQauntidade(int qauntidade) {
-        this.quantidade = qauntidade;
-    }
-
-    public double getValor() {
-        return valor;
-    }
-
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    public int getFilial() {
-        return filial;
-    }
-
-    public void setFilial(int filial) {
-        this.filial = filial;
-    }
 }

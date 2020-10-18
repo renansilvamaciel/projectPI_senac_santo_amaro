@@ -29,4 +29,8 @@ public class Utils {
     public static void mostrarTelaSucesso(HttpServletResponse response) throws ServletException, IOException {
         response.sendRedirect("Success.jsp");
     }
+    
+    public static void mostrarTelaErroIdade(HttpServletResponse response) throws ServletException, IOException {
+        response.sendRedirect("IdadeInvalida.jsp");
+    }
 }

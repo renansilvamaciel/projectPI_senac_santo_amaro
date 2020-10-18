@@ -12,9 +12,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -22,35 +19,37 @@ import java.util.logging.Logger;
  */
 public class RelatorioDAO {
 
-    public static List<Relatorio> getRelatorio() throws SQLException {
-        List<Relatorio> listaVenda = new ArrayList();
-        try {
+    public ArrayList<Relatorio> listVenda() throws ClassNotFoundException, SQLException {
+        ArrayList<Relatorio> listarVenda = new ArrayList();
+        
             ConexaoMysql conexao = new ConexaoMysql();
             Connection connection = conexao.openConnection();
-            
-            String query = "select detalhes.id_venda, venda.id_vendedor, detalhes.modelo_codigo, detalhes.quantidade, venda.valor_total, "
-                    + "venda.data_hoje, venda.id_filial from detalhes"
+
+            String query = "select detalhes.id_venda, venda.id_vendedor, detalhes.nome_produto, detalhes.quantidade, venda.valor_total, "
+                    + "venda.data_hoje, venda.id_filial from detalhes "
                     + "inner join venda on detalhes.id_venda = venda.id_venda";
             PreparedStatement ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
+
             while (rs.next()) {
-                int id_venda = rs.getInt("id_venda");
-                int id_vendedor = rs.getInt("id_vendedor");
-                String modelo = rs.getString("modelo");
-                int quantidade = rs.getInt("quantidade");
-                double valor = rs.getDouble("valor");
-                String data = rs.getString("data");
-                int filial = rs.getInt("filial");
-                listaVenda.add(new Relatorio(id_venda, id_vendedor, modelo, quantidade, valor, data, filial));
+                Relatorio relatorio = new Relatorio();
+
+                relatorio.setId_venda(rs.getInt("id_venda"));
+                relatorio.setId_vendedor(rs.getInt("id_vendedor"));
+                relatorio.setNome_produto(rs.getString("nome_produto"));
+                relatorio.setQuantidade(rs.getInt("quantidade"));
+                relatorio.setValor_total(rs.getDouble("valor_total"));
+                relatorio.setData_hoje(rs.getString("data_hoje"));
+                relatorio.setId_filial(rs.getInt("id_filial"));
+
+                listarVenda.add(relatorio);
+
             }
+            rs.close();
+            conexao.closeConnection();
+            System.out.println(listarVenda);
+            return listarVenda;
 
-        } catch (ClassNotFoundException ex) {
-            System.out.println(ex);
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-
-        return listaVenda;
     }
 
 }
