@@ -40,6 +40,10 @@
         <servlet-name>AtualizarProduto</servlet-name>
         <servlet-class>br.senac.sp.servlet.AtualizarProduto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VendaPlanoPesquisarClienteServlet</servlet-name>
+        <servlet-class>br.senac.sp.servlet.VendaPlanoPesquisarClienteServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Produto</servlet-name>
         <url-pattern>/Produto</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>AtualizarProduto</servlet-name>
         <url-pattern>/AtualizarProduto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VendaPlanoPesquisarClienteServlet</servlet-name>
+        <url-pattern>/VendaPlanoPesquisarClienteServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
