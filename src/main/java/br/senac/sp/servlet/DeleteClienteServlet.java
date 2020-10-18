@@ -36,7 +36,7 @@ public class DeleteClienteServlet extends HttpServlet {
         try {
             ClientesDAO clienteDao = new ClientesDAO();
             clienteDao.deleteClient(cliente.getCpf());
-            response.sendRedirect("Success.jsp");
+            Utils.mostrarTelaSucesso(response);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DeleteClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
             Utils.mostrarTelaErro(ex, request, response);
