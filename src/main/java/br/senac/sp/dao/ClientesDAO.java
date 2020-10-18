@@ -108,7 +108,7 @@ public class ClientesDAO {
             cliente.setEmail(result.getString("email"));
             cliente.setTelefone(result.getString("telefone"));
             cliente.setAssinatura(result.getString("assinatura"));
-            
+
             listarCliente.add(cliente);
         }
 
@@ -137,6 +137,25 @@ public class ClientesDAO {
         instructionSql.setString(11, cliente.getCpf());
 
         if (instructionSql.execute()) {
+            success = true;
+        }
+
+        closeStatementAndCloseConnection(instructionSql);
+        connectionMysql.closeConnection();
+        return success;
+    }
+
+    public boolean deleteClient(String cpf) throws ClassNotFoundException, SQLException {
+        boolean success = false;
+        ConexaoMysql connectionMysql = new ConexaoMysql();
+        Connection connection = connectionMysql.openConnection();
+        String query = "delete from cliente where cpf=?";
+        PreparedStatement instructionSql = connection.prepareCall(query);
+
+        instructionSql.setString(1, cpf);
+        int linhasAfetadas = instructionSql.executeUpdate();
+
+        if (linhasAfetadas > 0) {
             success = true;
         }
 
