@@ -26,7 +26,7 @@ public class RelatorioDAO {
             Connection connection = conexao.openConnection();
 
             String query = "select detalhes.id_venda, venda.id_vendedor, detalhes.nome_produto, detalhes.quantidade, venda.valor_total, "
-                    + "venda.data_hoje, venda.id_filial from detalhes"
+                    + "venda.data_hoje, venda.id_filial from detalhes "
                     + "inner join venda on detalhes.id_venda = venda.id_venda";
             PreparedStatement ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
@@ -38,9 +38,9 @@ public class RelatorioDAO {
                 relatorio.setId_vendedor(rs.getInt("id_vendedor"));
                 relatorio.setNome_produto(rs.getString("nome_produto"));
                 relatorio.setQuantidade(rs.getInt("quantidade"));
-                relatorio.setValor(rs.getDouble("valor_total"));
-                relatorio.setData(rs.getString("data_hoje"));
-                relatorio.setFilial(rs.getInt("id_filial"));
+                relatorio.setValor_total(rs.getDouble("valor_total"));
+                relatorio.setData_hoje(rs.getString("data_hoje"));
+                relatorio.setId_filial(rs.getInt("id_filial"));
 
                 listarVenda.add(relatorio);
 

@@ -16,7 +16,7 @@
         <!--include do menu lateral-->
         <%@include file="menuLateral.jsp" %>
 
-        <div class="col-5"  style="height: 100%"> 
+        <div class="col 5"  style="height: 100%"> 
 
             <h1><center>Relatório</center></h1>
             <div>
@@ -31,7 +31,7 @@
 
             <br>
 
-            <form class="form-inline center">
+            <form class="form-inline center" action="ListarVenda" method="GET">
                 <input id="date" type="date">
                 <input id="date" type="date">
                 <button class="btn btn-outline-success pt-2 " type="submit">Pesquisar</button>
