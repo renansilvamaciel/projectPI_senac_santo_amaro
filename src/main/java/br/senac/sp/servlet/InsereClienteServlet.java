@@ -42,9 +42,14 @@ public class InsereClienteServlet extends HttpServlet {
         cliente.setAssinatura(request.getParameter("assinatura"));
 
         try {
-            ClientesDAO clienteDao = new ClientesDAO();
-            clienteDao.insertClient(cliente);
-            response.sendRedirect("Success.jsp");
+            if (cliente.validacaoIdade(cliente.getData_nascimento())) {
+                ClientesDAO clienteDao = new ClientesDAO();
+                clienteDao.insertClient(cliente);
+                Utils.mostrarTelaSucesso(response);
+            } else {
+                Utils.mostrarTelaErroIdade(response);
+            }
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(InsereClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
             Utils.mostrarTelaErro(ex, request, response);
