@@ -5,13 +5,13 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/style.css" rel="stylesheet">
-        <link rel="shortcut icon" href="img/311844-ffffff.svg" />
+        <link rel="shortcut icon" href="img/311844-ffffff.svg"/>
    
         <title>Coffee Shop</title>
     </head>

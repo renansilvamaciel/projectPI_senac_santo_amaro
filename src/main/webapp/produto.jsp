@@ -96,8 +96,8 @@
                             <td>${produto.descricao}</td>
                             <td>${produto.filial}</td>
                             
-                            <td><a href="ProdutoServlet?id=${produto.id_produto}">Alterar</a></td>
-                            <td><a href="ProdutoServlet?id=${produto.id_produto}">Excluir</a></td>
+                            <td><a href="AtualizarProduto?id=${produto.id_produto}"><img src="img/pencil.svg"></a></td>
+                            <td><a href="ProdutoServlet?id=${produto.id_produto}"><img src="img/trashcan.svg"></a></td>
                             
                             
                             
