@@ -168,7 +168,7 @@
 
 
                     <br>
-                    <c:forEach var="cliente" items="${listarClientes}">
+                    <c:forEach var="cliente" items="${listarCliente}">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Nome</label>
