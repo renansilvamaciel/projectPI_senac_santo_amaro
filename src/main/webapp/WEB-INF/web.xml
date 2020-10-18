@@ -24,6 +24,14 @@
         <servlet-name>DeleteClienteServlet</servlet-name>
         <servlet-class>br.senac.sp.servlet.DeleteClienteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AtualizaClienteServlet</servlet-name>
+        <servlet-class>br.senac.sp.servlet.AtualizaClienteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AtualizaListaClienteServlet</servlet-name>
+        <servlet-class>br.senac.sp.servlet.AtualizaListaClienteServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Relatorio</servlet-name>
         <url-pattern>/Relatorio</url-pattern>
@@ -47,6 +55,14 @@
     <servlet-mapping>
         <servlet-name>DeleteClienteServlet</servlet-name>
         <url-pattern>/DeleteClienteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AtualizaClienteServlet</servlet-name>
+        <url-pattern>/AtualizaClienteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AtualizaListaClienteServlet</servlet-name>
+        <url-pattern>/AtualizaListaClienteServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
