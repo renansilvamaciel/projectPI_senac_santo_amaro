@@ -46,10 +46,6 @@ public class Cliente extends Pessoa {
         int anoAtual = Integer.parseInt(dataAtual[2]);
         int anoPessoa = Integer.parseInt(ano[0]);
         
-        System.out.println(anoAtual);
-        System.out.println(anoPessoa);
-        System.out.println("RESULTADO***********:" + String.valueOf(anoAtual - anoPessoa) );
-
         if (anoAtual - anoPessoa >= 18) {
             success = true;
             return success;
