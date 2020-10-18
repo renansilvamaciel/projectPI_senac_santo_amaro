@@ -27,10 +27,12 @@ public class ListarVenda extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        RelatorioDAO relatorioDAO = new RelatorioDAO();
 
         try {
-            List<Relatorio> listaVenda = RelatorioDAO.getRelatorio();
-            request.setAttribute("listaVenda", listaVenda);
+            List<Relatorio> listarVenda = relatorioDAO.getRelatorio();
+            request.setAttribute("listarVenda", listarVenda);
             
             RequestDispatcher requestDispatcher = getServletContext()
                     .getRequestDispatcher("/relatorio.jsp");
