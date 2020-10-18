@@ -166,16 +166,7 @@
                                     </div>
                                 </div>
 
-                                <div>
-                                    <select class="form-control form-control-sm" name="assinatura" required>
-                                        <option value="" name="assinatura">Planos</option>
-                                        <option value="ouro" name="assinatura">Ouro</option>
-                                        <option value="prata" name="assinatura">Prata</option>
-                                        <option value="bronze" name="assinatura">Bronze</option>
-                                        <option value="nenhum" name="assinatura">Nenhum</option>
-                                    </select>
-                                </div>
-
+                               
                                 <div style="margin: 5%;">
                                     <button type="submit" class="btn btn-primary" style="width: 100%;">Cadastrar</button>
                                 </div>

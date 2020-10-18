@@ -35,6 +35,7 @@ public class AtualizaClienteServlet extends HttpServlet {
         cliente.setEmail(request.getParameter("email"));
         cliente.setTelefone(request.getParameter("telefone"));
         cliente.setAssinatura(request.getParameter("assinatura"));
+        cliente.setTipo_assinatura(request.getParameter("tipo_assinatura"));
 
         try {
 

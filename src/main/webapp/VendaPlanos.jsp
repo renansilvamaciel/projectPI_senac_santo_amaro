@@ -1,15 +1,18 @@
 <%-- 
-    Document   : menuLateral
-    Created on : 03/10/2020, 19:40:59
+    Document   : index
+    Created on : 03/10/2020, 19:08:59
     Author     : Nailson Nascimento <nailsonbr@gmail.com>
 --%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
-    <body>
-        <!--Inicio -- Corpo central-->
+    <!--include do cabeçalho-->
+    <%@include file="header.jsp" %>
+
+    <body class="container">
+
         <div class="row mt-2 border border-dark" style=" height: 100%">
 
 
@@ -18,7 +21,6 @@
 
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
-
                         <li class="nav-item">
                             <div class="btn-group dropright" >
                                 <a class="nav-link text-white" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -27,7 +29,7 @@
                                          stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9"
                                          cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
                                     <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                                    Venda<span class="sr-only">(atual)</span>
+                                    <b><i>Venda</b></i><span class="sr-only">(atual)</span>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="VendaSimples.jsp">Venda Simples</a>
                                         <a class="dropdown-item" href="VendaPlanos.jsp">Venda De Planos</a>
@@ -36,7 +38,6 @@
                                 </a>
                             </div>
                         </li>
-
                         <li class="nav-item">
                             <div class="btn-group dropright" >
                                 <a class="nav-link text-white" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -109,5 +110,89 @@
 
 
             </div>
+
+
+
+
+
+
+
+            <div class="col-9" style="height: 100%"> 
+
+                <br>
+                <h1 class="text-center"><b>Venda de Planos</b></h1><br>
+
+                <div class="col-7"> 
+
+                    <form class="form-inline center">
+                        <input class="form-control " type="search" placeholder="Pesquisar cliente" aria-label="Pesquisar">
+                        <button class="btn btn-outline-success pt-2 " type="submit">Pesquisar</button>
+                    </form>
+
+                    <br>
+
+
+                    <h4 class="text-center">Assinaturas</h4>
+
+
+                    <div>
+
+                        <select class="form-control form-control-sm" name="assinatura">
+                            <option value="ouro">Planos</option>
+                            <option value="ouro">Ouro</option>
+                            <option value="prata">Prata</option>
+                            <option value="bronze">Bronze</option>
+                        </select>
+
+                        <select class="form-control form-control-sm" name="tipo_assinatura">
+                            <option value="">Tipo de Assinatura</option>
+                            <option value="mensal">Mensal</option>
+                            <option value="trimestral">Trimestral</option>
+                            <option value="anual">Anual</option>
+                        </select>
+
+                    </div>
+
+                    <br>
+
+                    <div class="input-group" >
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" >Tipo De pagamento</span>
+                        </div>
+                        <input style="width: 20px; height: 20px; margin-top: 7px;" type="radio" id="cartao" name="pagamento" value="cartao" class="form-control">
+                        <label for="cartao">Cartão</label><br>
+                        <input style="width: 20px; height: 20px; margin-top: 7px;" type="radio" id="dinheiro" name="pagamento" value="dinheiro" class="form-control">
+                        <label for="dinheiro">Dinheiro</label><br>
+
+                    </div>
+
+
+                    <br>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Nome</label>
+                            <input type="text" disabled="" class="form-control" name="nome" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>CPF</label>
+                            <input type="text" disabled="" class="form-control" name="cpf" required>
+                        </div>
+                    </div>
+                    <Lable>Valor final:</Lable>
+                    <input type="number" name="valorCaixa" style="margin-left: 7%"><br><br>
+
+
+
+                    <input class="btn btn-primary" type="submit" value="Finalizar">
+                    <input class="btn btn-danger m-2" type="reset" value="Cancelar">
+
+
+                </div>
+
+            </div>
+            <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
+            <%@include file="rodape.jsp" %>
+
     </body>
+
 </html>

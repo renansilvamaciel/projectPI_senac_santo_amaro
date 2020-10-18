@@ -39,7 +39,7 @@ public class InsereClienteServlet extends HttpServlet {
         cliente.setBairro(request.getParameter("bairro"));
         cliente.setEmail(request.getParameter("email"));
         cliente.setTelefone(request.getParameter("telefone"));
-        cliente.setAssinatura(request.getParameter("assinatura"));
+        
 
         try {
             if (cliente.validacaoIdade(cliente.getData_nascimento())) {

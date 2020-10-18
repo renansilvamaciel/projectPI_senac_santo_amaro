@@ -1,6 +1,6 @@
 <%-- 
-    Document   : menuLateral
-    Created on : 03/10/2020, 19:40:59
+    Document   : index
+    Created on : 03/10/2020, 19:08:59
     Author     : Nailson Nascimento <nailsonbr@gmail.com>
 --%>
 
@@ -8,8 +8,12 @@
 <!DOCTYPE html>
 <html>
 
-    <body>
-        <!--Inicio -- Corpo central-->
+    <!--include do cabeçalho-->
+    <%@include file="header.jsp" %>
+
+    <body class="container">
+
+        <!--include do menu lateral-->
         <div class="row mt-2 border border-dark" style=" height: 100%">
 
 
@@ -18,7 +22,6 @@
 
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
-
                         <li class="nav-item">
                             <div class="btn-group dropright" >
                                 <a class="nav-link text-white" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -27,7 +30,7 @@
                                          stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9"
                                          cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
                                     <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                                    Venda<span class="sr-only">(atual)</span>
+                                    <b><i>Venda</b></i><span class="sr-only">(atual)</span>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="VendaSimples.jsp">Venda Simples</a>
                                         <a class="dropdown-item" href="VendaPlanos.jsp">Venda De Planos</a>
@@ -36,7 +39,6 @@
                                 </a>
                             </div>
                         </li>
-
                         <li class="nav-item">
                             <div class="btn-group dropright" >
                                 <a class="nav-link text-white" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -109,5 +111,13 @@
 
 
             </div>
+
+            <!--  INICIO -----  corpo que deve ser alterardo de acordo com a pagina -->
+            <%@include file="corpoPrincipal.jsp" %>
+
+            <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
+            <%@include file="rodape.jsp" %>
+
     </body>
+
 </html>

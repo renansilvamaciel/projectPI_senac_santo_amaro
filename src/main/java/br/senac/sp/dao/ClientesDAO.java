@@ -12,7 +12,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,7 +25,7 @@ public class ClientesDAO {
         boolean success = false;
         ConexaoMysql connectionMysql = new ConexaoMysql();
         Connection connection = connectionMysql.openConnection();
-        String query = "insert into cliente (nome, sexo, data_nascimento, cpf, rua, cep, numero_casa, bairro, email, telefone, assinatura) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "insert into cliente (nome, sexo, data_nascimento, cpf, rua, cep, numero_casa, bairro, email, telefone) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement instructionSql = connection.prepareCall(query);
 
         instructionSql.setString(1, cliente.getNome());
@@ -39,7 +38,6 @@ public class ClientesDAO {
         instructionSql.setString(8, cliente.getBairro());
         instructionSql.setString(9, cliente.getEmail());
         instructionSql.setString(10, cliente.getTelefone());
-        instructionSql.setString(11, cliente.getAssinatura());
 
         if (instructionSql.executeUpdate() >= 1) {
             success = true;
@@ -75,6 +73,7 @@ public class ClientesDAO {
             cliente.setEmail(result.getString("email"));
             cliente.setTelefone(result.getString("telefone"));
             cliente.setAssinatura(result.getString("assinatura"));
+            cliente.setTipo_assinatura(result.getString("tipo_assinatura"));
 
             listarClientes.add(cliente);
         }
@@ -108,6 +107,7 @@ public class ClientesDAO {
             cliente.setEmail(result.getString("email"));
             cliente.setTelefone(result.getString("telefone"));
             cliente.setAssinatura(result.getString("assinatura"));
+            cliente.setTipo_assinatura(result.getString("tipo_assinatura"));
 
             listarCliente.add(cliente);
         }
@@ -121,7 +121,7 @@ public class ClientesDAO {
         boolean success = false;
         ConexaoMysql connectionMysql = new ConexaoMysql();
         Connection connection = connectionMysql.openConnection();
-        String query = "update cliente set nome=?, sexo=?, data_nascimento=?, rua=?, cep=?, numero_casa=?, bairro=?, email=?, telefone=?, assinatura=? where cpf=?";
+        String query = "update cliente set nome=?, sexo=?, data_nascimento=?, rua=?, cep=?, numero_casa=?, bairro=?, email=?, telefone=?, assinatura=?, tipo_assinatura = ? where cpf=?";
         PreparedStatement instructionSql = connection.prepareCall(query);
 
         instructionSql.setString(1, cliente.getNome());
@@ -134,7 +134,8 @@ public class ClientesDAO {
         instructionSql.setString(8, cliente.getEmail());
         instructionSql.setString(9, cliente.getTelefone());
         instructionSql.setString(10, cliente.getAssinatura());
-        instructionSql.setString(11, cliente.getCpf());
+        instructionSql.setString(11, cliente.getTipo_assinatura());
+        instructionSql.setString(12, cliente.getCpf());
 
         if (instructionSql.execute()) {
             success = true;

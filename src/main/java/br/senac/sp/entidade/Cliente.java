@@ -17,6 +17,7 @@ public class Cliente extends Pessoa {
 
     private int id_cliente;
     private String assinatura;
+    private String tipo_assinatura;
 
     public Cliente() {
     }
@@ -37,6 +38,14 @@ public class Cliente extends Pessoa {
         this.assinatura = assinatura;
     }
 
+    public String getTipo_assinatura() {
+        return tipo_assinatura;
+    }
+
+    public void setTipo_assinatura(String tipo_assinatura) {
+        this.tipo_assinatura = tipo_assinatura;
+    }
+
     public boolean validacaoIdade(String data) {
         boolean success = false;
 
@@ -45,7 +54,7 @@ public class Cliente extends Pessoa {
 
         int anoAtual = Integer.parseInt(dataAtual[2]);
         int anoPessoa = Integer.parseInt(ano[0]);
-        
+
         if (anoAtual - anoPessoa >= 18) {
             success = true;
             return success;
