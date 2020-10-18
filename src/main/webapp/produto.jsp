@@ -27,7 +27,7 @@
             </div>
 
 
-            <form class="form" action="ProdutoServlet" method="POST">
+            <form class="form" action="Produto" method="POST">
 
 
                 <div class="form-row m-2">
