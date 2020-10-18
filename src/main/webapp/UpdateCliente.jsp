@@ -133,7 +133,7 @@
                             <div class="form-group col-md-6">
                                 <label>CPF</label>
                                 <input type="hidden" value="${cliente.cpf}" name="cpf">
-                                <input type="text" value="${cliente.cpf}" class="form-control" name="cpf" disabled="" required>
+                                <input type="text" value="${cliente.cpf}" class="form-control" disabled="" name="cpf" required>
                             </div>
                         </div>
 
