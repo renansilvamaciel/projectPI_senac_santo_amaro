@@ -20,6 +20,10 @@
         <servlet-name>ListarClienteServlet</servlet-name>
         <servlet-class>br.senac.sp.servlet.ListarClienteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteClienteServlet</servlet-name>
+        <servlet-class>br.senac.sp.servlet.DeleteClienteServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Relatorio</servlet-name>
         <url-pattern>/Relatorio</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>ListarClienteServlet</servlet-name>
         <url-pattern>/ListarClienteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteClienteServlet</servlet-name>
+        <url-pattern>/DeleteClienteServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
