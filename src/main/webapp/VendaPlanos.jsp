@@ -117,13 +117,14 @@
 
 
 
-            <div class="col 5" style="height: 100%"> 
+            <div class="col-9" style="height: 100%"> 
 
-                <h1 class="text-right"><b>Venda de Planos</b></h1><br>
+                <br>
+                <h1 class="text-center"><b>Venda de Planos</b></h1><br>
 
-                <div class="col 5"> 
+                <div class="col-7"> 
 
-                    <form class="form-inline center" style="margin-top: 21%;">
+                    <form class="form-inline center">
                         <input class="form-control " type="search" placeholder="Pesquisar cliente" aria-label="Pesquisar">
                         <button class="btn btn-outline-success pt-2 " type="submit">Pesquisar</button>
                     </form>
@@ -131,29 +132,25 @@
                     <br>
 
 
-                    <h4 style="text-align: center">Planos</h4>
-                    <div class="form-check">
-                        <input class="form-check-input position-static" disabled="" type="checkbox" id="blankCheckbox" value="opcao1" aria-label="...">
-                        <label><b>Recorrência</b></label>
-                    </div> 
+                    <h4 class="text-center">Assinaturas</h4>
+
 
                     <div>
-                        <c:forEach var="cliente" items="${listarCliente}">
-                            <select class="form-control form-control-sm">
-                                <option></option>
-                                <option>Ouro</option>
-                                <option>Prata</option>
-                                <option>Bronze</option>
-                            </select>
 
-                            <select class="form-control form-control-sm">
-                                <option></option>
-                                <option>Mensal</option>
-                                <option>Trimestral</option>
-                                <option>Semestral</option>
-                                <option>Anual</option>
-                            </select>
-                        </c:forEach>
+                        <select class="form-control form-control-sm" name="assinatura">
+                            <option value="ouro">Planos</option>
+                            <option value="ouro">Ouro</option>
+                            <option value="prata">Prata</option>
+                            <option value="bronze">Bronze</option>
+                        </select>
+
+                        <select class="form-control form-control-sm" name="tipo_assinatura">
+                            <option value="">Tipo de Assinatura</option>
+                            <option value="mensal">Mensal</option>
+                            <option value="trimestral">Trimestral</option>
+                            <option value="anual">Anual</option>
+                        </select>
+
                     </div>
 
                     <br>
@@ -169,12 +166,21 @@
 
                     </div>
 
+
                     <br>
-                    <Lable>Crédito diário: </Lable>
-                    <input type="text" name="creditoDiario"><br>
-                    <br>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Nome</label>
+                            <input type="text" disabled="" class="form-control" name="nome" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>CPF</label>
+                            <input type="text" disabled="" class="form-control" name="cpf" required>
+                        </div>
+                    </div>
                     <Lable>Valor final:</Lable>
-                    <input type="text" name="valorCaixa" style="margin-left: 7%"><br><br>
+                    <input type="number" name="valorCaixa" style="margin-left: 7%"><br><br>
+
 
 
                     <input class="btn btn-primary" type="submit" value="Finalizar">
