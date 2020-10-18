@@ -68,7 +68,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col col-lg-1">
-                        <form class="form-inline" name="cpf" action="AtualizarClienteServlet" method="POST">
+                        <form class="form-inline" name="cpf" action="AtualizaListaClienteServlet" method="GET">
                             <input type="hidden" value="${cliente.cpf}" name="cpf">
                             <input class="btn btn-primary" type="submit" value="Alterar">
                         </form>
