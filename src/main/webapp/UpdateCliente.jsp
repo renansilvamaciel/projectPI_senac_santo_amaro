@@ -132,6 +132,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label>CPF</label>
+                                <input type="hidden" value="${cliente.cpf}" name="cpf">
                                 <input type="text" value="${cliente.cpf}" class="form-control" name="cpf" disabled="" required>
                             </div>
                         </div>
