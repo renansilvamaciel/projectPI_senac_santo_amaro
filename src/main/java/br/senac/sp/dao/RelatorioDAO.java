@@ -25,7 +25,7 @@ public class RelatorioDAO {
             ConexaoMysql conexao = new ConexaoMysql();
             Connection connection = conexao.openConnection();
 
-            String query = "select detalhes.id_venda, venda.id_vendedor, detalhes., detalhes.quantidade, venda.valor_total, "
+            String query = "select detalhes.id_venda, venda.id_vendedor, detalhes.nome_produto, detalhes.quantidade, venda.valor_total, "
                     + "venda.data_hoje, venda.id_filial from detalhes"
                     + "inner join venda on detalhes.id_venda = venda.id_venda";
             PreparedStatement ps = connection.prepareStatement(query);
@@ -38,15 +38,16 @@ public class RelatorioDAO {
                 relatorio.setId_vendedor(rs.getInt("id_vendedor"));
                 relatorio.setNome_produto(rs.getString("nome_produto"));
                 relatorio.setQuantidade(rs.getInt("quantidade"));
-                relatorio.setValor(rs.getDouble("valor"));
-                relatorio.setData(rs.getString("data"));
-                relatorio.setFilial(rs.getInt("filial"));
+                relatorio.setValor(rs.getDouble("valor_total"));
+                relatorio.setData(rs.getString("data_hoje"));
+                relatorio.setFilial(rs.getInt("id_filial"));
 
                 listarVenda.add(relatorio);
 
             }
             rs.close();
             conexao.closeConnection();
+            System.out.println(listarVenda);
             return listarVenda;
 
     }

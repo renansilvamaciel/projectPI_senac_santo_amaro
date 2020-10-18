@@ -16,7 +16,7 @@
         <!--include do menu lateral-->
         <%@include file="menuLateral.jsp" %>
 
-        <div class="col 5"  style="height: 100%"> 
+        <div class="col-5"  style="height: 100%"> 
 
             <h1><center>Relatório</center></h1>
             <div>
@@ -55,9 +55,9 @@
                         <td>${relatorio.id_vendedor}</td>
                         <td>${relatorio.nome_produto}</td>
                         <td>${relatorio.quantidade}</td>
-                        <td>${relatorio.valor}</td>
-                        <td>${relatorio.data}</td>
-                        <td>${relatorio.filial}</td>
+                        <td>${relatorio.valor_total}</td>
+                        <td>${relatorio.data_hoje}</td>
+                        <td>${relatorio.id_filial}</td>
                     </tr>
                 </c:forEach>
 
