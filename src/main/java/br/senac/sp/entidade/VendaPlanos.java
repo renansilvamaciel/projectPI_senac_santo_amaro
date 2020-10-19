@@ -15,11 +15,20 @@ import lombok.Setter;
 @Getter
 @Setter
 public class VendaPlanos {
-   private int id_venda;
-   private String cpf;
-   private int id_vendedor;
-   private String nome;
-   private String tipo_assinatura;
-   private int id_filial;
-    
+
+    private int id_venda;
+    private String cpf;
+    private int id_vendedor;
+    private String assinatura;
+    private String tipo_assinatura;
+    private int id_filial;
+
+    public boolean validationClient(String cpf) {
+        boolean success = false;
+        if (cpf != null && !cpf.isEmpty()) {
+            success = true;
+        }
+
+        return success;
+    }
 }
