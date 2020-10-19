@@ -24,10 +24,10 @@ public class DeleteProduto extends HttpServlet {
         int id_produto = Integer.parseInt(request.getParameter("id"));
         try {
             ProdutoDAO.deleteProduto(id_produto);
-            response.sendRedirect("Success.jsp");
+            response.getWriter().print(true);
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(DeleteProduto.class.getName()).log(Level.SEVERE, null, ex);
-            response.sendRedirect("Erro.jsp");
+            response.getWriter().print(false);
         }
         
     }
