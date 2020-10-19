@@ -79,4 +79,71 @@ public class ProdutoDAO {
             ps.execute();
         
     }
+    
+    public static Produto getProduto(int id_produto) {
+
+        Produto produto = null;
+               
+        try {
+            ConexaoMysql conexao = new ConexaoMysql();
+            Connection con = conexao.openConnection();
+            String query = "Select * from produto where id_produto=?";
+            PreparedStatement ps = con.prepareStatement(query);
+            
+           ps.setInt(1, id_produto);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                String nome = rs.getString("nome");
+                String familia = rs.getString("id_familia");
+                int quantidade = rs.getInt("quantidade");
+                double preco = rs.getDouble("preco");
+                String descricao = rs.getString("descricao");
+                String filial = rs.getString("id_filial");
+                produto = new Produto(id_produto, nome, familia, quantidade, preco, descricao, filial);       
+            }
+   
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(ProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return produto;
+        
+    }
+    
+    public static void atualizaProduto(Produto produto) throws SQLException, ClassNotFoundException{
+            ConexaoMysql conexao = new ConexaoMysql();
+            Connection con = conexao.openConnection();
+            
+            String query = "update produto set nome=?, id_familia=?, quantidade=?, preco=?, descricao=?, id_filial=? where id_produto=?";
+            
+
+            
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, produto.getNome());
+            ps.setString(2, produto.getFamilia());
+            ps.setInt(3, produto.getQuantidade());
+            ps.setDouble(4, produto.getPreco());
+            ps.setString(5, produto.getDescricao());
+            ps.setString(6, produto.getFilial());
+            ps.setInt(7, produto.getId_produto());
+            
+            ps.execute();
+        
+    }
+    
+    
+    public static void deleteProduto(int id_produto) throws SQLException, ClassNotFoundException{
+            ConexaoMysql conexao = new ConexaoMysql();
+            Connection con = conexao.openConnection();
+            
+            String query = "delete from produto where id_produto=?";
+                        
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, id_produto);
+                    
+            ps.execute();
+        
+    }
+    
+    
 }
