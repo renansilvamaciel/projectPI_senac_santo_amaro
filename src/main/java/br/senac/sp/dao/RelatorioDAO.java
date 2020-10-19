@@ -38,10 +38,10 @@ public class RelatorioDAO {
                 relatorio.setId_vendedor(rs.getInt("id_vendedor"));
                 relatorio.setNome_produto(rs.getString("nome_produto"));
                 relatorio.setQuantidade(rs.getInt("quantidade"));
+
                 relatorio.setValor_total(rs.getDouble("valor_total"));
                 relatorio.setData_hoje(rs.getString("data_hoje"));
                 relatorio.setId_filial(rs.getInt("id_filial"));
-
                 listarVenda.add(relatorio);
 
             }

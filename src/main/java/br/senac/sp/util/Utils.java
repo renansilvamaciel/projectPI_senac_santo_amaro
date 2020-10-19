@@ -33,4 +33,8 @@ public class Utils {
     public static void mostrarTelaErroIdade(HttpServletResponse response) throws ServletException, IOException {
         response.sendRedirect("IdadeInvalida.jsp");
     }
+    
+    public static void mostrarTelaErroCpf(HttpServletResponse response) throws ServletException, IOException {
+        response.sendRedirect("ErroClienteCpf.jsp");
+    }
 }

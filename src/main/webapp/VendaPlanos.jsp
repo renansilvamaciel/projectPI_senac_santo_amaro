@@ -135,56 +135,60 @@
                     <h4 class="text-center">Assinaturas</h4>
 
 
-                    <div>
+                    <form action="VendaPlanoClienteServlet" method="POST">
+                        <div>
 
-                        <select class="form-control form-control-sm" name="assinatura">
-                            <option value="ouro">Planos</option>
-                            <option value="ouro">Ouro</option>
-                            <option value="prata">Prata</option>
-                            <option value="bronze">Bronze</option>
-                        </select>
+                            <select class="form-control form-control-sm" name="assinatura">
+                                <option value="">Planos</option>
+                                <option value="ouro">Ouro</option>
+                                <option value="prata">Prata</option>
+                                <option value="bronze">Bronze</option>
+                            </select>
 
-                        <select class="form-control form-control-sm" name="tipo_assinatura">
-                            <option value="">Tipo de Assinatura</option>
-                            <option value="mensal">Mensal</option>
-                            <option value="trimestral">Trimestral</option>
-                            <option value="anual">Anual</option>
-                        </select>
+                            <select class="form-control form-control-sm" name="tipo_assinatura">
+                                <option value="">Tipo de Assinatura</option>
+                                <option value="mensal">Mensal</option>
+                                <option value="trimestral">Trimestral</option>
+                                <option value="anual">Anual</option>
+                            </select>
 
-                    </div>
-
-                    <br>
-
-                    <div class="input-group" >
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" >Tipo De pagamento</span>
                         </div>
-                        <input style="width: 20px; height: 20px; margin-top: 7px;" type="radio" id="cartao" name="pagamento" value="cartao" class="form-control">
-                        <label for="cartao">Cartão</label><br>
-                        <input style="width: 20px; height: 20px; margin-top: 7px;" type="radio" id="dinheiro" name="pagamento" value="dinheiro" class="form-control">
-                        <label for="dinheiro">Dinheiro</label><br>
 
-                    </div>
+                        <br>
 
+                        <div class="input-group" >
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" >Tipo De pagamento</span>
+                            </div>
+                            <input style="width: 20px; height: 20px; margin-top: 7px;" type="radio" id="cartao" name="pagamento" value="cartao" class="form-control">
+                            <label for="cartao">Cartão</label><br>
+                            <input style="width: 20px; height: 20px; margin-top: 7px;" type="radio" id="dinheiro" name="pagamento" value="dinheiro" class="form-control">
+                            <label for="dinheiro">Dinheiro</label><br>
 
-                    <br>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label>Nome</label>
-                            <input type="text" disabled="" class="form-control" name="nome" required>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label>CPF</label>
-                            <input type="text" disabled="" class="form-control" name="cpf" required>
+
+
+                        <br>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Nome</label>
+                                <input hidden="" type="text" name="nome" value="">
+                                <input type="text" disabled="" value="" class="form-control" name="nome" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>CPF</label>
+                                <input hidden="" type="text" name="cpfClient" value="">
+                                <input type="text" disabled="" value="" class="form-control" name="cpfClient" required>
+                            </div>
                         </div>
-                    </div>
-                    <Lable>Valor final:</Lable>
-                    <input type="number" name="valorCaixa" style="margin-left: 7%"><br><br>
+                        <Lable>Valor final:</Lable>
+                        <input type="number" name="valorCaixa" style="margin-left: 7%"><br><br>
 
 
 
-                    <input class="btn btn-primary" type="submit" value="Finalizar">
-                    <input class="btn btn-danger m-2" type="reset" value="Cancelar">
+                        <input class="btn btn-primary" type="submit" value="Finalizar">
+                        <input class="btn btn-danger m-2" type="reset" value="Cancelar">
+                    </form>
 
 
                 </div>
