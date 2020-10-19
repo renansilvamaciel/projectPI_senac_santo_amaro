@@ -132,4 +132,18 @@ public class ProdutoDAO {
     }
     
     
+    public static void deleteProduto(int id_produto) throws SQLException, ClassNotFoundException{
+            ConexaoMysql conexao = new ConexaoMysql();
+            Connection con = conexao.openConnection();
+            
+            String query = "delete from produto where id_produto=?";
+                        
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, id_produto);
+                    
+            ps.execute();
+        
+    }
+    
+    
 }

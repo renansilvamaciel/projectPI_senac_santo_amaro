@@ -8,7 +8,7 @@
         <servlet-name>Relatorio</servlet-name>
         <servlet-class>br.senac.sp.servlet.ListarVenda</servlet-class>
     </servlet>
-     <servlet>
+    <servlet>
         <servlet-name>ListarVenda</servlet-name>
         <servlet-class>br.senac.sp.servlet.ListarVenda</servlet-class>
     </servlet>
@@ -47,6 +47,10 @@
     <servlet>
         <servlet-name>VendaPlanoPesquisarClienteServlet</servlet-name>
         <servlet-class>br.senac.sp.servlet.VendaPlanoPesquisarClienteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteProduto</servlet-name>
+        <servlet-class>br.senac.sp.servlet.DeleteProduto</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Produto</servlet-name>
@@ -92,9 +96,13 @@
         <servlet-name>VendaPlanoPesquisarClienteServlet</servlet-name>
         <url-pattern>/VendaPlanoPesquisarClienteServlet</url-pattern>
     </servlet-mapping>
-      <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ListarVenda</servlet-name>
         <url-pattern>/ListarVenda</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteProduto</servlet-name>
+        <url-pattern>/DeleteProduto</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
