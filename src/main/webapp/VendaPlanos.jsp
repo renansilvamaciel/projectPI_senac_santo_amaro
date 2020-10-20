@@ -135,7 +135,7 @@
                     <h4 class="text-center">Assinaturas</h4>
 
 
-                    <form action="VendaPlanoClienteServlet" method="POST">
+                    <form action="VendaPlanoErroCpf" method="POST">
                         <div>
 
                             <select class="form-control form-control-sm" name="assinatura">
@@ -148,7 +148,7 @@
                             <select class="form-control form-control-sm" name="tipo_assinatura">
                                 <option value="">Tipo de Assinatura</option>
                                 <option value="mensal">Mensal</option>
-                                <option value="trimestral">Trimestral</option>
+                                <option value="semestral">Semestral</option>
                                 <option value="anual">Anual</option>
                             </select>
 
@@ -181,11 +181,6 @@
                                 <input type="text" disabled="" value="" class="form-control" name="cpfClient" required>
                             </div>
                         </div>
-                        <Lable>Valor final:</Lable>
-                        <input type="number" name="valorCaixa" style="margin-left: 7%"><br><br>
-
-
-
                         <input class="btn btn-primary" type="submit" value="Finalizar">
                         <input class="btn btn-danger m-2" type="reset" value="Cancelar">
                     </form>

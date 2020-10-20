@@ -49,14 +49,16 @@
         <servlet-class>br.senac.sp.servlet.VendaPlanoPesquisarClienteServlet</servlet-class>
     </servlet>
     <servlet>
-
         <servlet-name>VendaPlanoClienteServlet</servlet-name>
         <servlet-class>br.senac.sp.servlet.VendaPlanoClienteServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteProduto</servlet-name>
         <servlet-class>br.senac.sp.servlet.DeleteProduto</servlet-class>
-
+    </servlet>
+    <servlet>
+        <servlet-name>VendaPlanoErroCpf</servlet-name>
+        <servlet-class>br.senac.sp.servlet.VendaPlanoErroCpf</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Produto</servlet-name>
@@ -110,12 +112,14 @@
         <servlet-name>VendaPlanoClienteServlet</servlet-name>
         <url-pattern>/VendaPlanoClienteServlet</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>DeleteProduto</servlet-name>
         <url-pattern>/DeleteProduto</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>VendaPlanoErroCpf</servlet-name>
+        <url-pattern>/VendaPlanoErroCpf</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

@@ -116,76 +116,36 @@
 
 
 
+            <br>
+            <div class="col-7" style="height: 100%"> 
+                <table class="table table-hover">
+                    <thead class="col-md-auto">
 
-            <div class="col-9" style="height: 100%"> 
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Assinatura</th>
+                    <th>Tipo Assinatura</th>
+                    <th>Valor</th>
 
-                <br>
-                <h1 class="text-center"><b>Venda de Planos</b></h1><br>
-
-                <div class="col-7"> 
-
-                    <form class="form-inline center" action="VendaPlanoPesquisarClienteServlet" method="GET">
-                        <input class="form-control" name="cpf" type="search" placeholder="Pesquisar cliente" aria-label="Pesquisar">
-                        <button class="btn btn-outline-success pt-2 " type="submit">Pesquisar</button>
-                    </form>
-
-                    <br>
-
-
-                    <h4 class="text-center">Assinaturas</h4>
-
-                    <form action="VendaPlanoClienteServlet" method="GET">
-                        <div>
-
-                            <select class="form-control form-control-sm" name="assinatura" required>
-                                <option value="">Planos</option>
-                                <option value="ouro">Ouro</option>
-                                <option value="prata">Prata</option>
-                                <option value="bronze">Bronze</option>
-                            </select>
-
-                            <select class="form-control form-control-sm" name="tipo_assinatura" required>
-                                <option value="">Tipo de Assinatura</option>
-                                <option value="mensal">Mensal</option>
-                                <option value="semestral">Semestral</option>
-                                <option value="anual">Anual</option>
-                            </select>
-
-                        </div>
-
-                        <br>
-
-                        <div class="input-group" >
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" >Tipo De pagamento</span>
-                            </div>
-                            <input style="width: 20px; height: 20px; margin-top: 7px;" type="radio" id="cartao" name="pagamento" value="cartao" class="form-control">
-                            <label for="cartao">Cartão</label><br>
-                            <input style="width: 20px; height: 20px; margin-top: 7px;" type="radio" id="dinheiro" name="pagamento" value="dinheiro" class="form-control">
-                            <label for="dinheiro">Dinheiro</label><br>
-
-                        </div>
-
-
-                        <br>
+                    </thead>
+                    <tbody> 
                         <c:forEach var="cliente" items="${listarCliente}">
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label>Nome</label>
-                                    <input hidden="" type="text" name="nome" value="${cliente.nome}">
-                                    <input type="text" value="${cliente.nome}" disabled="" class="form-control" name="nome" required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>CPF</label>
-                                    <input hidden="" type="text" name="cpfCliente" value="${cliente.cpf}">
-                                    <input type="text" value="${cliente.cpf}" disabled="" class="form-control" name="cpfCliente" required>
-                                </div>
-                            </div>
+                            <tr class="col-md-auto">
+
+                                <td>${cliente.nome}</td>
+                                <td>${cliente.cpf}</td>
+
+                                <td>${assinaturaPlano}</td>
+                                <td>${tipoPlano}</td>
+                                <td>${valorPlano}</td>
+
+                            </tr>
                         </c:forEach>
-                        <input class="btn btn-primary" type="submit" value="Finalizar">
-                        <input class="btn btn-danger m-2" type="reset" value="Cancelar">
-                    </form>
-                </div>
+
+                    </tbody>
+
+                </table>
+                <input class="btn btn-primary" type="submit" value="Finalizar">
 
             </div>
             <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->

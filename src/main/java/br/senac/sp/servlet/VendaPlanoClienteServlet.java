@@ -5,13 +5,17 @@
  */
 package br.senac.sp.servlet;
 
+import br.senac.sp.dao.ClientesDAO;
 import br.senac.sp.dao.VendaPlanoDAO;
+import br.senac.sp.entidade.Cliente;
 import br.senac.sp.entidade.VendaPlanos;
 import br.senac.sp.util.Utils;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,8 +28,8 @@ import javax.servlet.http.HttpServletResponse;
 public class VendaPlanoClienteServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, NumberFormatException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
         VendaPlanos vendaPlanos = new VendaPlanos();
         vendaPlanos.setCpf(request.getParameter("cpfCliente"));
@@ -34,9 +38,17 @@ public class VendaPlanoClienteServlet extends HttpServlet {
 
         try {
             if (vendaPlanos.validationClient(vendaPlanos.getCpf())) {
-                VendaPlanoDAO VendaPlanosDao = new VendaPlanoDAO();
-                VendaPlanosDao.insertClient(vendaPlanos);
-                Utils.mostrarTelaSucesso(response);
+
+                ClientesDAO clientesDAO = new ClientesDAO();
+                List<Cliente> listarCliente = clientesDAO.getClient(vendaPlanos.getCpf());
+                request.setAttribute("valorPlano", vendaPlanos.validarValorPlano(vendaPlanos.getAssinatura(), vendaPlanos.getTipo_assinatura()));
+                request.setAttribute("assinaturaPlano", vendaPlanos.getAssinatura());
+                request.setAttribute("tipoPlano", vendaPlanos.getTipo_assinatura());
+                request.setAttribute("listarCliente", listarCliente);
+
+                RequestDispatcher requestDispatcher = getServletContext()
+                        .getRequestDispatcher("/VendaPlanosFinalizarVenda.jsp");
+                requestDispatcher.forward(request, response);
             } else {
                 Utils.mostrarTelaErroCpf(response);
             }
