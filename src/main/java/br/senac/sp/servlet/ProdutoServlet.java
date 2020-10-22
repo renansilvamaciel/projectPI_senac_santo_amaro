@@ -10,6 +10,7 @@ package br.senac.sp.servlet;
 import br.senac.sp.dao.ProdutoDAO;
 import br.senac.sp.entidade.Produto;
 import java.io.IOException;
+import static java.lang.System.console;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -48,7 +49,10 @@ public class ProdutoServlet extends HttpServlet {
         double preco = Double.parseDouble(request.getParameter("preco"));
         String descricao = request.getParameter("descricao");
         String filial = request.getParameter("filial");
-                
+        
+
+       
+        
         Produto produto = new Produto(nome, familia,quantidade,preco,descricao,filial);
         
         try {

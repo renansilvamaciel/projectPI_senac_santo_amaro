@@ -17,39 +17,100 @@
         <%@include file="menuLateral.jsp" %>
 
         <script lang="text/javascript">
+
+
+            $(document).ready(function () {
+                console.log("teste de carregamento ao abrir o jsp");
+
+            });
+
+
+            //função para exibir a modal excluirProduto
             function mostrarModalExclusao(id, nome) {
                 //console.log("produto:", id + " - " + nome);
                 $("#nomeProduto").html(nome);
                 $("#idProduto").val(id);
                 $('#modalExclusao').modal('show');
             }
+
+            //função para realizar a chmada ao servlet=>DeleteProduto
             function excluirProduto() {
                 var idProduto = $("#idProduto").val();
 
                 console.log("Deletar produto cujo id é: ", idProduto);
-                $.get("DeleteProduto?id="+idProduto, function (resposta) {
+                $.get("DeleteProduto?id=" + idProduto, function (resposta) {
                     $('#modalExclusao').modal('hide');
-                    if(resposta === 'true'){
+                    if (resposta === 'true') {
                         console.log("funcionou!");
-                    }else{
+                    } else {
                         console.log("falha!");
                     }
-                    
+
                     window.location.reload();
-                    
+
                 });
 
             }
 
 
+            //função para exibir a modal
+            function mostrarModalAtualiza(id, nome, familia, quantidade, preco, descricao, filial) {
+                console.log("produto:", id + " - " + nome + " - " + familia + " - " + quantidade + " - " + preco + " - " + descricao + " - " + filial);
 
-            excluirProduto
+                $("#nomeProdutolabel").html(nome);
+                $("#idProdutoAtualiza").val(id);
+                $("#nomeProdutoAtualiza").val(nome);
+                $("#familiaProdutoAtualiza").val(familia);
+                $("#quantidadeProdutoAtualiza").val(quantidade);
+                $("#precoProdutoAtualiza").val(preco);
+                $("#descricaoProdutoAtualiza").val(descricao);
+                $("#filialProdutoAtualiza").val(filial);
+
+                $('#modalAtualiza').modal('show');
+            }
+            //função para realizar a chmada ao servlet=>DeleteProduto
+            function atualizarProduto() {
+                var idProduto = $("#idProdutoAtualiza").val();
+                console.log("atualizar produto cujo id é: ", idProduto);
+                console.log("#idProdutoAtualiza");
+                
+                var id = $("#idProdutoAtualiza").val();
+                var nome = $("#nomeProdutoAtualiza").val();
+                var familia = $("#familiaProdutoAtualiza").val();
+                var quantidade = $("#quantidadeProdutoAtualiza").val();
+                var preco = $("#precoProdutoAtualiza").val();
+                var descricao = $("#descricaoProdutoAtualiza").val();
+                var filial = $("#filialProdutoAtualiza").val();
+               
+                
+           
+
+
+
+                $.post('AtualizarProduto', {id:id,nome:nome,familia:familia,quantidade:quantidade,
+                    preco:preco,descricao:descricao,filial:filial}, function () {
+
+                    $('#modalExclusao').modal('hide');
+                    window.location.reload();
+
+                });
+
+
+            }
+
+
+
+
+
+
         </script>
 
 
         <div div class="col 5"  style="height: 100%">
 
             <h1 class="text-center m-2 mb-3">Produto</h1>
+
+
 
             <div class="form-grup form-inline m-2">
                 <label>Buscar</label>
@@ -103,17 +164,19 @@
                 <button type="reset" class="btn btn-danger">Cancelar</button>
             </form><br>
 
-            <table class="tabletable-striped border border-dark" id='tabelaRolagem'>
+
+
+            <table class="table table-striped table-bordered" id='tabelaRolagem'>
                 <thead>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Família</th>
-                <th>Quantidade</th>
-                <th>Preço</th>
-                <th>Descricao</th>
-                <th>filial</th>
-                <th></th>
-                <th></th>
+                <th scope="col" >Id</th>
+                <th scope="col" >Nome</th>
+                <th scope="col" >Família</th>
+                <th scope="col" >Quantidade</th>
+                <th scope="col" >Preço</th>
+                <th scope="col" >Descricao</th>
+                <th scope="col">filial</th>
+                <th scope="col" ></th>
+                <th scope="col" ></th>
                 </thead>
                 <tbody>
 
@@ -127,8 +190,20 @@
                             <td>${produto.descricao}</td>
                             <td>${produto.filial}</td>
 
-                            <td><a href="AtualizarProduto?id=${produto.id_produto}"><img src="img/pencil.svg"></a></td>
-                            <td><img src="img/trashcan.svg" onclick="mostrarModalExclusao(${produto.id_produto}, '${produto.nome}')" class="botaoExcluir"></td>                            
+                            <!-- <td><a href="AtualizarProduto?id=${produto.id_produto}"><img src="img/pencil.svg"></a></td> -->
+
+                            <td><img src="img/pencil.svg" onclick="mostrarModalAtualiza(
+                                     ${produto.id_produto},
+                                            '${produto.nome}',
+                                            '${produto.familia}',
+                                     ${produto.quantidade},
+                                     ${produto.preco},
+                                            '${produto.descricao}',
+                                            '${produto.filial}')" class="imgBotao"></td>    
+
+                            <td><img src="img/trashcan.svg" onclick="mostrarModalExclusao(
+                                     ${produto.id_produto},
+                                            '${produto.nome}')" class="imgBotao"></td>                            
 
 
                         </tr>
@@ -138,7 +213,8 @@
 
 
 
-            <!-- Modal -->
+
+            <!-- Exclusao Produto-->
             <div class="modal fade" id="modalExclusao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -150,6 +226,7 @@
                         </div>
                         <div class="modal-body">
                             Confirmar exclusão do Produto: <label id="nomeProduto"></label> ?
+
                             <input id="idProduto" hidden="true"/>
 
                         </div>
@@ -160,6 +237,55 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Modal atualizaProduto-->
+            <div class="modal fade" id="modalAtualiza" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Alteração de Produto</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Deseja alterar o produto: <b><label id="nomeProdutolabel"></label></b> ?
+
+                            <form class="form-sm">
+
+                                <labe >id:</labe>
+                                <input id="idProdutoAtualiza" class="form-control" readonly="true"/>
+
+                                <labe>Nome:</labe>
+                                <input id="nomeProdutoAtualiza" class="form-control" />
+
+                                <labe>Familia:</labe>
+                                <input id="familiaProdutoAtualiza" class="form-control"/>
+
+                                <labe>Filial:</labe>
+                                <input id="filialProdutoAtualiza"class="form-control" />
+
+                                <labe>Preco:</labe>
+                                <input id="precoProdutoAtualiza"class="form-control" />
+                                <labe>Qtd.:</labe>
+                                <input id="quantidadeProdutoAtualiza" class="form-control"/>
+                                <labe>Descrição.:</labe>
+                                <textarea id="descricaoProdutoAtualiza" class="form-control" ></textarea>
+
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" onclick="atualizarProduto()">Alterar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
 
 
         </div>
