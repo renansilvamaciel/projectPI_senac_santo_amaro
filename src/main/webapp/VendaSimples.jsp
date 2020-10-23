@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 
-    <!--include do cabeçalho-->
+    <!--include do cabeçalho--> 
     <%@include file="header.jsp" %>
 
     <body class="container">
@@ -35,7 +35,7 @@
                                     <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                                     <b><i>Venda</b></i><span class="sr-only">(atual)</span>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="VendaSimples.jsp">Venda Simples</a>
+                                        <a class="dropdown-item" href="ListaProdutoVenda">Venda Simples</a>
                                         <a class="dropdown-item" href="VendaPlanos.jsp">Venda De Planos</a>
                                         <a class="dropdown-item" href=VendaAssinantes.jsp#">Venda Para Assinantes</a>
                                     </div>
@@ -141,25 +141,25 @@
                         <th >Preço</th>
                         <th >Descrição</th>
                     </tr>
-                    <tr class="table-item">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                   <tbody>
+
+                    <c:forEach var="produto" items="${listaProdutos}">
+                        <tr>
+                            <td>${produto.id_produto}</td>
+                            <td>${produto.nome}</td>
+                            <td>${produto.quantidade}</td>
+                            <td>${produto.preco}</td>
+                            <td>${produto.descricao}</td>
+                            
+
+<!--                            // fazer implementação 
+                                <td><a href="AtualizarProduto?id=${produto.id_produto}"><img src="img/pencil.svg"></a></td>
+                            <td><img src="img/trashcan.svg" onclick="mostrarModalExclusao(${produto.id_produto}, '${produto.nome}')" class="botaoExcluir"></td>                            -->
 
 
-                    </tr>
-                    <tr class="table-item">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-
-                    </tr>
+                        </tr>
+                    </c:forEach>
+                </tbody>
 
                 </table>
 
