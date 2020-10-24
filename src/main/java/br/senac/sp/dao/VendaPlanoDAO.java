@@ -19,19 +19,19 @@ import java.util.logging.Logger;
  */
 public class VendaPlanoDAO {
 
-    public boolean insertClient(VendaPlanos vendaPlanos) throws ClassNotFoundException, SQLException {
+    public boolean insertVenda(VendaPlanos vendaPlanos) throws ClassNotFoundException, SQLException {
         boolean success = false;
         ConexaoMysql connectionMysql = new ConexaoMysql();
         Connection connection = connectionMysql.openConnection();
-        String query = "insert into venda_plano (cpf, id_vendedor, assinatura, tipo_assinatura, id_filial) values (?, ?, ?, ?, ?)";
+        String query = "insert into venda_plano (cpf, id_vendedor, assinatura, tipo_assinatura, valor_total, id_filial) values (?, ?, ?, ?, ?, ?)";
         PreparedStatement instructionSql = connection.prepareCall(query);
 
-        
         instructionSql.setString(1, vendaPlanos.getCpf());
         instructionSql.setInt(2, vendaPlanos.getId_vendedor());
         instructionSql.setString(3, vendaPlanos.getAssinatura());
         instructionSql.setString(4, vendaPlanos.getTipo_assinatura());
-        instructionSql.setInt(5, vendaPlanos.getId_filial());
+        instructionSql.setDouble(5, vendaPlanos.getValor_total());
+        instructionSql.setInt(6, vendaPlanos.getId_filial());
 
         if (instructionSql.executeUpdate() >= 1) {
             success = true;

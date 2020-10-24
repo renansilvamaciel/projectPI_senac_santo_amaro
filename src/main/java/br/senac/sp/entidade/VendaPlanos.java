@@ -22,7 +22,7 @@ public class VendaPlanos {
     private String assinatura;
     private String tipo_assinatura;
     private int id_filial;
-    private double valorTotal;
+    private double valor_total;
     private final int mensal = 1;
     private final int semestral = 6;
     private final int anual = 12;

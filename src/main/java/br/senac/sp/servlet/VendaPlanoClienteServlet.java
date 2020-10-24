@@ -41,9 +41,9 @@ public class VendaPlanoClienteServlet extends HttpServlet {
 
                 ClientesDAO clientesDAO = new ClientesDAO();
                 List<Cliente> listarCliente = clientesDAO.getClient(vendaPlanos.getCpf());
-                request.setAttribute("valorPlano", vendaPlanos.validarValorPlano(vendaPlanos.getAssinatura(), vendaPlanos.getTipo_assinatura()));
+                request.setAttribute("valor_total", vendaPlanos.validarValorPlano(vendaPlanos.getAssinatura(), vendaPlanos.getTipo_assinatura()));
                 request.setAttribute("assinaturaPlano", vendaPlanos.getAssinatura());
-                request.setAttribute("tipoPlano", vendaPlanos.getTipo_assinatura());
+                request.setAttribute("tipo_assinatura", vendaPlanos.getTipo_assinatura());
                 request.setAttribute("listarCliente", listarCliente);
 
                 RequestDispatcher requestDispatcher = getServletContext()

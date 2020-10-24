@@ -118,35 +118,41 @@
 
             <br>
             <div class="col-7" style="height: 100%"> 
-                <table class="table table-hover">
-                    <thead class="col-md-auto">
+                <h1 class="text-center"><b>Finalizar Venda de Plano</b></h1><br>
+                <form action="VendaPlanoClienteFinalizar" method="POST">
+                    <table class="table table-hover">
+                        <thead class="col-md-auto">
 
-                    <th>Nome</th>
-                    <th>CPF</th>
-                    <th>Assinatura</th>
-                    <th>Tipo Assinatura</th>
-                    <th>Valor</th>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Assinatura</th>
+                        <th>Tipo Assinatura</th>
+                        <th>Valor</th>
 
-                    </thead>
-                    <tbody> 
-                        <c:forEach var="cliente" items="${listarCliente}">
-                            <tr class="col-md-auto">
+                        </thead>
 
-                                <td>${cliente.nome}</td>
-                                <td>${cliente.cpf}</td>
+                        <tbody> 
+                            <c:forEach var="cliente" items="${listarCliente}">
+                                <tr class="col-md-auto">
 
-                                <td>${assinaturaPlano}</td>
-                                <td>${tipoPlano}</td>
-                                <td>${valorPlano}</td>
+                                    <td value="${cliente.nome}" name="nome">${cliente.nome}</td>
+                            <input hidden="" name="cpf" value="${cliente.cpf}">
+                            <td value="${cliente.cpf}" name="cpf">${cliente.cpf}</td>
+                            <input hidden="" name="assinaturaPlano" value="${assinaturaPlano}">
+                            <td value="${assinaturaPlano}" name="assinaturaPlano">${assinaturaPlano}</td>
+                            <input hidden="" name="tipo_assinatura" value="${tipo_assinatura}">
+                            <td value="${tipo_assinatura}" name="tipo_assinatura">${tipo_assinatura}</td>
+                            <input hidden="" name="valor_total" value="${valor_total}">
+                            <td value="${valor_total}" name="valor_total">${valor_total}</td>
 
                             </tr>
                         </c:forEach>
 
-                    </tbody>
+                        </tbody>
 
-                </table>
-                <input class="btn btn-primary" type="submit" value="Finalizar">
-
+                    </table>
+                    <input class="btn btn-primary" type="submit" value="Finalizar">
+                </form>
             </div>
             <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
             <%@include file="rodape.jsp" %>
