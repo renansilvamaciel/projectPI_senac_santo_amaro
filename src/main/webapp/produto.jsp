@@ -19,12 +19,6 @@
         <script lang="text/javascript">
 
 
-            $(document).ready(function () {
-                console.log("teste de carregamento ao abrir o jsp");
-
-            });
-
-
             //função para exibir a modal excluirProduto
             function mostrarModalExclusao(id, nome) {
                 //console.log("produto:", id + " - " + nome);
@@ -73,7 +67,7 @@
                 var idProduto = $("#idProdutoAtualiza").val();
                 console.log("atualizar produto cujo id é: ", idProduto);
                 console.log("#idProdutoAtualiza");
-                
+
                 var id = $("#idProdutoAtualiza").val();
                 var nome = $("#nomeProdutoAtualiza").val();
                 var familia = $("#familiaProdutoAtualiza").val();
@@ -81,14 +75,14 @@
                 var preco = $("#precoProdutoAtualiza").val();
                 var descricao = $("#descricaoProdutoAtualiza").val();
                 var filial = $("#filialProdutoAtualiza").val();
-               
-                
-           
 
 
 
-                $.post('AtualizarProduto', {id:id,nome:nome,familia:familia,quantidade:quantidade,
-                    preco:preco,descricao:descricao,filial:filial}, function () {
+
+
+
+                $.post('AtualizarProduto', {id: id, nome: nome, familia: familia, quantidade: quantidade,
+                    preco: preco, descricao: descricao, filial: filial}, function () {
 
                     $('#modalExclusao').modal('hide');
                     window.location.reload();
@@ -106,15 +100,15 @@
         </script>
 
 
-        <div div class="col 5"  style="height: 100%">
+        <div div class="col 4"  style="height: 100%">
 
             <h1 class="text-center m-2 mb-3">Produto</h1>
 
 
 
             <div class="form-grup form-inline m-2">
-                <label>Buscar</label>
-                <input class="form-control m-4" type="search" name="buscaProduto" placeholder="buscar Produtos...">
+                <label class="form-control-sm" >Buscar</label>
+                <input class="form-control  form-control-sm m-4" type="search" name="buscaProduto" placeholder="buscar Produtos...">
                 <button type="submit" class="btn btn-primary">Buscar</button>
             </div>
 
@@ -122,42 +116,55 @@
             <form class="form" action="Produto" method="POST">
 
 
-                <div class="form-row m-2">
-                    <label class="col-sm-1 col-form-label">Id</label>
+                <div class="form-row m-1">
+                    <label class="col-sm-1 col-form-label form-control-sm">Id</label>
                     <div class="col-4">
-                        <input class="form-control" type="text" name="id" placeholder="Código Produto...">
+                        <input class="form-control form-control-sm" type="text" name="id"  readonly="true" placeholder="Código Produto...">
                     </div>
-                    <label class="col-sm-1 col-form-label">Nome</label>
-                    <div class="col-5">
-                        <input class="form-control" type="text" name="nome" placeholder="Nome do Produto...">
+                    <label class="col-sm-1 col-form-label form-control-sm">Nome</label>
+                    <div class="col-4">
+                        <input class="form-control form-control-sm" type="text" name="nome" placeholder="Nome do Produto...">
                     </div>
                 </div>
 
-                <div class="form-row m-2">
-                    <label class="col-sm-1 col-form-label">Família</label>
+                <div class="form-row m-1">
+                    
+                    <label class="col-sm-1 col-form-label form-control-sm">Família</label>
                     <div class="col-4">
-                        <input class="form-control" type="text" name="familia" placeholder="Família do Produto...">
+                            <select class="form-control form-control-sm" name="familia">
+                                <option>Selecione...</option>
+                                <option value="1">Cafés</option>
+                                <option value="2">Acessórios</option>
+                                <option value="3">Acompanhamentos</option>
+                            </select>
                     </div>
-                    <label class="col-sm-1 col-form-label">Filial</label>
-                    <div class="col-5">
-                        <input class="form-control" type="text" name="filial" placeholder="Filial de Venda...">
+                    
+                    <label class="col-sm-1 col-form-label form-control-sm">Filial</label>
+                    <div class="col-4">
+                        <select class="form-control form-control-sm" name="filial">
+                                <option>Selecione...</option>
+                                <option value="1">Matriz</option>
+                                <option value="2">Filial 1</option>
+                                <option value="3">Filial 2</option>
+                                <option value="4">Filial 3</option>
+                            </select>
                     </div>
                 </div>
-                <div class="form-row m-2">
-                    <label class="col-sm-1 col-form-label">Preço</label>
+                <div class="form-row m-1">
+                    <label class="col-sm-1 col-form-label form-control-sm">Preço</label>
                     <div class="col-4">
-                        <input class="form-control" type="text" name="preco" placeholder="Preço de Venda R$...">
+                        <input class="form-control form-control-sm" type="text" name="preco" placeholder="Preço de Venda R$...">
                     </div>
-                    <label class="col-sm-1 col-form-label">Qtd.</label>
-                    <div class="col-5">
-                        <input class="form-control" type="text" name="quantidade" placeholder="Quantidade...">
+                    <label class="col-sm-1 col-form-label form-control-sm">Qtd.</label>
+                    <div class="col-4">
+                        <input class="form-control form-control-sm" type="text" name="quantidade" placeholder="Quantidade...">
                     </div>
 
                 </div>
-                <div    class="form-row m-2 mb-5">
-                    <label class="col-sm-2 col-form-label">Descrição</label>
-                    <div class="col-9">
-                        <textarea class="form-control ml-1"  name="descricao" placeholder="Breve descrição..."></textarea>
+                <div    class="form-row m-1 mb-5">
+                    <label class="col-sm-2 col-form-label form-control-sm">Descrição</label>
+                    <div class="col-8">
+                        <textarea class="form-control  form-control-sm ml-1"  name="descricao" placeholder="Breve descrição..."></textarea>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
@@ -166,8 +173,8 @@
 
 
 
-            <table class="table table-striped table-bordered" id='tabelaRolagem'>
-                <thead>
+            <table class="table table-sm table-striped table-bordered " id='tabelaRolagem'>
+                <thead class="">
                 <th scope="col" >Id</th>
                 <th scope="col" >Nome</th>
                 <th scope="col" >Família</th>

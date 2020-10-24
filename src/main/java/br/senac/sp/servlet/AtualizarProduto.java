@@ -36,6 +36,11 @@ public class AtualizarProduto extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        //correção de acentuação
+        request.setCharacterEncoding("UTF-8");
+        
+        
         int id_produto = Integer.parseInt(request.getParameter("id"));
         String nome = request.getParameter("nome");
         String familia = request.getParameter("familia");
