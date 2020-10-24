@@ -113,10 +113,99 @@
             </div>
 
             <!--  INICIO -----  corpo que deve ser alterardo de acordo com a pagina -->
-            <%@include file="corpoPrincipal.jsp" %>
+            <div class="col-9" style="height: 100%"> 
 
-            <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
-            <%@include file="rodape.jsp" %>
+                <h1 class="text-center"><b>Venda Para Assinantes</b></h1><br>
+
+                <form class="form-inline center" >
+                    <input class="form-control " type="search" placeholder="Pesquisar Produto" name="cpf" aria-label="Pesquisar">
+                    <button class="btn btn-outline-success pt-2 " type="submit">Pesquisar</button>
+                </form>
+
+                <br>
+
+                <h4 class="text-center">Produtos</h4>
+                <table class="table">
+                    <tr class="table-item">
+                        <th >Id</th>
+                        <th >Nome</th>
+                        <th >Quantidade</th>
+                        <th >Preço</th>
+                        <th >Descrição</th>
+                    </tr>
+                    <tbody>
+
+                    <c:forEach var="produto" items="${listaProdutos}">
+                        <tr>
+                            <td>${produto.id_produto}</td>
+                            <td>${produto.nome}</td>
+                            <td>${produto.quantidade}</td>
+                            <td>${produto.preco}</td>
+                            <td>${produto.descricao}</td>
+
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+
+                </table>
+
+
+                <h4 class="text-center">Carrinho</h4>
+                <table class="table">
+                    <tr class="table-item" >
+                        <th >Id</th>
+                        <th >Nome</th>
+                        <th >Quantidade</th>
+                        <th >Preço</th>
+                    </tr>
+                    <tr class="table-item">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="table-item">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+
+                    </tr>
+
+                </table>
+
+
+                <div class="col-7">
+                    <div class="input-group" >
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" >Tipo De pagamento</span>
+                        </div>
+                        <input style="width: 20px; height: 20px; margin-top: 7px;" type="radio" id="cartao" name="pagamento" value="cartao" class="form-control">
+                        <label for="cartao">Cartão</label><br>
+                        <input style="width: 20px; height: 20px; margin-top: 7px;" type="radio" id="dinheiro" name="pagamento" value="dinheiro" class="form-control">
+                        <label for="dinheiro">Dinheiro</label><br>
+
+                    </div>
+
+
+                    <br>
+                    <Lable>Valor final:</Lable>
+                    <input type="text" name="valorCaixa" style="margin-left: 7%"><br><br>
+
+
+                    <input class="btn btn-primary" type="submit" value="Finalizar">
+                    <input class="btn btn-danger m-2" type="reset" value="Cancelar">
+
+                </div>
+
+
+            </div><!-- fim tabelas e pesquisa -->
+
+            <br>
+        </div>
+
+        <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
+        <%@include file="rodape.jsp" %>
 
     </body>
 
