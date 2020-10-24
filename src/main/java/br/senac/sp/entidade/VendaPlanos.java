@@ -23,6 +23,9 @@ public class VendaPlanos {
     private String tipo_assinatura;
     private int id_filial;
     private double valorTotal;
+    private final int mensal = 1;
+    private final int semestral = 6;
+    private final int anual = 12;
     private final double descontoMensal = 0.10;
     private final double descontoSemestral = 0.15;
     private final double descontoAnual = 0.20;
@@ -46,33 +49,33 @@ public class VendaPlanos {
             case "ouro":
 
                 if (tipo_assinatura.equalsIgnoreCase("mensal")) {
-                    valorPlanoEscolhido = valorBasePlanoOuro - valorBasePlanoOuro * descontoMensal;
+                    valorPlanoEscolhido = (mensal * valorBasePlanoOuro) - ((mensal * valorBasePlanoOuro) * descontoMensal);
                 } else if (tipo_assinatura.equalsIgnoreCase("semestral")) {
-                    valorPlanoEscolhido = valorBasePlanoOuro - valorBasePlanoOuro * descontoSemestral;
+                    valorPlanoEscolhido = (semestral * valorBasePlanoOuro) - ((semestral * valorBasePlanoOuro) * descontoSemestral);
                 } else {
-                    valorPlanoEscolhido = valorBasePlanoOuro - valorBasePlanoOuro * descontoAnual;
+                    valorPlanoEscolhido = (anual * valorBasePlanoOuro) - ((anual * valorBasePlanoOuro) * descontoAnual);
                 }
                 break;
 
             case "prata":
 
                 if (tipo_assinatura.equalsIgnoreCase("mensal")) {
-                    valorPlanoEscolhido = valorBasePlanoPrata - valorBasePlanoPrata * descontoMensal;
+                    valorPlanoEscolhido = (mensal * valorBasePlanoPrata) - ((mensal * valorBasePlanoPrata) * descontoMensal);
                 } else if (tipo_assinatura.equalsIgnoreCase("semestral")) {
-                    valorPlanoEscolhido = valorBasePlanoPrata - valorBasePlanoPrata * descontoSemestral;
+                    valorPlanoEscolhido = (semestral * valorBasePlanoPrata) - ((semestral * valorBasePlanoPrata) * descontoSemestral);
                 } else {
-                    valorPlanoEscolhido = valorBasePlanoPrata - valorBasePlanoPrata * descontoAnual;
+                    valorPlanoEscolhido = (anual * valorBasePlanoPrata) - ((anual * valorBasePlanoPrata) * descontoAnual);
                 }
                 break;
 
             case "bronze":
 
                 if (tipo_assinatura.equalsIgnoreCase("mensal")) {
-                    valorPlanoEscolhido = valorBasePlanoBronze - valorBasePlanoBronze * descontoMensal;
+                    valorPlanoEscolhido = (mensal * valorBasePlanoBronze) - ((mensal * valorBasePlanoBronze) * descontoMensal);
                 } else if (tipo_assinatura.equalsIgnoreCase("semestral")) {
-                    valorPlanoEscolhido = valorBasePlanoBronze - valorBasePlanoBronze * descontoSemestral;
+                    valorPlanoEscolhido = (semestral * valorBasePlanoBronze) - ((semestral * valorBasePlanoBronze) * descontoSemestral);
                 } else {
-                    valorPlanoEscolhido = valorBasePlanoBronze - valorBasePlanoBronze * descontoAnual;
+                    valorPlanoEscolhido = (anual * valorBasePlanoBronze) - ((anual * valorBasePlanoBronze) * descontoAnual);
                 }
                 break;
 
