@@ -15,10 +15,10 @@
 
         <!--include do menu lateral-->
         <%@include file="menuLateral.jsp" %>
-        
+
         <style type="text/css">
             .msg-erro{color:red;}
-            
+
         </style>
 
         <script lang="text/javascript">
@@ -82,10 +82,6 @@
                 var filial = $("#filialProdutoAtualiza").val();
 
 
-
-
-
-
                 $.post('AtualizarProduto', {id: id, nome: nome, familia: familia, quantidade: quantidade,
                     preco: preco, descricao: descricao, filial: filial}, function () {
 
@@ -95,6 +91,12 @@
                 });
 
 
+            }
+            
+            function resetTabela(){
+                console.log("teste");
+                window.location.href = "Produto";
+                
             }
 
 
@@ -110,13 +112,14 @@
             <h1 class="text-center m-2 mb-3">Produto</h1>
 
 
-
-            <div class="form-grup form-inline m-2">
-                <label class="form-control-sm" >Buscar</label>
-                <input class="form-control  form-control-sm m-4" type="search" name="buscaProduto" placeholder="buscar Produtos...">
-                <button type="submit" class="btn btn-primary">Buscar</button>
-            </div>
-
+            <form action="BuscaProduto" method="GET">
+                <div class="form-grup form-inline m-2">
+                    <label class="form-control-sm" >Buscar</label>
+                    <input class="form-control  form-control-sm m-4" type="search" name="buscaProduto" placeholder="buscar Produtos...">
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                    <button type="reset" class="btn btn-danger m-1" onclick="resetTabela()">Reset Busca</button>
+                </div>
+            </form>
 
             <form class="form" action="Produto" method="POST" id="form_cadastroProduto" >
 
@@ -125,38 +128,38 @@
                     <label class="col-sm-1 col-form-label form-control-sm">Id</label>
                     <div class="col-4">
                         <input class="form-control form-control-sm" type="text" name="id"  readonly="true" placeholder="Código Produto...">
-                        
+
                     </div>
                     <label class="col-sm-1 col-form-label form-control-sm">Nome</label>
                     <div class="col-4">
-                        
+
                         <input class="form-control form-control-sm" type="text"  id="nome" name="nome" placeholder="Nome do Produto...">
                         <span class="msg-erro msg-nome"></span>
                     </div>
                 </div>
 
                 <div class="form-row m-1">
-                    
+
                     <label class="col-sm-1 col-form-label form-control-sm">Família</label>
                     <div class="col-4">
                         <select class="form-control form-control-sm" id="familia" name="familia">
-                                <option value="0">Selecione...</option>
-                                <option value="1">Cafés</option>
-                                <option value="2">Acessórios</option>
-                                <option value="3">Acompanhamentos</option>
-                            </select>
+                            <option value="0">Selecione...</option>
+                            <option value="1">Cafés</option>
+                            <option value="2">Acessórios</option>
+                            <option value="3">Acompanhamentos</option>
+                        </select>
                         <span class="msg-erro msg-familia"></span>
                     </div>
-                    
+
                     <label class="col-sm-1 col-form-label form-control-sm">Filial</label>
                     <div class="col-4">
                         <select class="form-control form-control-sm"  id="filial" name="filial">
-                                <option value="0">Selecione...</option>
-                                <option value="1">Matriz</option>
-                                <option value="2">Filial 1</option>
-                                <option value="3">Filial 2</option>
-                                <option value="4">Filial 3</option>
-                            </select>
+                            <option value="0">Selecione...</option>
+                            <option value="1">Matriz</option>
+                            <option value="2">Filial 1</option>
+                            <option value="3">Filial 2</option>
+                            <option value="4">Filial 3</option>
+                        </select>
                         <span class="msg-erro msg-filial"></span>
                     </div>
                 </div>
@@ -199,6 +202,8 @@
                 <th scope="col" ></th>
                 </thead>
                 <tbody>
+                    
+                    
 
                     <c:forEach var="produto" items="${listaProdutos}">
                         <tr>

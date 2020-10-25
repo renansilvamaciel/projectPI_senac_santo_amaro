@@ -68,6 +68,10 @@
         <servlet-name>VendaPlanoClienteFinalizar</servlet-name>
         <servlet-class>br.senac.sp.servlet.VendaPlanoClienteFinalizar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BuscaProduto</servlet-name>
+        <servlet-class>br.senac.sp.servlet.BuscaProduto</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Produto</servlet-name>
         <url-pattern>/Produto</url-pattern>
@@ -135,6 +139,10 @@
     <servlet-mapping>
         <servlet-name>VendaPlanoClienteFinalizar</servlet-name>
         <url-pattern>/VendaPlanoClienteFinalizar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscaProduto</servlet-name>
+        <url-pattern>/BuscaProduto</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
