@@ -15,6 +15,11 @@
 
         <!--include do menu lateral-->
         <%@include file="menuLateral.jsp" %>
+        
+        <style type="text/css">
+            .msg-erro{color:red;}
+            
+        </style>
 
         <script lang="text/javascript">
 
@@ -113,17 +118,20 @@
             </div>
 
 
-            <form class="form" action="Produto" method="POST">
+            <form class="form" action="Produto" method="POST" id="form_cadastroProduto" >
 
 
                 <div class="form-row m-1">
                     <label class="col-sm-1 col-form-label form-control-sm">Id</label>
                     <div class="col-4">
                         <input class="form-control form-control-sm" type="text" name="id"  readonly="true" placeholder="Código Produto...">
+                        
                     </div>
                     <label class="col-sm-1 col-form-label form-control-sm">Nome</label>
                     <div class="col-4">
-                        <input class="form-control form-control-sm" type="text" name="nome" placeholder="Nome do Produto...">
+                        
+                        <input class="form-control form-control-sm" type="text"  id="nome" name="nome" placeholder="Nome do Produto...">
+                        <span class="msg-erro msg-nome"></span>
                     </div>
                 </div>
 
@@ -131,40 +139,45 @@
                     
                     <label class="col-sm-1 col-form-label form-control-sm">Família</label>
                     <div class="col-4">
-                            <select class="form-control form-control-sm" name="familia">
-                                <option>Selecione...</option>
+                        <select class="form-control form-control-sm" id="familia" name="familia">
+                                <option value="0">Selecione...</option>
                                 <option value="1">Cafés</option>
                                 <option value="2">Acessórios</option>
                                 <option value="3">Acompanhamentos</option>
                             </select>
+                        <span class="msg-erro msg-familia"></span>
                     </div>
                     
                     <label class="col-sm-1 col-form-label form-control-sm">Filial</label>
                     <div class="col-4">
-                        <select class="form-control form-control-sm" name="filial">
-                                <option>Selecione...</option>
+                        <select class="form-control form-control-sm"  id="filial" name="filial">
+                                <option value="0">Selecione...</option>
                                 <option value="1">Matriz</option>
                                 <option value="2">Filial 1</option>
                                 <option value="3">Filial 2</option>
                                 <option value="4">Filial 3</option>
                             </select>
+                        <span class="msg-erro msg-filial"></span>
                     </div>
                 </div>
                 <div class="form-row m-1">
                     <label class="col-sm-1 col-form-label form-control-sm">Preço</label>
                     <div class="col-4">
-                        <input class="form-control form-control-sm" type="text" name="preco" placeholder="Preço de Venda R$...">
+                        <input class="form-control form-control-sm" type="text" id="preco" name="preco" placeholder="Preço de Venda R$...">
+                        <span class="msg-erro msg-preco"></span>
                     </div>
                     <label class="col-sm-1 col-form-label form-control-sm">Qtd.</label>
                     <div class="col-4">
-                        <input class="form-control form-control-sm" type="text" name="quantidade" placeholder="Quantidade...">
+                        <input class="form-control form-control-sm" type="text"  id="quantidade" name="quantidade" placeholder="Quantidade...">
+                        <span class="msg-erro msg-quantidade"></span>
                     </div>
 
                 </div>
                 <div    class="form-row m-1 mb-5">
                     <label class="col-sm-2 col-form-label form-control-sm">Descrição</label>
                     <div class="col-8">
-                        <textarea class="form-control  form-control-sm ml-1"  name="descricao" placeholder="Breve descrição..."></textarea>
+                        <textarea class="form-control  form-control-sm ml-1" id="descricao" name="descricao" placeholder="Breve descrição..."></textarea>
+                        <span class="msg-erro msg-descricao"></span>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
@@ -299,7 +312,7 @@
 
         <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
         <%@include file="rodape.jsp" %>
-
+        <script type="text/javascript" src="js/validacaoProduto.js"></script>
     </body>
 
 </html>
