@@ -23,6 +23,11 @@ public class Produto {
     private String descricao; 
     private String filial;
     
+    
+    public Produto(){
+        
+    }
+    
     public Produto(int id_produto, String nome, String familia, int quantidade, double preco, String descricao,  String filial ){
         this.id_produto = id_produto;
         this.nome = nome;

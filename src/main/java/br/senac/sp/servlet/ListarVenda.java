@@ -30,21 +30,18 @@ public class ListarVenda extends HttpServlet {
             throws ServletException, IOException {
 
         RelatorioDAO relatorioDAO = new RelatorioDAO();
+        String query = "select detalhes.id_venda, venda.id_vendedor, detalhes.nome_produto, detalhes.quantidade, venda.valor_total, " 
+                    + "venda.data_hoje, venda.id_filial from detalhes "
+                    + "inner join venda on detalhes.id_venda = venda.id_venda";
 
-        try {
-            List<Relatorio> listarVenda = relatorioDAO.listVenda();
+        
+            List<Relatorio> listarVenda = relatorioDAO.listVenda(query);
             request.setAttribute("listarVenda", listarVenda);
 
             RequestDispatcher requestDispatcher = getServletContext()
                     .getRequestDispatcher("/relatorio.jsp");
             requestDispatcher.forward(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(ListarVenda.class.getName()).log(Level.SEVERE, null, ex);
-            Utils.mostrarTelaErro(ex, request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ListarVenda.class.getName()).log(Level.SEVERE, null, ex);
-            Utils.mostrarTelaErro(ex, request, response);
-        }
+
     }
 
 }

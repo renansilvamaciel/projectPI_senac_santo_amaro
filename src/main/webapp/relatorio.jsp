@@ -16,50 +16,83 @@
         <!--include do menu lateral-->
         <%@include file="menuLateral.jsp" %>
 
-        <div class="col 5"  style="height: 100%"> 
+        <script language="JavaScript" type="text/javascript">
+            function tabela(String filtro) {
+                if (filtro.length(0)) {
+                    console.log("funcionou!");
+                } else {
+                    console.log("falha!");
+                }
+
+            }
+
+
+
+
+        </script>
+
+
+
+
+        <div class="col 5"  style="height: 100%">
 
             <h1><center>Relatório</center></h1>
-            <div>
-                <label>Filial</label>
-                <select class="form-control form-control-sm">
-                    <option>Todas</option>
-                    <option>Matriz</option>
-                    <option>Filial 1</option>
-                    <option>Filial 2</option>
-                </select>
-            </div>
 
             <br>
 
-            <form class="form-inline center" action="ListarVenda" method="GET">
-                <input id="date" type="date">
-                <input id="date" type="date">
-                <button class="btn btn-outline-success pt-2 " type="submit">Pesquisar</button>
+            <form class="form-inline center" action="RelatorioVenda" method="GET">
+                <label class="col-sm-1 col-form-label form-control-sm">Filial</label>
+                <div class="">
+                    <select class="form-control form-control-sm" name="filial">
+                        <option value="0">Todas</option>
+                        <option value="1">Matriz</option>
+                        <option value="2">Filial 1</option>
+                        <option value="3">Filial 2</option>
+                        <option value="4">Filial 3</option>
+                    </select>
+                </div>
+
+                <!--
+                                <label class="col-sm-1 col-form-label form-control-sm">Tipo de Filtro</label>
+                                <div class="">
+                                    <select class="form-control form-control-sm" name="filtro">
+                                        <option value="1">Venda</option>
+                                        <option value="2">Produtos</option>
+                                        <option value="3">Vendedor</option>
+                                    </select>
+                                </div>
+                
+                
+                <!--
+                <div class="col-4">
+                    <input id="date" type="date">
+                    <input id="date" type="date">
+                </div>
+                -->
+                <button class="btn btn-outline-success pt-2" type="submit">Pesquisar</button>
             </form>
             <br>
 
-            <table class="table table-hover">
-                <thead class="col-md-auto">
-                    <th >Nº Da venda</th>
-                    <th >Funcionario</th>
-                    <th >produto</th>
-                    <th >Quantidade</th>
-                    <th >Preço</th>
-                    <th >Data</th>
-                    <th >Filial</th>
+            <table class="table table-sm table-striped table-bordered" id='tabelaRolagem'>
+                <thead class="">
+                <th scope="col">Nº Da venda</th>
+                <th scope="col">ID Funcionario</th>
+                <th scope="col">Quantidade</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Data</th>
+                <th scope="col">Filial</th>
                 </thead>
                 <tbody> 
-                <c:forEach var="relatorio" items="${listarVenda}">
-                     <tr class="col-md-auto">
-                        <td>${relatorio.id_venda}</td>
-                        <td>${relatorio.id_vendedor}</td>
-                        <td>${relatorio.nome_produto}</td>
-                        <td>${relatorio.quantidade}</td>
-                        <td>${relatorio.valor_total}</td>
-                        <td>${relatorio.data_hoje}</td>
-                        <td>${relatorio.id_filial}</td>
-                    </tr>
-                </c:forEach>
+                    <c:forEach var="relatorio" items="${listarVenda}">
+                        <tr class="col-md-auto">
+                            <<td>${relatorio.id_venda}</td>
+                            <td>${relatorio.id_vendedor}</td>
+                            <td>${relatorio.quantidade}</td>
+                            <td>${relatorio.valor_total}</td>
+                            <td>${relatorio.data_hoje}</td>
+                            <td>${relatorio.id_filial}</td>
+                        </tr>
+                    </c:forEach>
 
                 </tbody>
 
