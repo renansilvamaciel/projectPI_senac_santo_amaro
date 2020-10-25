@@ -181,9 +181,14 @@
                                 <input type="text" disabled="" value="" class="form-control" name="cpfClient" required>
                             </div>
                         </div>
-                        <input class="btn btn-primary" type="submit" value="Finalizar">
-                        <input class="btn btn-danger m-2" type="reset" value="Cancelar">
+
+                        <div class="col col-lg-1">
+                            <input class="btn btn-primary" type="submit" value="Finalizar">
+                        </div>
                     </form>
+                    <div class="col col-lg-1">
+                        <button class="btn btn-danger m-2"><a href="index.jsp" type="button">Cancelar</a></button> 
+                    </div>
 
 
                 </div>
