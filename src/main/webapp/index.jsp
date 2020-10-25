@@ -17,7 +17,7 @@
         <%@include file="menuLateral.jsp" %>
 
         <!--  INICIO -----  corpo que deve ser alterardo de acordo com a pagina -->
-        <%@include file="corpoPrincipal.jsp" %>
+
 
         <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
         <%@include file="rodape.jsp" %>
