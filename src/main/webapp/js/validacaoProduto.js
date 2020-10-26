@@ -1,6 +1,6 @@
 var form = document.getElementById('form_cadastroProduto');
-
 form.addEventListener("submit", validaCadastro);
+
 
 function validaCadastro(evt) {
     var nome = document.getElementById('nome');
@@ -105,7 +105,7 @@ function validaCadastro(evt) {
         if (Number.parseInt(quantidade.value)) {
 
 
-            var teste = Number.parseInt(quantidade.value)
+            var teste = Number.parseInt(quantidade.value);
 
             document.getElementById('quantidade').value = teste;
 
@@ -125,7 +125,7 @@ function validaCadastro(evt) {
 
         }
     }
-
+    
     //valida descricao
     var caixa_descricao = document.querySelector('.msg-descricao');
     if (descricao.value == "") {

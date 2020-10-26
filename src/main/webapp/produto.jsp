@@ -82,6 +82,7 @@
                 var filial = $("#filialProdutoAtualiza").val();
 
 
+
                 $.post('AtualizarProduto', {id: id, nome: nome, familia: familia, quantidade: quantidade,
                     preco: preco, descricao: descricao, filial: filial}, function () {
 
@@ -93,17 +94,13 @@
 
             }
             
-            function resetTabela(){
+            //funcão para resetar a tabela de produto e reexibir todos os produtos cadastrados
+            function resetTabela() {
                 console.log("teste");
                 window.location.href = "Produto";
-                
+
             }
-
-
-
-
-
-
+            
         </script>
 
 
@@ -112,14 +109,30 @@
             <h1 class="text-center m-2 mb-3">Produto</h1>
 
 
-            <form action="BuscaProduto" method="GET">
-                <div class="form-grup form-inline m-2">
-                    <label class="form-control-sm" >Buscar</label>
-                    <input class="form-control  form-control-sm m-4" type="search" name="buscaProduto" placeholder="buscar Produtos...">
+            <form class="form" action="BuscaProduto" method="GET" id="formBusca">
+                <!--BuscaProduto-->
+
+                <div class="form-grup form-inline">
+                    <label class="form-control-sm">Tipo Busca</label>
+                    <select class="form-control form-control-sm" id="tipoBusca" name="tipoBusca">
+                        <option value="1">Nome</option>
+                        <option value="2">Id</option>
+                        <option value="3">Família</option>
+                        <option value="4">Filial</option>
+                    </select>
+                    <label class="form-control-sm">Buscar</label>
+                    <input class="form-control  form-control-sm m-1" type="search" id="buscaProduto" name="buscaProduto" placeholder="buscar Produtos...">
+                    
                     <button type="submit" class="btn btn-primary">Buscar</button>
-                    <button type="reset" class="btn btn-danger m-1" onclick="resetTabela()">Reset Busca</button>
+                    <button type="reset" class="btn btn-danger m-1" onclick="resetTabela()">Reset</button>
                 </div>
+                <div class="form-grup form-inline m-2">
+                    <span class="msg-erro msg-CampoBusca"></span>
+                </div>
+                    
             </form>
+            
+            <br>
 
             <form class="form" action="Produto" method="POST" id="form_cadastroProduto" >
 
@@ -202,8 +215,8 @@
                 <th scope="col" ></th>
                 </thead>
                 <tbody>
-                    
-                    
+
+
 
                     <c:forEach var="produto" items="${listaProdutos}">
                         <tr>
@@ -318,6 +331,7 @@
         <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
         <%@include file="rodape.jsp" %>
         <script type="text/javascript" src="js/validacaoProduto.js"></script>
+        <script type="text/javascript" src="js/ValidacaoDeBusca.js"></script>
     </body>
 
 </html>
