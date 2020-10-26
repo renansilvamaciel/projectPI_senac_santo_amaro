@@ -101,7 +101,7 @@
             <br>
 
             <form class="form-inline center" style="margin-left: 90%;">
-                <button type="button" class="btn btn-success">Exportar</button>
+                <button onclick="window.print()" class="btn btn-success">Exportar</button>
             </form>
 
             <br>
