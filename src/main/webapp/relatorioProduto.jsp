@@ -1,9 +1,9 @@
 <%-- 
-    Document   : index
-    Created on : 03/10/2020, 19:08:59
-    Author     : Nailson Nascimento <nailsonbr@gmail.com>
+    Document   : relatorioProduto
+    Created on : 26/10/2020, 16:41:49
+    Author     : diego
 --%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -58,22 +58,20 @@
 
             <table class="table table-sm table-striped table-bordered" id='tabelaRolagem'>
                 <thead class="">
-                <th scope="col">Nº Da venda</th>
-                <th scope="col">ID Funcionario</th>
-                <th scope="col">Quantidade</th>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
                 <th scope="col">Preço</th>
-                <th scope="col">Data</th>
+                <th scope="col">Quantidade</th>
                 <th scope="col">Filial</th>
                 </thead>
                 <tbody> 
-                    <c:forEach var="relatorio" items="${listarVenda}">
+                    <c:forEach var="relatorio" items="${listarProduto}">
                         <tr class="col-md-auto">
-                            <<td>${relatorio.id_venda}</td>
-                            <td>${relatorio.id_vendedor}</td>
-                            <td>${relatorio.quantidade}</td>
-                            <td>${relatorio.valor_total}</td>
-                            <td>${relatorio.data_hoje}</td>
-                            <td>${relatorio.id_filial}</td>
+                            <<td>${produto.id_produto}</td>
+                            <td>${produto.nome}</td>
+                            <td>${produto.preco}</td>
+                            <td>${produto.quantidade}</td>
+                            <td>${produto.id_filial}</td>
                         </tr>
                     </c:forEach>
 

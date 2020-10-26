@@ -7,6 +7,7 @@ package br.senac.sp.dao;
 
 import br.senac.sp.entidade.Relatorio;
 import br.senac.sp.conexaodb.ConexaoMysql;
+import br.senac.sp.entidade.Funcionario;
 import br.senac.sp.entidade.Produto;
 import br.senac.sp.servlet.ProdutoServlet;
 import java.sql.Connection;
@@ -93,6 +94,62 @@ public class RelatorioDAO {
 
         return listarProduto;
 
+        
+    }
+        
+        
+        public ArrayList<Funcionario> listarFuncionarios(String query) {
+        ArrayList<Funcionario> listarFuncionarios = new ArrayList();
+
+        try {
+            ConexaoMysql conexao = new ConexaoMysql();
+            Connection connection = conexao.openConnection();
+
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Funcionario funcionario = new Funcionario();
+
+                funcionario.setId_funcionario(rs.getInt("id_funcionario"));
+                funcionario.setNome(rs.getString("nome"));
+                funcionario.setCpf(rs.getString("cpf"));
+                funcionario.setVenda(rs.getInt("quantidade"));
+                funcionario.setFilial(rs.getString("id_filial"));
+                
+  
+                listarFuncionarios.add(funcionario);
+
+            }
+            rs.close();
+            conexao.closeConnection();
+            System.out.println(listarFuncionarios);
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return listarFuncionarios;
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
 
 }

@@ -7,6 +7,7 @@ package br.senac.sp.servlet;
 
 import br.senac.sp.dao.ProdutoDAO;
 import br.senac.sp.dao.RelatorioDAO;
+import br.senac.sp.entidade.Funcionario;
 import br.senac.sp.entidade.Produto;
 import br.senac.sp.entidade.Relatorio;
 import java.io.IOException;
@@ -30,10 +31,10 @@ public class RelatorioVenda extends HttpServlet {
 
         RelatorioDAO relatorioDAO = new RelatorioDAO();
         int filial = Integer.parseInt(request.getParameter("filial"));
-      //  int filtro = Integer.parseInt(request.getParameter("filtro"));
+        int filtro = Integer.parseInt(request.getParameter("filtro"));
 
-       /* switch (filtro) {
-            case 1:*/
+        switch (filtro) {
+            case 1:
                 if (filial == 0) {
                     String query = "select * from venda";
 
@@ -54,52 +55,55 @@ public class RelatorioVenda extends HttpServlet {
                     requestDispatcher.forward(request, response);
 
                 }
-           /* case 2:
+              case 2:
                 if (filial == 0) {
                     String query = "select produto.id_produto, produto.nome, produto.preco, sum(detalhes.quantidade) as quantidade, produto.id_filial from produto "
                             + "inner join detalhes on produto.nome = detalhes.nome_produto";
 
                     List<Produto> listarProduto = relatorioDAO.listProduto(query);
-                    request.setAttribute("listarVenda", listarProduto);
+                    request.setAttribute("listarProduto", listarProduto);
 
                     RequestDispatcher requestDispatcher = getServletContext()
-                            .getRequestDispatcher("/relatorio.jsp");
+                            .getRequestDispatcher("/relatorioProduto.jsp");
                     requestDispatcher.forward(request, response);
                 } else {
                     String query = "select produto.id_produto, produto.nome, produto.preco, sum(detalhes.quantidade) as quantidade, produto.id_filial from produto "
                             + "inner join detalhes on produto.nome = detalhes.nome_produto = " + filial;
 
                     List<Produto> listarProduto = relatorioDAO.listProduto(query);
-                    request.setAttribute("listarVenda", listarProduto);
+                    request.setAttribute("listarProduto", listarProduto);
 
                     RequestDispatcher requestDispatcher = getServletContext()
-                            .getRequestDispatcher("/relatorio.jsp");
+                            .getRequestDispatcher("/relatorioProduto.jsp");
                     requestDispatcher.forward(request, response);
 
                 }
 
             case 3:
                 if (filial == 0) {
-                    String query = "select * from venda";
-
-                    List<Relatorio> listarVenda = relatorioDAO.listVenda(query);
-                    request.setAttribute("listarVenda", listarVenda);
+                    String query = "select funcionario.id_funcionario, funcionario.nome, funcionario.cpf, count(venda.id_vendedor) as quantidade, funcionario.id_filial from funcionario" +
+            " inner join venda on funcionario.id_funcionario = venda.id_vendedor group by venda.id_vendedor";
+                    Funcionario funcionario = new Funcionario();
+                    
+                    List<Funcionario> listarFuncionario= relatorioDAO.listarFuncionarios(query);
+                    request.setAttribute("listarFuncionario", listarFuncionario);
 
                     RequestDispatcher requestDispatcher = getServletContext()
-                            .getRequestDispatcher("/relatorio.jsp");
+                            .getRequestDispatcher("/relatorioFuncionarios.jsp");
                     requestDispatcher.forward(request, response);
                 } else {
-                    String query = "select * from venda where id_filial = " + filial;
+                    String query = "select funcionario.id_funcionario, funcionario.nome, funcionario.cpf, count(venda.id_vendedor) as quantidade, funcionario.id_filial from funcionario\n" +
+"              inner join venda on funcionario.id_funcionario = venda.id_vendedor where funcionario.id_filial= " + filial;
 
-                    List<Relatorio> listarVenda = relatorioDAO.listVenda(query);
-                    request.setAttribute("listarVenda", listarVenda);
+                    List<Funcionario> listarFuncionarios =relatorioDAO.listarFuncionarios(query);
+                    request.setAttribute("listarFuncionarios", listarFuncionarios);
 
                     RequestDispatcher requestDispatcher = getServletContext()
-                            .getRequestDispatcher("/relatorio.jsp");
+                            .getRequestDispatcher("/relatorioFuncionarios.jsp");
                     requestDispatcher.forward(request, response);
 
                 }
 
-        }*/
+        }
     }
 }
