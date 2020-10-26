@@ -85,8 +85,8 @@ public class RelatorioVenda extends HttpServlet {
             " inner join venda on funcionario.id_funcionario = venda.id_vendedor group by venda.id_vendedor";
                     Funcionario funcionario = new Funcionario();
                     
-                    List<Funcionario> listarFuncionario= relatorioDAO.listarFuncionarios(query);
-                    request.setAttribute("listarFuncionario", listarFuncionario);
+                    List<Funcionario> listarFuncionarios= relatorioDAO.listarFuncionarios(query);
+                    request.setAttribute("listarFuncionarios", listarFuncionarios);
 
                     RequestDispatcher requestDispatcher = getServletContext()
                             .getRequestDispatcher("/relatorioFuncionarios.jsp");

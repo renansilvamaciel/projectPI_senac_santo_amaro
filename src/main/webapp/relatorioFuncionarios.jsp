@@ -65,13 +65,13 @@
                 <th scope="col">Filial</th>
                 </thead>
                 <tbody> 
-                    <c:forEach var="relatorio" items="${listarProduto}">
+                    <c:forEach var="relatorio" items="${listarFuncionarios}">
                         <tr class="col-md-auto">
-                            <<td>${produto.id_produto}</td>
-                            <td>${produto.nome}</td>
-                            <td>${produto.preco}</td>
-                            <td>${produto.quantidade}</td>
-                            <td>${produto.id_filial}</td>
+                            <<td>${funcionario.id_funcionario}</td>
+                            <td>${funcionario.nome}</td>
+                            <td>${funcionario.cpf}</td>
+                            <td>${funcionario.quantidade}</td>
+                            <td>${funcionario.id_filial}</td>
                         </tr>
                     </c:forEach>
 
