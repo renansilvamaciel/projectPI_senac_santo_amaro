@@ -83,7 +83,7 @@ public class RelatorioVenda extends HttpServlet {
                 if (filial == 0) {
                     String query = "select funcionario.id_funcionario, funcionario.nome, funcionario.cpf, count(venda.id_vendedor) as quantidade, funcionario.id_filial from funcionario" +
             " inner join venda on funcionario.id_funcionario = venda.id_vendedor group by venda.id_vendedor";
-                    Funcionario funcionario = new Funcionario();
+
                     
                     List<Funcionario> listarFuncionarios= relatorioDAO.listarFuncionarios(query);
                     request.setAttribute("listarFuncionarios", listarFuncionarios);
@@ -92,8 +92,8 @@ public class RelatorioVenda extends HttpServlet {
                             .getRequestDispatcher("/relatorioFuncionarios.jsp");
                     requestDispatcher.forward(request, response);
                 } else {
-                    String query = "select funcionario.id_funcionario, funcionario.nome, funcionario.cpf, count(venda.id_vendedor) as quantidade, funcionario.id_filial from funcionario\n" +
-"              inner join venda on funcionario.id_funcionario = venda.id_vendedor where funcionario.id_filial= " + filial;
+                    String query = "select funcionario.id_funcionario, funcionario.nome, funcionario.cpf, count(venda.id_vendedor) as quantidade, funcionario.id_filial from funcionario " +
+                                   "inner join venda on funcionario.id_funcionario = venda.id_vendedor where funcionario.id_filial= " + filial;
 
                     List<Funcionario> listarFuncionarios =relatorioDAO.listarFuncionarios(query);
                     request.setAttribute("listarFuncionarios", listarFuncionarios);

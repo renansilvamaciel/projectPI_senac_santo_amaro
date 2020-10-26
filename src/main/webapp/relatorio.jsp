@@ -35,17 +35,17 @@
                     </select>
                 </div>
 
-                
-                                <label class="col-sm-1 col-form-label form-control-sm">Tipo de Filtro</label>
-                                <div class="">
-                                    <select class="form-control form-control-sm" name="filtro">
-                                        <option value="1">Venda</option>
-                                        <option value="2">Produtos</option>
-                                        <option value="3">Vendedor</option>
-                                    </select>
-                                </div>
-                
-                
+
+                <label class="col-sm-1 col-form-label form-control-sm">Tipo de Filtro</label>
+                <div class="">
+                    <select class="form-control form-control-sm" name="filtro">
+                        <option value="1">Venda</option>
+                        <option value="2">Produtos</option>
+                        <option value="3">Vendedor</option>
+                    </select>
+                </div>
+
+
                 <!--
                 <div class="col-4">
                     <input id="date" type="date">

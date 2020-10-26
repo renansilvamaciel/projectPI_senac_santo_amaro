@@ -65,7 +65,7 @@
                 <th scope="col">Filial</th>
                 </thead>
                 <tbody> 
-                    <c:forEach var="relatorio" items="${listarProduto}">
+                    <c:forEach var="produto" items="${listarProduto}">
                         <tr class="col-md-auto">
                             <<td>${produto.id_produto}</td>
                             <td>${produto.nome}</td>
