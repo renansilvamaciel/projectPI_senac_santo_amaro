@@ -68,12 +68,12 @@
                 <tbody> 
                     <c:forEach var="relatorio" items="${listarVenda}">
                         <tr class="col-md-auto">
-                            <<td>${relatorio.id_venda}</td>
+                            <td>${relatorio.id_venda}</td>
                             <td>${relatorio.id_vendedor}</td>
                             <td>${relatorio.quantidade}</td>
                             <td>${relatorio.valor_total}</td>
                             <td>${relatorio.data_hoje}</td>
-                            <td>${relatorio.id_filial}</td>
+                            <td>${relatorio.nome}</td>
                         </tr>
                     </c:forEach>
 

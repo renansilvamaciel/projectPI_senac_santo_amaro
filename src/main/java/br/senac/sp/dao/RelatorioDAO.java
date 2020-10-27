@@ -42,7 +42,7 @@ public class RelatorioDAO {
                 relatorio.setQuantidade(rs.getInt("quantidade"));
                 relatorio.setValor_total(rs.getDouble("valor_total"));
                 relatorio.setData_hoje(rs.getString("data_hoje"));
-                relatorio.setId_filial(rs.getInt("id_filial"));
+                relatorio.setNome(rs.getString("id_filial"));
                 listarVenda.add(relatorio);
 
             }
@@ -114,10 +114,9 @@ public class RelatorioDAO {
                 funcionario.setId_funcionario(rs.getInt("id_funcionario"));
                 funcionario.setNome(rs.getString("nome"));
                 funcionario.setCpf(rs.getString("cpf"));
-                funcionario.setVenda(rs.getInt("quantidade"));
-                funcionario.setFilial(rs.getString("id_filial"));
+                funcionario.setQuantidade(rs.getInt("quantidade"));
+                funcionario.setFilial(rs.getInt("id_filial"));
                 
-  
                 listarFuncionarios.add(funcionario);
 
             }
@@ -131,24 +130,7 @@ public class RelatorioDAO {
             Logger.getLogger(ProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return listarFuncionarios;
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        return listarFuncionarios; 
         
     }
 

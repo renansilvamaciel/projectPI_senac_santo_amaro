@@ -5,42 +5,24 @@
  */
 package br.senac.sp.entidade;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  *
  * @author diego
  */
+@Getter
+@Setter
 public class Funcionario extends Pessoa {
 
     private int id_funcionario;
-    private String filial;
+    private int filial;
     private int venda;
+    private int quantidade;
 
     public Funcionario() {
 
-    }
-
-    public int getId_funcionario() {
-        return id_funcionario;
-    }
-
-    public void setId_funcionario(int id_funcionario) {
-        this.id_funcionario = id_funcionario;
-    }
-
-    public String getFilial() {
-        return filial;
-    }
-
-    public void setFilial(String filial) {
-        this.filial = filial;
-    }
-
-    public int getVenda() {
-        return venda;
-    }
-
-    public void setVenda(int venda) {
-        this.venda = venda;
     }
 
 }

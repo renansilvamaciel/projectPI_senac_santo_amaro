@@ -3,7 +3,7 @@
     Created on : 26/10/2020, 16:56:28
     Author     : diego
 --%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -67,11 +67,11 @@
                 <tbody> 
                     <c:forEach var="funcionario" items="${listarFuncionarios}">
                         <tr class="col-md-auto">
-                            <<td>${funcionario.id_funcionario}</td>
+                            <td>${funcionario.id_funcionario}</td>
                             <td>${funcionario.nome}</td>
                             <td>${funcionario.cpf}</td>
                             <td>${funcionario.quantidade}</td>
-                            <td>${funcionario.id_filial}</td>
+                            <td>${funcionario.filial}</td>
                         </tr>
                     </c:forEach>
 
