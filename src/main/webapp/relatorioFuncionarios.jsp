@@ -46,12 +46,13 @@
                                 </div>
                 
                 
-                <!--
-                <div class="col-4">
-                    <input id="date" type="date">
-                    <input id="date" type="date">
+                
+                <div class="col-4" method="GET" name = "date">
+                    <input id="date1" type="date">
+                    <input id="date2" type="date">
+                    
                 </div>
-                -->
+                
                 <button class="btn btn-outline-success pt-2" type="submit">Pesquisar</button>
             </form>
             <br>

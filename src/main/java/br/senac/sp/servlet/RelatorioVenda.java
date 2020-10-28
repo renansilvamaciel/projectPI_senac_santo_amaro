@@ -32,11 +32,13 @@ public class RelatorioVenda extends HttpServlet {
         RelatorioDAO relatorioDAO = new RelatorioDAO();
         int filial = Integer.parseInt(request.getParameter("filial"));
         int filtro = Integer.parseInt(request.getParameter("filtro"));
+        String date1 = (request.getParameter("date1"));
+        String date2 = (request.getParameter("date2"));
 
         switch (filtro) {
             case 1:
                 if (filial == 0) {
-                    String query = "select * from venda";
+                    String query = "select * from venda where date(data_hoje) >=  " +date1 +"  and date(data_hoje) <= "+ date2 ;
 
                     List<Relatorio> listarVenda = relatorioDAO.listVenda(query);
                     request.setAttribute("listarVenda", listarVenda);

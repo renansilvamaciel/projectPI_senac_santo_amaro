@@ -32,6 +32,7 @@
                         <option value="2">Filial 1</option>
                         <option value="3">Filial 2</option>
                         <option value="4">Filial 3</option>
+
                     </select>
                 </div>
 
@@ -42,16 +43,24 @@
                         <option value="1">Venda</option>
                         <option value="2">Produtos</option>
                         <option value="3">Vendedor</option>
+
                     </select>
                 </div>
 
 
-                <!--
-                <div class="col-4">
-                    <input id="date" type="date">
-                    <input id="date" type="date">
-                </div>
-                -->
+                <div class="col-4"  name = "date1">
+                    <input type="date" id="date1" name="date1">
+                    <input type="date" id="date2" name="date2">
+                 </div>
+                
+                
+
+
+
+
+
+
+
                 <button class="btn btn-outline-success pt-2" type="submit">Pesquisar</button>
             </form>
             <br>
