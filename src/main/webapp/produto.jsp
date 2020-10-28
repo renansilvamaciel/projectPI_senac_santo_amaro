@@ -54,7 +54,8 @@
 
             //função para exibir a modal
             function mostrarModalAtualiza(id, nome, familia, quantidade, preco, descricao, filial) {
-                console.log("produto:", id + " - " + nome + " - " + familia + " - " + quantidade + " - " + preco + " - " + descricao + " - " + filial);
+                console.log("produto:", id + " - " + nome + " - " + familia + " - " + quantidade + 
+                        " - " + preco + " - " + descricao + " - " + filial);
 
                 $("#nomeProdutolabel").html(nome);
                 $("#idProdutoAtualiza").val(id);
@@ -202,7 +203,7 @@
 
 
 
-            <table class="table table-sm table-striped table-bordered " id='tabelaRolagem'>
+            <table class="table table-sm table-striped " id='tabelaRolagem'>
                 <thead class="">
                 <th scope="col" >Id</th>
                 <th scope="col" >Nome</th>
