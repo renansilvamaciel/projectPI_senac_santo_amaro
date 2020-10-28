@@ -53,14 +53,6 @@
                     <input type="date" id="date2" name="date2">
                  </div>
                 
-                
-
-
-
-
-
-
-
                 <button class="btn btn-outline-success pt-2" type="submit">Pesquisar</button>
             </form>
             <br>

@@ -35,23 +35,22 @@
                     </select>
                 </div>
 
-                
-                                <label class="col-sm-1 col-form-label form-control-sm">Tipo de Filtro</label>
-                                <div class="">
-                                    <select class="form-control form-control-sm" name="filtro">
-                                        <option value="1">Venda</option>
-                                        <option value="2">Produtos</option>
-                                        <option value="3">Vendedor</option>
-                                    </select>
-                                </div>
-                
-                
-                  <div class="col-4" method="GET" name = "date">
-                    <input id="date1" type="date">
-                    <input id="date2" type="date">
-                    
+
+                <label class="col-sm-1 col-form-label form-control-sm">Tipo de Filtro</label>
+                <div class="">
+                    <select class="form-control form-control-sm" name="filtro">
+                        <option value="1">Venda</option>
+                        <option value="2">Produtos</option>
+                        <option value="3">Vendedor</option>
+                    </select>
                 </div>
-                                
+
+
+                <div class="col-4"  name = "date1">
+                    <input type="date" id="date1" name="date1">
+                    <input type="date" id="date2" name="date2">
+                </div>
+
                 <button class="btn btn-outline-success pt-2" type="submit">Pesquisar</button>
             </form>
             <br>
