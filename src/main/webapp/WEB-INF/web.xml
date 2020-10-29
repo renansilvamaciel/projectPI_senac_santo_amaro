@@ -12,7 +12,7 @@
         <servlet-name>ListarVenda</servlet-name>
         <servlet-class>br.senac.sp.servlet.ListarVenda</servlet-class>
     </servlet>
-    <servlet>        
+    <servlet>
         <servlet-name>RelatorioVenda</servlet-name>
         <servlet-class>br.senac.sp.servlet.RelatorioVenda</servlet-class>
     </servlet>
@@ -75,6 +75,14 @@
     <servlet>
         <servlet-name>BuscaProduto</servlet-name>
         <servlet-class>br.senac.sp.servlet.BuscaProduto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CarrinhoProduto</servlet-name>
+        <servlet-class>br.senac.sp.servlet.CarrinhoProduto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BuscaProdutoVenda</servlet-name>
+        <servlet-class>br.senac.sp.servlet.BuscaProdutoVenda</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Produto</servlet-name>
@@ -151,6 +159,14 @@
     <servlet-mapping>
         <servlet-name>BuscaProduto</servlet-name>
         <url-pattern>/BuscaProduto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CarrinhoProduto</servlet-name>
+        <url-pattern>/CarrinhoProduto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscaProdutoVenda</servlet-name>
+        <url-pattern>/BuscaProdutoVenda</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

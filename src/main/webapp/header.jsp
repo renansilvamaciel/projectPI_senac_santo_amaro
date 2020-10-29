@@ -13,7 +13,7 @@
         <link href="css/style.css" rel="stylesheet">
         <link rel="shortcut icon" href="img/311844-ffffff.svg"/>
    
-        <title>Coffee Shop</title>
+        <title>Coffee Shop</title>       
     </head>
             <!-- Inicio cabeçalho -->
         <header class="text-white">
