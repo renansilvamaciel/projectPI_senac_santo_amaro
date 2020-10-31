@@ -1,0 +1,170 @@
+create database coffe_shop;
+
+use coffe_shop;
+
+CREATE TABLE cliente (
+    id_cliente int unique auto_increment,
+    nome varchar(40) not null,
+	sexo char(20) null,
+    data_nascimento varchar (11) null,
+    cpf varchar(15) not null,
+    rua varchar(50) null,
+    cep varchar (10),
+    numero_casa int null,
+    bairro varchar(20) null,
+    email varchar(50) not null,
+    telefone varchar(15) null,
+	assinatura varchar (20) null,
+    tipo_assinatura varchar (20) null,
+    primary key (cpf)
+);
+
+create table familia_produto(
+id_familia int unsigned not null auto_increment,
+nome_familia varchar(50) not null unique,
+primary key(id_familia) 
+);
+
+
+create table filial(
+id_filial int unsigned not null auto_increment,
+nome varchar(50) not null unique,
+cnpj varchar(15) not null unique,
+estado varchar(20) not null,
+rua varchar(50)not null,
+cep varchar(10) not null,
+numero int not null,
+bairro varchar(20) not null,
+primary key (id_filial)
+);
+
+create table produto(
+id_produto int unsigned not null auto_increment,
+nome varchar(45) not null unique,
+id_familia int unsigned not null,
+quantidade int not null default '0',
+preco double not null,
+descricao text,
+id_filial int unsigned,
+primary key (id_produto),
+constraint fk_idfamilia_Familia_produto foreign key(id_familia)
+references familia_produto(id_familia),
+ 
+constraint fk_idfilial_filial foreign key(id_filial)
+references filial(id_filial)
+);
+
+
+
+
+CREATE TABLE funcionario (
+    id_funcionario int unique auto_increment,
+    nome varchar(40) not null,
+    sexo char(20) not null,
+    data_nascimento varchar(11) not null,
+    cpf varchar(15)unique not null,
+    rua varchar(50) not null,
+    cep varchar(10) not null,
+    numero_casa int not null,
+	bairro varchar(20) not null,
+    email varchar(50) null,
+    telefone varchar(15) not null,
+    senha varchar (50) not null,
+	id_filial int unsigned,
+	cargo varchar(20) not null,
+	PRIMARY KEY (id_funcionario),
+	FOREIGN KEY (id_filial) REFERENCES filial (id_filial)
+);
+
+create table venda(
+	id_venda int,
+	id_vendedor int not null,
+	quantidade int not null,
+	valor_total double(10,2) not null,
+	data_hoje  datetime NOT NULL  DEFAULT CURRENT_TIMESTAMP,
+	id_filial int unsigned,
+	primary key (id_venda),
+	FOREIGN KEY (id_filial) REFERENCES filial (id_filial)
+);
+
+ create table detalhes(
+	 id_venda int,
+	 nome_produto varchar(50),
+	 quantidade int not null,
+	 FOREIGN KEY (id_venda) REFERENCES venda (id_venda),
+	 FOREIGN KEY (nome_produto) REFERENCES produto (nome)
+ );
+
+create table planos_ativo (
+	id_cliente int,
+	id_filial int unsigned,
+	 FOREIGN KEY (id_filial) REFERENCES filial (id_filial),
+	 FOREIGN KEY (id_cliente) REFERENCES cliente (id_cliente)
+);
+
+
+create table planos (
+	nome varchar (10) not null,
+    descricao text not null,
+    valor int not null,
+	PRIMARY KEY (nome)
+); 
+/*
+create table venda_plano(
+id_venda int auto_increment,
+cpf varchar(15) not null,
+id_vendedor int null,
+data_hoje datetime NOT NULL  DEFAULT CURRENT_TIMESTAMP,
+assinatura varchar(15) not null,
+tipo_assinatura varchar(15) not null,
+valor_total double(10,2) not null,
+id_filial int unsigned,
+FOREIGN KEY (assinatura) REFERENCES planos (nome),
+FOREIGN KEY (cpf) REFERENCES cliente (cpf),
+FOREIGN KEY (id_filial) REFERENCES filial (id_filial),
+primary key(id_venda)
+);*/
+
+
+create table venda_plano(
+id_venda int auto_increment,
+cpf varchar(15) not null,
+id_vendedor int null,
+data_hoje datetime NOT NULL  DEFAULT CURRENT_TIMESTAMP,
+assinatura varchar(15) not null,
+tipo_assinatura varchar(15) not null,
+valor_total double(10,2) not null,
+id_filial int,
+primary key(id_venda)
+);
+
+delimiter $$
+create trigger Atualiza_cliente after insert on venda_plano for each row
+begin
+update cliente set assinatura = new.assinatura, tipo_assinatura = new.tipo_assinatura where cpf = new.cpf;
+end $$
+delimiter $$;
+
+delimiter $$
+create trigger Atualiza_estoque after insert on detalhes for each row
+begin
+update produto set quantidade = quantidade - new.quantidade where nome_produto = new.nome_produto;
+end $$
+delimiter $$;
+
+
+insert into familia_produto (nome_familia) values ('cafe');
+insert into familia_produto (nome_familia) values ('acessorios');
+insert into familia_produto (nome_familia) values ('acompanhamentos');
+
+insert into filial (nome, cnpj, estado, rua, cep, numero, bairro) values
+ ('matriz','69298195000102','SP', 'Rua Mauro Pinheiro','03404120',1400, 'Chácara Califórnia' );
+
+insert into filial (nome, cnpj, estado, rua, cep, numero, bairro) values
+ ('filial1','14044841000105','SC', 'Rua Jequitibá','88215971',365, 'Centro' );
+ 
+ insert into filial (nome, cnpj, estado, rua, cep, numero, bairro) values
+ ('filial2','15712466000197','MG', 'Rua Nossa Senhora dos Prazeres','35400976',1200, 'Lavras Novas' );
+ 
+  insert into filial (nome, cnpj, estado, rua, cep, numero, bairro) values
+ ('filial3','88255378000187','SP', 'Rua Arnaldo Victaliano','14091901', 881, 'Jardim Palma' );
