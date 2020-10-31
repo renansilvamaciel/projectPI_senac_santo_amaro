@@ -25,6 +25,8 @@ public class VendaPlanoDAO {
         Connection connection = connectionMysql.openConnection();
         String query = "insert into venda_plano (cpf, id_vendedor, assinatura, tipo_assinatura, valor_total, id_filial) values (?, ?, ?, ?, ?, ?)";
         PreparedStatement instructionSql = connection.prepareCall(query);
+        
+        vendaPlanos.setId_filial(1);
 
         instructionSql.setString(1, vendaPlanos.getCpf());
         instructionSql.setInt(2, vendaPlanos.getId_vendedor());
