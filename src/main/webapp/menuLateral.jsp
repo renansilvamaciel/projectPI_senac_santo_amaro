@@ -31,7 +31,7 @@
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="VendaSimples.jsp">Venda Simples</a>
                                         <a class="dropdown-item" href="VendaPlanos.jsp">Venda De Planos</a>
-                                        <a class="dropdown-item" href=VendaAssinantes.jsp">Venda Para Assinantes</a>
+                                        <a class="dropdown-item" href="VendaAssinantes">Venda Para Assinantes</a>
                                     </div>
                                 </a>
                             </div>

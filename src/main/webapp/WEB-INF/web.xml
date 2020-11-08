@@ -80,6 +80,10 @@
         <servlet-name>FuncionarioDeleta</servlet-name>
         <servlet-class>br.senac.sp.servlet.FuncionarioDeleta</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VendaAssinantes</servlet-name>
+        <servlet-class>br.senac.sp.servlet.VendaAssinantes</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Produto</servlet-name>
         <url-pattern>/Produto</url-pattern>
@@ -159,6 +163,10 @@
     <servlet-mapping>
         <servlet-name>FuncionarioDeleta</servlet-name>
         <url-pattern>/FuncionarioDeleta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VendaAssinantes</servlet-name>
+        <url-pattern>/VendaAssinantes</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
