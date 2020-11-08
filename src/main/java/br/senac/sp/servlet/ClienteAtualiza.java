@@ -7,11 +7,13 @@ package br.senac.sp.servlet;
 
 import br.senac.sp.dao.ClientesDAO;
 import br.senac.sp.entidade.Cliente;
-import br.senac.sp.util.Utils;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,11 +23,33 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Azazel
  */
-public class InsereClienteServlet extends HttpServlet {
+public class ClienteAtualiza extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        try {
+            ClientesDAO clientesDAO = new ClientesDAO();
+            Cliente cliente = new Cliente();
+            cliente.setCpf(request.getParameter("cpf"));
+            ArrayList<Cliente> listarClientes = clientesDAO.getClient(cliente);
+            request.setAttribute("listarClientes", listarClientes);
+
+            RequestDispatcher requestDispatcher = getServletContext()
+                    .getRequestDispatcher("/ClienteServlet");
+            requestDispatcher.forward(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteAtualiza.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteAtualiza.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, NumberFormatException {
+            throws ServletException, IOException {
 
         Cliente cliente = new Cliente();
 
@@ -42,20 +66,12 @@ public class InsereClienteServlet extends HttpServlet {
         
 
         try {
-            if (cliente.validacaoIdade(cliente.getData_nascimento())) {
-                ClientesDAO clienteDao = new ClientesDAO();
-                clienteDao.insertClient(cliente);
-                Utils.mostrarTelaSucesso(response);
-            } else {
-                Utils.mostrarTelaErroIdade(response);
-            }
-
+            ClientesDAO clienteDao = new ClientesDAO();
+            clienteDao.updateClient(cliente);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(InsereClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
-            Utils.mostrarTelaErro(ex, request, response);
+            Logger.getLogger(ClienteAtualiza.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(InsereClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
-            Utils.mostrarTelaErro(ex, request, response);
+            Logger.getLogger(ClienteAtualiza.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

@@ -7,11 +7,9 @@ package br.senac.sp.servlet;
 
 import br.senac.sp.dao.ClientesDAO;
 import br.senac.sp.entidade.Cliente;
-import br.senac.sp.util.Utils;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -24,31 +22,26 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Azazel
  */
-public class VendaPlanoPesquisarClienteServlet extends HttpServlet {
+public class ClienteDeleta extends HttpServlet {
 
-@Override
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Cliente cliente = new Cliente();
-        cliente.setCpf(request.getParameter("cpf"));
-
-        ClientesDAO clientesDAO = new ClientesDAO();
 
         try {
-           
-            List<Cliente> listarCliente = clientesDAO.getClient(cliente.getCpf());
-            request.setAttribute("listarCliente", listarCliente);
-
+            Cliente cliente = new Cliente();
+            cliente.setCpf(request.getParameter("cpf"));
+            ClientesDAO clienteDao = new ClientesDAO();
+            clienteDao.deleteClient(cliente.getCpf());
             RequestDispatcher requestDispatcher = getServletContext()
-                    .getRequestDispatcher("/VendaPlanoCliente.jsp");
+                    .getRequestDispatcher("/ClienteServlet");
             requestDispatcher.forward(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(VendaPlanoPesquisarClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
-            Utils.mostrarTelaErro(ex, request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(VendaPlanoPesquisarClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
-            Utils.mostrarTelaErro(ex, request, response);
+            Logger.getLogger(ClienteDeleta.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDeleta.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
 }

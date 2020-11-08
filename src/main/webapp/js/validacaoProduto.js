@@ -144,9 +144,6 @@ function validaCadastro(evt) {
         caixa_descricao.style.display = 'none';
     }
 
-
-
-
     if (contErro > 0) {
         evt.preventDefault();
     }

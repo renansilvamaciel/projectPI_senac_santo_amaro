@@ -83,18 +83,18 @@ public class ClientesDAO {
         return listarClientes;
     }
 
-    public ArrayList<Cliente> getClient(String cpf) throws ClassNotFoundException, SQLException {
+    public ArrayList<Cliente> getClient(Cliente cliente) throws ClassNotFoundException, SQLException {
         ArrayList<Cliente> listarCliente = new ArrayList<>();
-
         ConexaoMysql connectionMysql = new ConexaoMysql();
         Connection connection = connectionMysql.openConnection();
-        String query = "select * from cliente where cpf= ?";
+        String query = " SELECT * FROM CLIENTE WHERE cpf=? OR id_cliente=? OR nome LIKE ?";
         PreparedStatement instructionSql = connection.prepareCall(query);
-        instructionSql.setString(1, cpf);
+        instructionSql.setString(1, cliente.getCpf());
+        instructionSql.setInt(2, cliente.getId_cliente());
+        instructionSql.setString(3, "%" + cliente.getNome() + '%');
 
         ResultSet result = instructionSql.executeQuery();
         if (result.next()) {
-            Cliente cliente = new Cliente();
             cliente.setId_cliente(result.getInt("id_cliente"));
             cliente.setNome(result.getString("nome"));
             cliente.setSexo(result.getString("sexo"));
@@ -111,8 +111,8 @@ public class ClientesDAO {
 
             listarCliente.add(cliente);
         }
-
         closeStatementAndCloseConnection(instructionSql);
+
         connectionMysql.closeConnection();
         return listarCliente;
     }
@@ -121,7 +121,7 @@ public class ClientesDAO {
         boolean success = false;
         ConexaoMysql connectionMysql = new ConexaoMysql();
         Connection connection = connectionMysql.openConnection();
-        String query = "update cliente set nome=?, sexo=?, data_nascimento=?, rua=?, cep=?, numero_casa=?, bairro=?, email=?, telefone=?, assinatura=?, tipo_assinatura = ? where cpf=?";
+        String query = "update cliente set nome=?, sexo=?, data_nascimento=?, rua=?, cep=?, numero_casa=?, bairro=?, email=?, telefone=? where cpf=?";
         PreparedStatement instructionSql = connection.prepareCall(query);
 
         instructionSql.setString(1, cliente.getNome());
@@ -133,9 +133,7 @@ public class ClientesDAO {
         instructionSql.setString(7, cliente.getBairro());
         instructionSql.setString(8, cliente.getEmail());
         instructionSql.setString(9, cliente.getTelefone());
-        instructionSql.setString(10, cliente.getAssinatura());
-        instructionSql.setString(11, cliente.getTipo_assinatura());
-        instructionSql.setString(12, cliente.getCpf());
+        instructionSql.setString(10, cliente.getCpf());
 
         if (instructionSql.execute()) {
             success = true;
@@ -169,8 +167,10 @@ public class ClientesDAO {
         if (preparedStatement != null) {
             try {
                 preparedStatement.close();
+
             } catch (SQLException ex) {
-                Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ClientesDAO.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         }
 

@@ -31,7 +31,7 @@
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="VendaSimples.jsp">Venda Simples</a>
                                         <a class="dropdown-item" href="VendaPlanos.jsp">Venda De Planos</a>
-                                        <a class="dropdown-item" href=VendaAssinantes.jsp#">Venda Para Assinantes</a>
+                                        <a class="dropdown-item" href=VendaAssinantes.jsp">Venda Para Assinantes</a>
                                     </div>
                                 </a>
                             </div>
@@ -47,21 +47,27 @@
                                 </path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                                     Cliente<span class="sr-only">(atual)</span>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="InsertCliente.jsp">Cadastrar Cliente</a>
-                                        <a class="dropdown-item" href="ListarClientesServlet">Listar Clientes</a>
+                                        <a class="dropdown-item" href="Cliente.jsp">Cadastrar Cliente</a>
+                                        <a class="dropdown-item" href="ClienteServlet">Listar Clientes</a>
                                     </div>
                                 </a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">
-                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
+                           <div class="btn-group dropright" >
+                                <a class="nav-link text-white" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
                                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
                                      stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2">
                                 </path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87">
                                 </path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                                Funcionário<span class="sr-only">(atual)</span>
-                            </a>
+                                    Funcionario<span class="sr-only">(atual)</span>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="Funcionario.jsp">Cadastrar Funcionario</a>
+                                        <a class="dropdown-item" href="FuncionarioServlet">Listar Funcionarios</a>
+                                    </div>
+                                </a>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="Produto">
