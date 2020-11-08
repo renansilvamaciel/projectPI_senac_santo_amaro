@@ -71,15 +71,7 @@
                     </div>
 
                     <br>
-
-                    <div class="input-group-prepend">
-                        <span class="input-group-text campoValorTotalPlano">R$: </span>
-                        <input type="number" disabled="" value="00.00" id="valorPlanoEscolhido" name="valorPlanoEscolhido">
-                    </div>
-
-                    <input type="text" value="" class="form-control" id="valorFinalPlano" name="valorFinalPlano" hidden="">
-
-                    <br>
+                    
                     <c:forEach var="cliente" items="${listarClientes}">
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -94,6 +86,17 @@
                         </div>
                     </c:forEach>
 
+                    <br>
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text campoValorTotalPlano">R$: </span>
+                        <input type="number" disabled="" value="00.00" id="valorPlanoEscolhido" name="valorPlanoEscolhido">
+                    </div>
+
+                    <input type="text" value="" class="form-control" id="valorFinalPlano" name="valorFinalPlano" hidden="">
+
+                    <br>
+                    
                     <div class="form-grup form-inline">
                         <input class="btn btn-primary" type="submit" value="Finalizar">
                         <input class="btn btn-danger m-2" type="reset" onclick="voltarIndex()" value="Cancelar">

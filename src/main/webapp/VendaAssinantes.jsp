@@ -88,7 +88,7 @@
                             </tbody>
                         </table>
                     </div>
-                    
+
                     <br><br>
 
                     <div class="input-group" >
@@ -103,18 +103,6 @@
 
                     <br>
 
-                    <div class="input-group-prepend">
-                        <span class="input-group-text campoValorTotalPlano">Credito Assinante R$: </span>
-                        <input type="number" disabled="" value="${creditoAssinante}" id="creditoAssinante" name="creditoAssinante">
-                    
-                        <span class="input-group-text campoValorTotalPlano">Valor Final R$: </span>
-                        <input type="number" disabled="" value="00.00" id="valorVenda" name="valorVenda">
-                    </div>
-
-                    <input type="text" value="" class="form-control" id="valorVendaFinal" name="valorVendaFinal" hidden="">
-
-
-                    <br>
                     <c:forEach var="cliente" items="${listarClientes}">
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -129,6 +117,18 @@
                         </div>
                     </c:forEach>
 
+                    <div class="input-group-prepend">
+                        <span class="input-group-text campoValorTotalPlano">Credito Assinante R$: </span>
+                        <input type="number" disabled="" value="${creditoAssinante}" id="creditoAssinante" name="creditoAssinante">
+
+                        <span class="input-group-text campoValorTotalPlano">Valor Final R$: </span>
+                        <input type="number" disabled="" value="00.00" id="valorVenda" name="valorVenda">
+                    </div>
+
+                    <input type="text" value="" class="form-control" id="valorVendaFinal" name="valorVendaFinal" hidden="">
+
+                    <br>
+                    
                     <div class="form-grup form-inline">
                         <input class="btn btn-primary" type="submit" value="Finalizar">
                         <input class="btn btn-danger m-2" type="reset" onclick="voltarIndex()" value="Cancelar">
