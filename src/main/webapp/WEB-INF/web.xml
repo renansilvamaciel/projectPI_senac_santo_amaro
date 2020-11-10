@@ -84,6 +84,22 @@
         <servlet-name>VendaAssinantes</servlet-name>
         <servlet-class>br.senac.sp.servlet.VendaAssinantes</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FilialServlet</servlet-name>
+        <servlet-class>br.senac.sp.servlet.FilialServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FilialBuscar</servlet-name>
+        <servlet-class>br.senac.sp.servlet.FilialBuscar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FilialAtualiza</servlet-name>
+        <servlet-class>br.senac.sp.servlet.FilialAtualiza</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FilialDeleta</servlet-name>
+        <servlet-class>br.senac.sp.servlet.FilialDeleta</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Produto</servlet-name>
         <url-pattern>/Produto</url-pattern>
@@ -167,6 +183,22 @@
     <servlet-mapping>
         <servlet-name>VendaAssinantes</servlet-name>
         <url-pattern>/VendaAssinantes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilialServlet</servlet-name>
+        <url-pattern>/FilialServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilialBuscar</servlet-name>
+        <url-pattern>/FilialBuscar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilialAtualiza</servlet-name>
+        <url-pattern>/FilialAtualiza</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilialDeleta</servlet-name>
+        <url-pattern>/FilialDeleta</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
