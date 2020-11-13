@@ -10,7 +10,6 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.css">
-        <link href="css/style.css" rel="stylesheet">
         <link rel="shortcut icon" href="img/311844-ffffff.svg"/>
    
         <title>Coffee Shop</title>       

@@ -17,18 +17,18 @@
 
     <body>
 
-        <form class="box" action="index.html" method="POST">
+        <form class="box" action="FuncionarioLogin" method="POST">
             <h1 class="nomeLoja">CoffeShop</h1>
             <img src="Login/logo.svg" alt="avatar" class="avatar">
-            <input type="text" name="" placeholder="Username">
-            <input type="password" name="" placeholder="Password">
-            <a href="#">
+            <input type="text" name="cpf" id="cpf" placeholder="Cpf">
+            <input type="password" name="senha" id="senha" placeholder="Password">
+            <button type="submit">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
                 Login Here
-            </a>
+            </button>
         </form>
 
     </body>

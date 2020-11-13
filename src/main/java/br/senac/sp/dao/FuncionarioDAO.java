@@ -27,7 +27,7 @@ public class FuncionarioDAO {
         Connection connection = connectionMysql.openConnection();
         String query = "insert into funcionario (nome, sexo, data_nascimento, cpf, rua, cep, numero_casa, bairro, email, telefone, senha, id_filial, cargo) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement instructionSql = connection.prepareCall(query);
-        
+
         funcionario.setFilial(1);
 
         instructionSql.setString(1, funcionario.getNome());
@@ -168,6 +168,25 @@ public class FuncionarioDAO {
 
         closeStatementAndCloseConnection(instructionSql);
         connectionMysql.closeConnection();
+        return success;
+    }
+
+    public boolean login(String cpf, String senha) throws ClassNotFoundException, SQLException {
+        boolean success = false;
+        ConexaoMysql connectionMysql = new ConexaoMysql();
+        Connection connection = connectionMysql.openConnection();
+        String query = "select * from funcionario where cpf=? and senha=?";
+        PreparedStatement instructionSql = connection.prepareCall(query);
+
+        instructionSql.setString(1, cpf);
+        instructionSql.setString(2, senha);
+
+        if (instructionSql.execute()) {
+            success = true;
+        }
+        closeStatementAndCloseConnection(instructionSql);
+        connectionMysql.closeConnection();
+
         return success;
     }
 
