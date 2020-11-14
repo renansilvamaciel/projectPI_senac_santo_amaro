@@ -17,11 +17,17 @@
 
     <body>
 
-        <form class="box" action="FuncionarioLogin" method="POST">
+        <style type="text/css">
+            .msg-erro{color:red;}
+        </style>
+
+        <form class="box" action="FuncionarioLogin" method="POST" id="formLoginFuncionario">
             <h1 class="nomeLoja">CoffeShop</h1>
             <img src="Login/logo.svg" alt="avatar" class="avatar">
             <input type="text" name="cpf" id="cpf" placeholder="Cpf">
+            <span class="msg-erro msg-CampoCpf"></span>
             <input type="password" name="senha" id="senha" placeholder="Password">
+            <span class="msg-erro msg-CampoSenha"></span>
             <button type="submit">
                 <span></span>
                 <span></span>
@@ -30,7 +36,7 @@
                 Login Here
             </button>
         </form>
-
+        <script src="js/FuncionarioLogin.js" type="text/javascript"></script>
     </body>
 
 </html>
