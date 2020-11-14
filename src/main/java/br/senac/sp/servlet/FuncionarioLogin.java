@@ -10,12 +10,16 @@ import br.senac.sp.entidade.Funcionario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
@@ -33,18 +37,19 @@ public class FuncionarioLogin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Funcionario funcionario = new Funcionario();
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        String cpf = request.getParameter("cpf");
+        String senha = request.getParameter("senha");
         try {
-            funcionario.setCpf(request.getParameter("cpf"));
-            funcionario.setSenha(request.getParameter("senha"));
-            boolean userLogin = funcionarioDAO.login(funcionario.getCep(), funcionario.getSenha());
-            System.out.println(userLogin);
-            if (userLogin) {
-                response.sendRedirect("index.jsp");
+            Funcionario funcionario = funcionarioDAO.login(cpf);
+            System.out.println("");
+            if (funcionario != null) {
+                if (funcionario.getCpf().equals(cpf) && funcionario.getSenha().equals(DigestUtils.md5Hex(senha))) { //DESCRIPTOGRAFANDO MD5
+                    response.sendRedirect("index.jsp");
+                }
             }
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(ClienteBusca.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FuncionarioLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -18,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
@@ -64,14 +65,12 @@ public class FuncionarioServlet extends HttpServlet {
             funcionario.setEmail(request.getParameter("email"));
             funcionario.setTelefone(request.getParameter("telefone"));
             funcionario.setCargo(request.getParameter("cargo"));
-            funcionario.setSenha(request.getParameter("senha"));
-
+            funcionario.setSenha(DigestUtils.md5Hex(request.getParameter("senha")));//adicionando criptografia MD5
+            
             FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
             funcionarioDAO.insertFuncionario(funcionario);
             response.sendRedirect("FuncionarioServlet");
-        } catch (ClassNotFoundException | NumberFormatException ex) {
-            Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | NumberFormatException | SQLException ex) {
             Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
