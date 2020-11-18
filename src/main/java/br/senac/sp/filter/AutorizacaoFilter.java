@@ -43,7 +43,7 @@ public class AutorizacaoFilter implements Filter {
         
         HttpSession sessao = httpRequest.getSession();
         if(sessao.getAttribute("usuario") == null){
-            httpResponse.sendRedirect(httpRequest.getContextPath()+"/login2.jsp");
+            httpResponse.sendRedirect(httpRequest.getContextPath()+"/Login.jsp");
         }
        // sessao.setAttribute("usuario", usuario);
         

@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
             sessao.setAttribute("usuario", funcionario);
             response.sendRedirect(request.getContextPath()+"/protegido/index.jsp");
         }else{
-            response.sendRedirect(request.getContextPath()+"/login2.jsp?erro=userNotFound");
+            response.sendRedirect(request.getContextPath()+"/Login.jsp?erro=userNotFound");
         }
         
 

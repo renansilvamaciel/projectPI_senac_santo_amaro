@@ -109,10 +109,6 @@
         <servlet-class>br.senac.sp.servlet.FilialDeleta</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>FuncionarioLogin</servlet-name>
-        <servlet-class>br.senac.sp.servlet.FuncionarioLogin</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>br.senac.sp.servlet.LoginServlet</servlet-class>
     </servlet>
@@ -219,10 +215,6 @@
     <servlet-mapping>
         <servlet-name>FilialDeleta</servlet-name>
         <url-pattern>/FilialDeleta</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>FuncionarioLogin</servlet-name>
-        <url-pattern>/FuncionarioLogin</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>

@@ -3,7 +3,7 @@ formLogin.addEventListener("submit", validarLogin);
 
 function validarLogin(evt) {
    
-    var campoCpf = document.getElementById('cpf');
+    var campoCpf = document.getElementById('login');
     var campoSenha = document.getElementById('senha');
     var msgCampoCpf = document.querySelector('.msg-CampoCpf');
     var msgCampoSenha = document.querySelector('.msg-CampoSenha');
@@ -13,7 +13,7 @@ function validarLogin(evt) {
         msgCampoCpf.innerHTML = 'Preencher o campo de cpf';
         msgCampoCpf.style.display = 'block';
         error = true;
-        document.getElementById('cpf').focus();
+        document.getElementById('login').focus();
     } else {
         msgCampoCpf.style.display = 'none';
     }
