@@ -21,7 +21,7 @@
             <h1 class="text-center m-2 mb-3">Venda Assinantes</h1>
 
             <div class="col-12">
-                <form class="form" action="VendaAssinantes" method="GET" id="formBusca">
+                <form class="form" action="<c:url value="..//VendaAssinantes"/>" method="GET" id="formBusca">
 
                     <div class="form-grup form-inline">
                         <label class="form-control-sm">Tipo de Busca</label>

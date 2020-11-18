@@ -37,7 +37,7 @@ public class FuncionarioServlet extends HttpServlet {
             listarFuncionarios = funcionarioDAO.listFuncionarios();
             request.setAttribute("listarFuncionarios", listarFuncionarios);
             RequestDispatcher requestDispatcher = getServletContext()
-                    .getRequestDispatcher("/FuncionarioLista.jsp");
+                    .getRequestDispatcher("/protegido/FuncionarioLista.jsp");
             requestDispatcher.forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);

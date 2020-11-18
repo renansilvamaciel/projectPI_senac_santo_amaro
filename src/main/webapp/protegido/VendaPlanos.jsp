@@ -21,7 +21,7 @@
             <h1 class="text-center m-2 mb-3">Venda de Planos</h1>
 
             <div class="col-12">
-                <form class="form" action="VendaPlanoBusca" method="GET" id="formBusca">
+                <form class="form" action="<c:url value="..//VendaPlanoBusca"/>" method="GET" id="formBusca">
 
                     <div class="form-grup form-inline">
                         <label class="form-control-sm">Tipo de Busca</label>
@@ -39,7 +39,7 @@
 
                 </form>
 
-                <form action="VendaPlanoBusca" method="POST" id="formaVendaPlanos">
+                <form action="<c:url value="..//VendaPlanoBusca"/>" method="POST" id="formaVendaPlanos">
                     <div>
 
                         <select class="form-control form-control-sm" id="assinatura" name="assinatura" onchange="valorTotalPlano()">

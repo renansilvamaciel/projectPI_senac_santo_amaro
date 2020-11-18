@@ -13,7 +13,7 @@
     
     <body>
         <h1>AtualizarProduto ${produto.nome}</h1>
-         <form class="form" action="AtualizarProduto" method="POST">
+         <form class="form" action="<c:url value="..//AtualizarProduto"/>" method="POST">
 
 
                 <div class="form-row m-2">

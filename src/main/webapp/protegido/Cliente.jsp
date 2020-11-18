@@ -21,7 +21,7 @@
             <h1 class="text-center m-2 mb-3">Cadastrar Cliente</h1>
 
             <div class="col-12">
-                <form class="form" action="ClienteServlet" method="POST" name="form_cadastroCliente" id="form_cadastroCliente" >
+                <form class="form" action="<c:url value="..//ClienteServlet"/>" method="POST" name="form_cadastroCliente" id="form_cadastroCliente" >
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Nome</label>

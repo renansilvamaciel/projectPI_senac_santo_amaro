@@ -45,7 +45,7 @@ public class FuncionarioLogin extends HttpServlet {
             System.out.println("");
             if (funcionario != null) {
                 if (funcionario.getCpf().equals(cpf) && funcionario.getSenha().equals(DigestUtils.md5Hex(senha))) { //DESCRIPTOGRAFANDO MD5
-                    response.sendRedirect("index.jsp");
+                    response.sendRedirect("/protegido/index.jsp");
                 }
             }
         } catch (ClassNotFoundException | SQLException ex) {

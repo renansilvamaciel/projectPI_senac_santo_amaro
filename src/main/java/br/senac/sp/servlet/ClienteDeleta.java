@@ -34,7 +34,7 @@ public class ClienteDeleta extends HttpServlet {
             ClientesDAO clienteDao = new ClientesDAO();
             clienteDao.deleteClient(cliente.getCpf());
             RequestDispatcher requestDispatcher = getServletContext()
-                    .getRequestDispatcher("/ClienteServlet");
+                    .getRequestDispatcher("/protegido/ClienteServlet");
             requestDispatcher.forward(request, response);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteDeleta.class.getName()).log(Level.SEVERE, null, ex);

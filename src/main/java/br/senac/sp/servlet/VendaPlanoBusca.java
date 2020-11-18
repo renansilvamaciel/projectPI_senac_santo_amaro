@@ -39,7 +39,7 @@ public class VendaPlanoBusca extends HttpServlet {
             request.setAttribute("listarClientes", listarClientes);
 
             RequestDispatcher requestDispatcher = getServletContext()
-                    .getRequestDispatcher("/VendaPlanos.jsp");
+                    .getRequestDispatcher("/protegido/VendaPlanos.jsp");
             requestDispatcher.forward(request, response);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteBusca.class.getName()).log(Level.SEVERE, null, ex);
@@ -63,7 +63,7 @@ public class VendaPlanoBusca extends HttpServlet {
 
             vendaPlanos.setValor_total(Double.parseDouble(request.getParameter("valorFinalPlano")));
             vendaPlanoDAO.insertVenda(vendaPlanos);
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("VendaPlanoBusca");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(VendaPlanoBusca.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

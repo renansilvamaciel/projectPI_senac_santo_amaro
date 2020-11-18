@@ -42,7 +42,7 @@ public class FilialBuscar extends HttpServlet {
                     request.setAttribute("listarFiliais", listarFiliais);
 
                     RequestDispatcher requestDispatcher = getServletContext()
-                            .getRequestDispatcher("/Filial.jsp");
+                            .getRequestDispatcher("/protegido/Filial.jsp");
                     requestDispatcher.forward(request, response);
                 } catch (ClassNotFoundException | SQLException ex) {
                     Logger.getLogger(ClienteBusca.class.getName()).log(Level.SEVERE, null, ex);
@@ -57,7 +57,7 @@ public class FilialBuscar extends HttpServlet {
                     request.setAttribute("listarFiliais", listarFiliais);
 
                     RequestDispatcher requestDispatcher = getServletContext()
-                            .getRequestDispatcher("/Filial.jsp");
+                            .getRequestDispatcher("/protegido/Filial.jsp");
                     requestDispatcher.forward(request, response);
                 } catch (ClassNotFoundException | SQLException ex) {
                     Logger.getLogger(ClienteBusca.class.getName()).log(Level.SEVERE, null, ex);
@@ -72,7 +72,7 @@ public class FilialBuscar extends HttpServlet {
                     request.setAttribute("listarFiliais", listarFiliais);
 
                     RequestDispatcher requestDispatcher = getServletContext()
-                            .getRequestDispatcher("/Filial.jsp");
+                            .getRequestDispatcher("/protegido/Filial.jsp");
                     requestDispatcher.forward(request, response);
                 } catch (ClassNotFoundException | SQLException ex) {
                     Logger.getLogger(ClienteBusca.class.getName()).log(Level.SEVERE, null, ex);
@@ -87,7 +87,7 @@ public class FilialBuscar extends HttpServlet {
                     request.setAttribute("listarFiliais", listarFiliais);
 
                     RequestDispatcher requestDispatcher = getServletContext()
-                            .getRequestDispatcher("/Filial.jsp");
+                            .getRequestDispatcher("/protegido/Filial.jsp");
                     requestDispatcher.forward(request, response);
                 } catch (ClassNotFoundException | SQLException ex) {
                     Logger.getLogger(ClienteBusca.class.getName()).log(Level.SEVERE, null, ex);

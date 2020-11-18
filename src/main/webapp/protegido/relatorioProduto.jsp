@@ -23,7 +23,7 @@
 
             <br>
 
-            <form class="form-inline center" action="RelatorioVenda" method="GET">
+            <form class="form-inline center" action="<c:url value="..//RelatorioVenda"/>" method="GET">
                 <label class="col-sm-1 col-form-label form-control-sm">Filial</label>
                 <div class="">
                     <select class="form-control form-control-sm" name="filial">

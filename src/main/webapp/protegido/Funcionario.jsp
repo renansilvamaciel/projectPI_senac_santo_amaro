@@ -21,7 +21,7 @@
             <h1 class="text-center m-2 mb-3">Cadastrar Funcionario</h1>
 
             <div class="col-12">
-                <form class="form" action="FuncionarioServlet" method="POST" name="form_cadastroFuncionario" id="form_cadastroFuncionario" >
+                <form class="form" action="<c:url value="..//FuncionarioServlet"/>" method="POST" name="form_cadastroFuncionario" id="form_cadastroFuncionario" >
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Nome</label>
@@ -91,9 +91,9 @@
                             <label>Cargo</label>
                             <select class="form-control form-control" id="cargo" name="cargo">
                                 <option value=""></option>
-                                <option value="cargo-1">Cargo-1</option>
-                                <option value="cargo-2">Cargo-2</option>
-                                <option value="cargo-3">Cargo-3</option>
+                                <option value="cargo-1">Vendedor</option>
+                                <option value="cargo-2">Gerente</option>
+                                <option value="cargo-3">Backoffice</option>
                             </select>
                             <span class="msg-erro msg-CampoCargo"></span>
                         </div>

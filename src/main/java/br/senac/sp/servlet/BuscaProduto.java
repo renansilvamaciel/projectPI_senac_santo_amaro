@@ -48,7 +48,7 @@ public class BuscaProduto extends HttpServlet {
             request.setAttribute("listaProdutos", ListaProdutos);
 
             //chama a função request e envia para a pagina produto.jsp
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/produto.jsp");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/protegido/produto.jsp");
             rd.forward(request, response);
 
         }else if(tipoBusca == 2){
@@ -65,7 +65,7 @@ public class BuscaProduto extends HttpServlet {
             request.setAttribute("listaProdutos", ListaProdutos);
 
             //chama a função request e envia para a pagina produto.jsp
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/produto.jsp");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/protegido/produto.jsp");
             rd.forward(request, response);
 
         }else if(tipoBusca == 3){
@@ -79,7 +79,7 @@ public class BuscaProduto extends HttpServlet {
             request.setAttribute("listaProdutos", ListaProdutoFamilia);
 
             //chama a função request e envia para a pagina produto.jsp
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/produto.jsp");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/protegido/produto.jsp");
             rd.forward(request, response);
 
         }else if(tipoBusca == 4){
@@ -93,7 +93,7 @@ public class BuscaProduto extends HttpServlet {
             request.setAttribute("listaProdutos", ListaProduto);
 
             //chama a função request e envia para a pagina produto.jsp
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/produto.jsp");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/protegido/produto.jsp");
             rd.forward(request, response);
 
         }

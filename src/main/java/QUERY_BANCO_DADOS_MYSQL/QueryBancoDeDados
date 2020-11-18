@@ -168,3 +168,9 @@ insert into filial (nome, cnpj, estado, rua, cep, numero, bairro) values
  
   insert into filial (nome, cnpj, estado, rua, cep, numero, bairro) values
  ('filial3','88255378000187','SP', 'Rua Arnaldo Victaliano','14091901', 881, 'Jardim Palma' );
+
+
+insert into funcionario (nome, sexo, data_nascimento, cpf, rua, cep, numero_casa, bairro, email, telefone, senha, id_filial, cargo) values
+                        ("Lucas","masculino","31/08/1999","123","", "", 3 ,"", "", "", "123", 1, "Vendedor"),   
+                        ("Marcos","masculino","31/08/1999","456","", "", 3 ,"", "", "", "456", 1, "Gerente"),   
+                        ("Pedro","masculino","31/08/1999","789","", "", 3 ,"", "", "", "789", 1, "Backoffice");   

@@ -35,7 +35,7 @@ public class ClienteServlet extends HttpServlet {
             listarClientes = clientesDAO.listClients();
             request.setAttribute("listarClientes", listarClientes);
             RequestDispatcher requestDispatcher = getServletContext()
-                    .getRequestDispatcher("/ClienteLista.jsp");
+                    .getRequestDispatcher("/protegido/ClienteLista.jsp");
             requestDispatcher.forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);

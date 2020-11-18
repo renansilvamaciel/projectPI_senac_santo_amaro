@@ -44,7 +44,7 @@ public class RelatorioVenda extends HttpServlet {
                     request.setAttribute("listarVenda", listarVenda);
 
                     RequestDispatcher requestDispatcher = getServletContext()
-                            .getRequestDispatcher("/relatorio.jsp");
+                            .getRequestDispatcher("/protegido/relatorio.jsp");
                     requestDispatcher.forward(request, response);
                 } else {
                     String query = "select * from venda where id_filial = " + filial + " and date(data_hoje) >=  '" + date1 + "'  and date(data_hoje) <= '" + date2 + "'";
@@ -53,7 +53,7 @@ public class RelatorioVenda extends HttpServlet {
                     request.setAttribute("listarVenda", listarVenda);
 
                     RequestDispatcher requestDispatcher = getServletContext()
-                            .getRequestDispatcher("/relatorio.jsp");
+                            .getRequestDispatcher("/protegido/relatorio.jsp");
                     requestDispatcher.forward(request, response);
 
                 }
@@ -68,7 +68,7 @@ public class RelatorioVenda extends HttpServlet {
                     request.setAttribute("listarProduto", listarProduto);
 
                     RequestDispatcher requestDispatcher = getServletContext()
-                            .getRequestDispatcher("/relatorioProduto.jsp");
+                            .getRequestDispatcher("/protegido/relatorioProduto.jsp");
                     requestDispatcher.forward(request, response);
                 } else {
                     String query = "select produto.id_produto, produto.nome, produto.preco, sum(detalhes.quantidade) as quantidade, produto.id_filial from produto "
@@ -80,7 +80,7 @@ public class RelatorioVenda extends HttpServlet {
                     request.setAttribute("listarProduto", listarProduto);
 
                     RequestDispatcher requestDispatcher = getServletContext()
-                            .getRequestDispatcher("/relatorioProduto.jsp");
+                            .getRequestDispatcher("/protegido/relatorioProduto.jsp");
                     requestDispatcher.forward(request, response);
 
                 }
@@ -95,7 +95,7 @@ public class RelatorioVenda extends HttpServlet {
                     request.setAttribute("listarFuncionarios", listarFuncionarios);
 
                     RequestDispatcher requestDispatcher = getServletContext()
-                            .getRequestDispatcher("/relatorioFuncionarios.jsp");
+                            .getRequestDispatcher("/protegido/relatorioFuncionarios.jsp");
                     requestDispatcher.forward(request, response);
                 } else {
                     String query = "select funcionario.id_funcionario, funcionario.nome, funcionario.cpf, count(venda.id_vendedor) as quantidade, funcionario.id_filial from funcionario "
@@ -106,7 +106,7 @@ public class RelatorioVenda extends HttpServlet {
                     request.setAttribute("listarFuncionarios", listarFuncionarios);
 
                     RequestDispatcher requestDispatcher = getServletContext()
-                            .getRequestDispatcher("/relatorioFuncionarios.jsp");
+                            .getRequestDispatcher("/protegido/relatorioFuncionarios.jsp");
                     requestDispatcher.forward(request, response);
 
                 }

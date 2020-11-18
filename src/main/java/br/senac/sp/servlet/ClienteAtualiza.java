@@ -37,7 +37,7 @@ public class ClienteAtualiza extends HttpServlet {
             request.setAttribute("listarClientes", listarClientes);
 
             RequestDispatcher requestDispatcher = getServletContext()
-                    .getRequestDispatcher("/ClienteServlet");
+                    .getRequestDispatcher("/protegido/ClienteServlet");
             requestDispatcher.forward(request, response);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteAtualiza.class.getName()).log(Level.SEVERE, null, ex);

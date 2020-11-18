@@ -20,7 +20,7 @@
             <h1 class="text-center m-2 mb-3">Cliente</h1>
 
 
-            <form class="form" action="ClienteBusca" method="GET" id="formBusca">
+            <form class="form" action="<c:url value="../projectPI_senac_santo_amaro/ClienteBusca"/>" method="GET" id="formBusca">
 
                 <div class="form-grup form-inline">
                     <label class="form-control-sm">Tipo de Busca</label>

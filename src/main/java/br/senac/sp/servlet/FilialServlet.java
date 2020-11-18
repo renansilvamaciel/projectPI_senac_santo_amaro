@@ -37,7 +37,7 @@ public class FilialServlet extends HttpServlet {
             listarFiliais = filialDAO.listFiliais();
             request.setAttribute("listarFiliais", listarFiliais);
             RequestDispatcher requestDispatcher = getServletContext()
-                    .getRequestDispatcher("/Filial.jsp");
+                    .getRequestDispatcher("/protegido/Filial.jsp");
             requestDispatcher.forward(request, response);
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);

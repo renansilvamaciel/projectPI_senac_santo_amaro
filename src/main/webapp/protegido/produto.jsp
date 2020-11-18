@@ -98,7 +98,7 @@
             //funcão para resetar a tabela de produto e reexibir todos os produtos cadastrados
             function resetTabela() {
                 console.log("teste");
-                window.location.href = "Produto";
+                window.location.href = "..//Produto";
 
             }
             
@@ -110,7 +110,7 @@
             <h1 class="text-center m-2 mb-3">Produto</h1>
 
 
-            <form class="form" action="BuscaProduto" method="GET" id="formBusca">
+            <form class="form" action="<c:url value="..//BuscaProduto"/>" method="GET" id="formBusca">
                 <!--BuscaProduto-->
 
                 <div class="form-grup form-inline">
@@ -135,7 +135,7 @@
             
             <br>
 
-            <form class="form" action="Produto" method="POST" id="form_cadastroProduto" >
+            <form class="form" action="<c:url value="..//Produto"/>" method="POST" id="form_cadastroProduto" >
 
 
                 <div class="form-row m-1">

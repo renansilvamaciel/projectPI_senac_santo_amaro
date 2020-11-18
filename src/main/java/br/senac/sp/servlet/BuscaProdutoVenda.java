@@ -47,7 +47,7 @@ public class BuscaProdutoVenda extends HttpServlet {
             request.setAttribute("listaProdutos", ListaProdutos);
 
             //chama a função request e envia para a pagina produto.jsp
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/VendaSimples.jsp");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/protegido/VendaSimples.jsp");
             rd.forward(request, response);
 
         

@@ -20,7 +20,7 @@
             <h1 class="text-center m-2 mb-3">Funcionario</h1>
 
 
-            <form class="form" action="FuncionarioBusca" method="GET" id="formBusca">
+            <form class="form" action="<c:url value="../projectPI_senac_santo_amaro/FuncionarioBusca"/>" method="GET" id="formBusca">
 
                 <div class="form-grup form-inline">
                     <label class="form-control-sm">Tipo de Busca</label>
@@ -190,9 +190,9 @@
                                     <label>Cargo</label>
                                     <select class="form-control form-control" id="cargoFuncionarioAtualiza" name="cargo">
                                         <option value=""></option>
-                                        <option value="cargo-1">Cargo-1</option>
-                                        <option value="cargo-2">Cargo-2</option>
-                                        <option value="cargo-3">Cargo-3</option>
+                                        <option value="cargo-1">Vendedor</option>
+                                        <option value="cargo-2">Gerente</option>
+                                        <option value="cargo-3">Backoffice</option>
                                     </select>
 
                                     <labe>Filial</labe>

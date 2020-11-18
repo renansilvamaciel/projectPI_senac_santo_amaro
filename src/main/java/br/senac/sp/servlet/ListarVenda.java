@@ -39,7 +39,7 @@ public class ListarVenda extends HttpServlet {
             request.setAttribute("listarVenda", listarVenda);
 
             RequestDispatcher requestDispatcher = getServletContext()
-                    .getRequestDispatcher("/relatorio.jsp");
+                    .getRequestDispatcher("/protegido/relatorio.jsp");
             requestDispatcher.forward(request, response);
 
     }

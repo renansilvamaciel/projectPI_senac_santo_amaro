@@ -23,7 +23,7 @@ function validarBusca(evt) {
 }
 
 function voltarIndex() {
-    window.location.href = "index.jsp";
+    window.location.href = "/projectPI_senac_santo_amaro/protegido/index.jsp";
 }
 
 function validacaoVendaPlanos(evt) {

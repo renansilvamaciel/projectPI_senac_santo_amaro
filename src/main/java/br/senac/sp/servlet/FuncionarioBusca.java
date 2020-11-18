@@ -41,7 +41,7 @@ public class FuncionarioBusca extends HttpServlet {
                     request.setAttribute("listarFuncionarios", listarFuncionarios);
 
                     RequestDispatcher requestDispatcher = getServletContext()
-                            .getRequestDispatcher("/FuncionarioLista.jsp");
+                            .getRequestDispatcher("/protegido/FuncionarioLista.jsp");
                     requestDispatcher.forward(request, response);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(ClienteBusca.class.getName()).log(Level.SEVERE, null, ex);
@@ -58,7 +58,7 @@ public class FuncionarioBusca extends HttpServlet {
                     request.setAttribute("listarFuncionarios", listarFuncionarios);
 
                     RequestDispatcher requestDispatcher = getServletContext()
-                            .getRequestDispatcher("/FuncionarioLista.jsp");
+                            .getRequestDispatcher("/protegido/FuncionarioLista.jsp");
                     requestDispatcher.forward(request, response);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(ClienteBusca.class.getName()).log(Level.SEVERE, null, ex);
@@ -75,7 +75,7 @@ public class FuncionarioBusca extends HttpServlet {
                     request.setAttribute("listarFuncionarios", listarFuncionarios);
 
                     RequestDispatcher requestDispatcher = getServletContext()
-                            .getRequestDispatcher("/FuncionarioLista.jsp");
+                            .getRequestDispatcher("/protegido/FuncionarioLista.jsp");
                     requestDispatcher.forward(request, response);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(ClienteBusca.class.getName()).log(Level.SEVERE, null, ex);

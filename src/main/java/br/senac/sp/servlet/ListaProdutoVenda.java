@@ -29,7 +29,7 @@ public class ListaProdutoVenda extends HttpServlet {
         List<Produto> ListaProdutos = ProdutoDAO.getProdutos();
         request.setAttribute("listaProdutos", ListaProdutos);
         
-        RequestDispatcher requesDispatcher = getServletContext().getRequestDispatcher("/VendaSimples.jsp");
+        RequestDispatcher requesDispatcher = getServletContext().getRequestDispatcher("/protegido/VendaSimples.jsp");
         requesDispatcher.forward(request, response);
     }
 

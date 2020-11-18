@@ -43,7 +43,7 @@ public class ClienteBusca extends HttpServlet {
                     request.setAttribute("listarClientes", listarClientes);
 
                     RequestDispatcher requestDispatcher = getServletContext()
-                            .getRequestDispatcher("/ClienteLista.jsp");
+                            .getRequestDispatcher("/protegido/ClienteLista.jsp");
                     requestDispatcher.forward(request, response);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(ClienteBusca.class.getName()).log(Level.SEVERE, null, ex);
@@ -60,7 +60,7 @@ public class ClienteBusca extends HttpServlet {
                     request.setAttribute("listarClientes", listarClientes);
 
                     RequestDispatcher requestDispatcher = getServletContext()
-                            .getRequestDispatcher("/ClienteLista.jsp");
+                            .getRequestDispatcher("/protegido/ClienteLista.jsp");
                     requestDispatcher.forward(request, response);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(ClienteBusca.class.getName()).log(Level.SEVERE, null, ex);
@@ -77,7 +77,7 @@ public class ClienteBusca extends HttpServlet {
                     request.setAttribute("listarClientes", listarClientes);
 
                     RequestDispatcher requestDispatcher = getServletContext()
-                            .getRequestDispatcher("/ClienteLista.jsp");
+                            .getRequestDispatcher("/protegido/ClienteLista.jsp");
                     requestDispatcher.forward(request, response);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(ClienteBusca.class.getName()).log(Level.SEVERE, null, ex);

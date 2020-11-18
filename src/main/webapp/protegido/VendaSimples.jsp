@@ -58,7 +58,7 @@
                              
                              $.post('CarrinhoProduto', {sacola}, function () {
 
-                   }); )
+                   }); 
 
 //                          $.post('CarrinhoProduto', {id_vendedor: 1, quantidade: quantidade,
 //                        preco: valorFinal, filial: id_filial, nome: nome}, function () {
@@ -123,7 +123,7 @@
                     
             </form>
                 -->
-                <form class="form-inline center" action="BuscaProdutoVenda" method="GET">
+                <form class="form-inline center" action="<c:url value="..//BuscaProdutoVenda"/>" method="GET">
                     
                     <input class="form-control " type="search" placeholder="Pesquisar Produto" name="nome_produto" aria-label="Pesquisar">
                     <button class="btn btn-outline-success pt-2 " type="submit">Pesquisar</button>

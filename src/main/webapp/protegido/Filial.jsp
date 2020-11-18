@@ -22,7 +22,7 @@
 
             <div class="col-12">
 
-                <form action="FilialServlet" method="POST" id="form_cadastroFilial">
+                <form action="<c:url value="..//FilialServlet"/>" method="POST" id="form_cadastroFilial">
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -74,7 +74,7 @@
 
                 <br><br>
 
-                <form class="form" action="FilialBuscar" method="GET" id="formBusca">
+                <form class="form" action="<c:url value="..//FilialBuscar"/>" method="GET" id="formBusca">
 
                     <div class="form-grup form-inline">
                         <label class="form-control-sm">Tipo de Busca</label>

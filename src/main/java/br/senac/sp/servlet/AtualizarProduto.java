@@ -28,7 +28,7 @@ public class AtualizarProduto extends HttpServlet {
         Produto produto = ProdutoDAO.getProduto(id_produto);
 
         request.setAttribute("produto", produto);
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/atualizarProduto.jsp");
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/protegido/atualizarProduto.jsp");
         rd.forward(request, response);
 
     }
