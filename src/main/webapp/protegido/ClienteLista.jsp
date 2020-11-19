@@ -208,8 +208,8 @@
 
         <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
         <%@include file="rodape.jsp" %>
-        <script src="../js/Cliente.js" type="text/javascript"></script>
-        <script src="../js/ClienteValidacaoBusca.js" type="text/javascript"></script>
+        <script src="js/Cliente.js" type="text/javascript"></script>
+        <script src="js/ClienteValidacaoBusca.js" type="text/javascript"></script>
 
     </body>
 

@@ -217,8 +217,8 @@
 
         <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
         <%@include file="rodape.jsp" %>
-        <script src="../js/Funcionario.js" type="text/javascript"></script>
-        <script src="../js/FuncionarioValidacaoBusca.js" type="text/javascript"></script>
+        <script src="js/Funcionario.js" type="text/javascript"></script>
+        <script src="js/FuncionarioValidacaoBusca.js" type="text/javascript"></script>
     </body>
 
 </html>

@@ -116,6 +116,22 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>br.senac.sp.servlet.LogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PlanoServlet</servlet-name>
+        <servlet-class>br.senac.sp.servlet.PlanoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PlanoDeleta</servlet-name>
+        <servlet-class>br.senac.sp.servlet.PlanoDeleta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PlanoBusca</servlet-name>
+        <servlet-class>br.senac.sp.servlet.PlanoBusca</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PlanoAtualiza</servlet-name>
+        <servlet-class>br.senac.sp.servlet.PlanoAtualiza</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Produto</servlet-name>
         <url-pattern>/Produto</url-pattern>
@@ -223,6 +239,22 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PlanoServlet</servlet-name>
+        <url-pattern>/PlanoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PlanoDeleta</servlet-name>
+        <url-pattern>/PlanoDeleta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PlanoBusca</servlet-name>
+        <url-pattern>/PlanoBusca</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PlanoAtualiza</servlet-name>
+        <url-pattern>/PlanoAtualiza</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
