@@ -54,7 +54,7 @@ public class AtualizarProduto extends HttpServlet {
 
         try {
             ProdutoDAO.atualizaProduto(produto);
-            response.sendRedirect("Success.jsp");
+            //response.sendRedirect("Success.jsp");
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(AtualizarProduto.class.getName()).log(Level.SEVERE, null, ex);
             response.sendRedirect("Erro.jsp");
