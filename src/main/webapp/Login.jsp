@@ -14,37 +14,48 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login</title>
         <link href="Login/Style.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.css">
+      
     </head>
 
     <body>
-        <%@include file="protegido/header.jsp" %>
-        <h1>Login</h1>
-    <c:if test="${param.erro != null}">
-        <div class="alert alert-danger" role="alert">
-            Usuário/senha inválidos
-        </div>
-    </c:if>
+ 
+        <form class="box" action="LoginServlet" method="POST" id="formLoginFuncionario">
+            <h1 class="nomeLoja">CoffeShop</h1>
+            <img src="Login/logo.svg" alt="avatar" class="avatar">
+            <input type="text" name="login" id="login" placeholder="Entre com seu Cpf">
+            <span class="msg-erro msg-CampoCpf"></span>
+            <input type="password" name="senha" id="senha" placeholder="Password">
+            <span class="msg-erro msg-CampoSenha"></span>
 
-    <style type="text/css">
-        .msg-erro{color:red;}
-    </style>
+           <style type="text/css">
+                .msg-erro{color:red;}
+            </style>
+            <c:if test="${param.erro != null}">
+                <div class="alert alert-danger " role="alert">
+                    Usuário/senha inválidos
+                </div>
+            </c:if>
 
-    <form class="box" action="LoginServlet" method="POST" id="formLoginFuncionario">
-        <h1 class="nomeLoja">CoffeShop</h1>
-        <img src="Login/logo.svg" alt="avatar" class="avatar">
-        <input type="text" name="login" id="login" placeholder="Entre com seu Cpf">
-        <span class="msg-erro msg-CampoCpf"></span>
-        <input type="password" name="senha" id="senha" placeholder="Password">
-        <span class="msg-erro msg-CampoSenha"></span>
-        <button type="submit">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Login Here
-        </button>
-    </form>
-    <script src="js/FuncionarioLogin.js" type="text/javascript"></script>
-</body>
+
+
+            <button type="submit">
+
+
+
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Login Here
+            </button>
+
+
+        </form>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.js"></script>
+        <script src="js/FuncionarioLogin.js" type="text/javascript"></script>
+    </body>
 
 </html>

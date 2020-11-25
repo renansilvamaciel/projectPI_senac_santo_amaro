@@ -37,29 +37,13 @@
 
                 $.get("CarrinhoServlet?id=" + id_produto + "&operacao=" + true, function () {
                     console.log("ok");
-                    totalCarrinho();
+                   
                     window.location.reload();
 
 
                 });
                 
             }
-
-
-            function totalCarrinho() {
-
-                $(function () {
-                    var total = 0;
-                    $('.qtd').each(function () {
-                        total += parseInt(jQuery(this).text());
-                    });
-
-                    $('.total').html(total);
-
-                });
-
-            }
-            
 
 
             function removerProduto(id_produto) {
@@ -92,6 +76,11 @@
             <br>
 
             <h4 class="text-center">Produtos</h4>
+            <h6>Bem vindo, ${sessionScope.usuario.nome}</h6>
+            <h6>Bem vindo, ${sessionScope.usuario.cargo}</h6>
+            <h6>Bem vindo, ${sessionScope.usuario.filial}</h6>
+          
+            
             <table class="table">
                 <tr class="table-item">
                     <th >Id</th>

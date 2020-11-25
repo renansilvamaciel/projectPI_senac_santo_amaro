@@ -169,10 +169,6 @@
         <url-pattern>/DeleteProduto</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ListaProdutoVenda</servlet-name>
-        <url-pattern>/ListaProdutoVenda</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>BuscaProduto</servlet-name>
         <url-pattern>/BuscaProduto</url-pattern>
     </servlet-mapping>
