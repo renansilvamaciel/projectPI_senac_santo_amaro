@@ -24,17 +24,20 @@
             <br>
 
             <form class="form-inline center" action="<c:url value="..//RelatorioVenda"/>" method="GET">
-                <label class="col-sm-1 col-form-label form-control-sm">Filial</label>
-                <div class="">
-                    <select class="form-control form-control-sm" name="filial">
-                        <option value="0">Todas</option>
-                        <option value="1">Matriz</option>
-                        <option value="2">Filial 1</option>
-                        <option value="3">Filial 2</option>
-                        <option value="4">Filial 3</option>
-                    </select>
-                </div>
 
+                <c:if test="${sessionScope.usuario.filial ==1}"> 
+                    <label class="col-sm-1 col-form-label form-control-sm">Filial</label>
+                    <div class="">
+                        <select class="form-control form-control-sm" name="filial">
+                            <option value="0">Todas</option>
+                            <option value="1">Matriz</option>
+                            <option value="2">Filial 1</option>
+                            <option value="3">Filial 2</option>
+                            <option value="4">Filial 3</option>
+                        </select>
+                    </div>
+
+                </c:if> 
 
                 <label class="col-sm-1 col-form-label form-control-sm">Tipo de Filtro</label>
                 <div class="">
@@ -48,8 +51,8 @@
 
 
                 <div class="col-4"  name = "date1">
-                    <input type="date" id="date1" name="date1">
-                    <input type="date" id="date2" name="date2">
+                    <input type="date" id="date1" name="date1" required>
+                    <input type="date" id="date2" name="date2" required>
                 </div>
 
                 <button class="btn btn-outline-success pt-2" type="submit">Pesquisar</button>
