@@ -22,7 +22,7 @@ public class ConexaoMysql implements ConexaoDbInterface {
     private static String DATABASE = "coffe_shop";
 
     private static String LOGIN = "root";
-    private static String SENHA = "root";
+    private static String SENHA = "";
 
     private static String URL = "";
 
