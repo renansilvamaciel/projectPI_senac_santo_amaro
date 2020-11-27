@@ -27,6 +27,7 @@ public class VendaServlet extends HttpServlet {
         HttpSession sessao = request.getSession();
         Funcionario usuario = (Funcionario) sessao.getAttribute("usuario");
         System.out.println("teste: " + usuario.getNome()+" = " + usuario.getFilial());
+        System.out.println("teste: " + usuario.getId_funcionario() +  " = " + usuario.getFilial());
         
         List<Produto> ListaProdutos = VendaSimplesDAO.getPodutoFilial(usuario.getFilial());
         request.setAttribute("listaProdutos", ListaProdutos);
