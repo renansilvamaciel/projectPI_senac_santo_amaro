@@ -60,7 +60,7 @@ public class ProdutoServlet extends HttpServlet {
         
         try {
             ProdutoDAO.addProdutos(produto);
-            response.sendRedirect("Produto");
+            response.sendRedirect(request.getContextPath()+"//Produto");
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(ProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
             response.sendRedirect("Erro.jsp");

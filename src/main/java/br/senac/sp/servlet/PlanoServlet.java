@@ -57,7 +57,7 @@ public class PlanoServlet extends HttpServlet {
 
             PlanoDAO planoDAO = new PlanoDAO();
             planoDAO.insertPlanos(plano);
-            response.sendRedirect("PlanoServlet");
+            response.sendRedirect(request.getContextPath()+"//PlanoServlet");
         } catch (ClassNotFoundException | NumberFormatException | SQLException ex) {
             Logger.getLogger(PlanoServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

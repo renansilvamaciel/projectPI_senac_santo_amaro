@@ -50,6 +50,7 @@ public class FilialServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            request.setCharacterEncoding("UTF-8");
             Filial filial = new Filial();
 
             filial.setNome(request.getParameter("nome"));
@@ -63,7 +64,7 @@ public class FilialServlet extends HttpServlet {
 
             FilialDAO filialDAO = new FilialDAO();
             filialDAO.insertFilial(filial);
-            response.sendRedirect("FilialServlet");
+            response.sendRedirect(request.getContextPath()+"//FilialServlet");
         } catch (ClassNotFoundException | NumberFormatException | SQLException ex) {
             Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
