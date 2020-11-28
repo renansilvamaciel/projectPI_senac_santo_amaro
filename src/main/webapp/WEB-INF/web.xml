@@ -132,6 +132,14 @@
         <servlet-name>PlanoAtualiza</servlet-name>
         <servlet-class>br.senac.sp.servlet.PlanoAtualiza</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CarrinhoServlet</servlet-name>
+        <servlet-class>br.senac.sp.servlet.CarrinhoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VendaServlet</servlet-name>
+        <servlet-class>br.senac.sp.servlet.VendaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Produto</servlet-name>
         <url-pattern>/Produto</url-pattern>
@@ -159,10 +167,6 @@
     <servlet-mapping>
         <servlet-name>DeleteProduto</servlet-name>
         <url-pattern>/DeleteProduto</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ListaProdutoVenda</servlet-name>
-        <url-pattern>/ListaProdutoVenda</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>BuscaProduto</servlet-name>
@@ -255,6 +259,14 @@
     <servlet-mapping>
         <servlet-name>PlanoAtualiza</servlet-name>
         <url-pattern>/PlanoAtualiza</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CarrinhoServlet</servlet-name>
+        <url-pattern>/CarrinhoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VendaServlet</servlet-name>
+        <url-pattern>/Venda</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

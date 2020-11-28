@@ -45,6 +45,10 @@ public class BuscaProdutoDAO {
                 String filial = rs.getString("id_filial");
                 produto = new Produto(id_produto, nome, familia, quantidade, preco, descricao, filial);
             }
+            
+            conexao.closeConnection();
+            con.close();
+            ps.close();
 
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -75,7 +79,12 @@ public class BuscaProdutoDAO {
                 String filial = rs.getString("id_filial");
                 produto = new Produto(id_produto, nome, familia, quantidade, preco, descricao, filial);
             }
-
+            
+            
+            conexao.closeConnection();
+            con.close();
+            ps.close();
+            
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -108,6 +117,11 @@ public class BuscaProdutoDAO {
                 
                 ListaProdutoFamilia.add(produto);
             }
+            
+            
+            conexao.closeConnection();
+            con.close();
+            ps.close();
 
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -142,6 +156,10 @@ public class BuscaProdutoDAO {
                 
                 ListaProduto.add(produto);
             }
+           
+            conexao.closeConnection();
+            con.close();
+            ps.close();
 
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);

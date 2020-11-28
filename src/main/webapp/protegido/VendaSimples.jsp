@@ -4,6 +4,7 @@
     Author     : Nailson Nascimento <nailsonbr@gmail.com>
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,135 +13,124 @@
     <%@include file="header.jsp" %>
 
     <body class="container">
-        
+
         <!--include do menu lateral-->
         <%@include file="menuLateral.jsp" %>
 
- 
-        <script lang="text/javascript">
-           
-           var valor = 0;
-           
-            
-            function adicionarProduto(id_produto,nome,preco,descricao, quantidade, id_filial ) {
-                $("#tabelaRolagem").find('tbody')
-                .append($('<tr>')
-                    .append($('<td>').text(id_produto))
-                    .append($('<td>').text(nome))
-                    .append($('<td>').text(preco))
-                    .append($('<td>').text(descricao))
-                    );
-            
-             carrinhoCompra(id_produto,nome,preco,descricao, quantidade, id_filial);
-             
-              valor = valor + preco;
-             
-             valorTotal(valor);
-               
+        <style>
+            .quantidadeCarrinho{
+                width: 40px;
+                margin-left: 40px;
             }
-            
-            
-            
-            
-            function carrinhoCompra (id_produto,nome,valorFinal,descricao, quantidade, id_filial)
-                
-                {
-                   var sacola = [];
 
-                        sacola.push(id_produto,nome,valorFinal,descricao, quantidade, id_filial);
-                        
-                        for (var i = 0; i < sacola.length; i++) {
-                           
-                                    console.log(sacola[i]);
-                           
-                         }
-
-                             
-                             $.post('CarrinhoProduto', {sacola}, function () {
-
-                   }); 
-
-//                          $.post('CarrinhoProduto', {id_vendedor: 1, quantidade: quantidade,
-//                        preco: valorFinal, filial: id_filial, nome: nome}, function () {
-//
-//                    });
-                }
-                
-              function valorTotal (valor) {
-                  
-                     document.querySelector("[name='valorCaixa']").value = valor.toFixed(2);
-                  
-              }
-              
-              
-              
-              //funcão para resetar a tabela de produto e reexibir todos os produtos cadastrados
-            function resetTabela() {
-                console.log("teste");
-                window.location.href = "ListaProdutoVenda";
+            .imgBotao{
+                width: 20px;
             }
-            
-        </script>
+
+        </style>
+
         
-         
- 
+        <script lang="text/javascript">
+
+            function adicionarProduto(id_produto) {
+
+
+                $.get("CarrinhoServlet?id=" + id_produto + "&operacao=" + true, function () {
+                    console.log("ok");
+                   
+                    window.location.reload();
+
+
+                });
                 
-        <script type="text/javascript">//
-                        function deleteRow(i){
-                            
-                          document.getElementById('tabelaRolagem').deleteRow(i);
-                                
-                        }
-          </script>
+            }
 
-       
-            <div class="col-9" style="height: 100%"> 
 
-                <h1 class="text-center"><b>Venda Simples</b></h1><br>
+            function removerProduto(id_produto) {
+
+                $.get("CarrinhoServlet?id=" + id_produto + "&operacao=" + false, function () {
+                    console.log("ok");
+                    window.location.reload();
+                });
+
+
+            }
+            
+            //obtem a quantidade de produtos na venda
+            function contaItensVenda(){
+                let vetorItens = document.querySelectorAll(".itens");
+                let soma =0;
+                
+                for(let posicao = 0 ; posicao < vetorItens.length; posicao++ ){
+                    soma = soma + parseInt( vetorItens[posicao].innerHTML);
+                }
+                //console.log(soma);
+                return soma;
+            }
+            
+            
+            
+            //funcao finaliza venda
+            function finalizaVenda() {
+                
+                
+                let idFuncionario = ${sessionScope.usuario.id_funcionario};
+                let quantidade = contaItensVenda();
+                let valorFinalLimpo = moedaParaFloat(document.querySelector("#total").innerHTML);
+                let id_filial = ${sessionScope.usuario.filial}               
+                console.log(id_filial);
+                
+                
+                $.post('Venda', {id_funcionario: idFuncionario, quantidade: quantidade, valorFinalLimpo: valorFinalLimpo, id_filial: id_filial
+                    }, function () {
+
+                    window.location.reload();
+
+                });
 
                 
-<!--                <form class="form" action="BuscaProduto" method="GET" id="formBusca">
                 
-                    BuscaProduto
+            }
+            
 
-                <div class="form-grup form-inline">
-                    <label class="form-control-sm">Tipo Busca</label>
-                    <select class="form-control form-control-sm" id="tipoBusca" name="tipoBusca">
-                        <option value="1">Nome</option>
-                        <option value="2">Id</option>
-                        <option value="3">Família</option>
-                        <option value="4">Filial</option>
-                    </select>
-                    <label class="form-control-sm">Buscar</label>
-                    <input class="form-control  form-control-sm m-1" type="search" id="buscaProduto" name="buscaProduto" placeholder="buscar Produtos...">
-                    
-                    <button type="submit" class="btn btn-primary">Buscar</button>
-                    <button type="reset" class="btn btn-danger m-1" onclick="resetTabela()">Reset</button>
-                </div>
-                <div class="form-grup form-inline m-2">
-                    <span class="msg-erro msg-CampoBusca"></span>
-                </div>
-                    
+
+
+
+        </script>
+
+
+
+        <div class="col-9" style="height: 100%"> 
+
+            <h1 class="text-center"><b>Venda Simples</b></h1><br>
+
+
+            <form class="form-inline center" action="<c:url value="..//BuscaProdutoVenda"/>" method="GET">
+
+                <input class="form-control " type="search" placeholder="Pesquisar Produto" name="nome_produto" aria-label="Pesquisar">
+                <button class="btn btn-outline-success pt-2 " type="submit">Pesquisar</button>
             </form>
-                -->
-                <form class="form-inline center" action="<c:url value="..//BuscaProdutoVenda"/>" method="GET">
-                    
-                    <input class="form-control " type="search" placeholder="Pesquisar Produto" name="nome_produto" aria-label="Pesquisar">
-                    <button class="btn btn-outline-success pt-2 " type="submit">Pesquisar</button>
-                </form>
 
-                <br>
+            <br>
 
-                <h4 class="text-center">Produtos</h4>
-                <table class="table">
-                    <tr class="table-item">
-                        <th >Id</th>
-                        <th >Nome</th>
-                        <th >Quantidade</th>
-                        <th >Preço</th>
-                        <th >Descrição</th>
-                    </tr>
-                   <tbody>
+            <h4 class="text-center">Produtos</h4>
+            <h6>nomeFuncionario, ${sessionScope.usuario.nome}</h6>
+            <h6>cargo, ${sessionScope.usuario.cargo}</h6>
+            <h6>Filial, ${sessionScope.usuario.filial}</h6>
+            <h6>idFuncionario, ${sessionScope.usuario.id_funcionario}</h6>
+            
+          
+            
+            <table class="table">
+                <tr class="table-item">
+                    <th >Id</th>
+                    <th >Nome</th>
+                    <th >Qtd. Estoque</th>
+                    <th >Preço</th>
+                    <th >Descrição</th>
+
+                </tr>
+                <tbody>
 
                     <c:forEach var="produto" items="${listaProdutos}">
                         <tr>
@@ -149,68 +139,121 @@
                             <td>${produto.quantidade}</td>
                             <td>${produto.preco}</td>
                             <td>${produto.descricao}</td>
-                        
-                            
-                            <!--botão exluir item-->
-                            <!--<td><img src="img/trashcan.svg" class="imgBotao" onclick="deleteRow(this.parentNode.parentNode.rowIndex)"> </td>-->
-                            
-                            <!--botão adcionar produto--> 
-                            <td><button type="button" class="btn btn-primary" onclick="adicionarProduto(${produto.id_produto}, '${produto.nome}', ${produto.preco}, '${produto.descricao}', ${produto.quantidade}, ${produto.filial} )" >Adicionar</button></td>
+
+
+
+                            <td><img src="./img/plus-solid.svg" onclick="adicionarProduto(
+                                     ${produto.id_produto},
+                                            '${produto.nome}',
+                                     ${produto.preco},
+                                            '${produto.descricao}',
+                                     ${produto.quantidade},
+                                     ${produto.filial}
+                                    )" class="imgBotao">
+                            </td> 
+
+
+
                         </tr>
-                        
+
                     </c:forEach>
                 </tbody>
 
-                </table>
+            </table>
+
+            <hr class="border-dark">
+
+            <h4 class="text-center">Carrinho</h4>
+
+            <table class="table table-striped " id='tabelaRolagem'>
+                <tr class="table-item" >
+                    <th scope="col" >Id</th>
+                    <th scope="col" >Nome</th>
+                    <th scope="col" >Preço</th>
+                    <th scope="col" >Descricao</th> 
+                    <th scope="col" >Qtd.</th>
+                    <th scope="col" >Total item</th>
+                    <th scope="col" ></th>
+
+                </tr>
+                <tbody>
+
+                    <c:forEach var="produto" items="${listaProduto}">
+                        <tr>
+                            <td>${produto.id_produto}</td>
+                            <td>${produto.nome}</td>
+                            <td>${produto.preco}</td>
+                            <td>${produto.descricao}</td>
+                            <td class="itens">${produto.quantidade}</td>
+                            <c:set var = "balance" value = "${produto.preco * produto.quantidade}"/>
+
+                            <td class="totalItem"><fmt:formatNumber value = "${balance}" type = "currency"/></td>
+
+                            <td><img src="./img/minus-solid.svg" onclick="removerProduto(
+                                     ${produto.id_produto},
+                                            '${produto.nome}',
+                                     ${produto.preco},
+                                            '${produto.descricao}',
+                                     ${produto.quantidade},
+                                     ${produto.filial}
+                                    )" class="imgBotao">
+                            </td> 
 
 
-                <h4 class="text-center">Carrinho</h4>
-                
-             <table class="table table-striped table-bordered" id='tabelaRolagem'>
-                    <tr class="table-item" >
-                        <th scope="col" >Id</th>
-                        <th scope="col" >Nome</th>
-                        <th scope="col" >Preço</th>
-                        <th scope="col" >Descricao</th>  
-                    </tr>
-                    
-                </table>
-                
+                            <%
+                                System.out.println("Tudo foi executado!");
 
-                <div class="col-7">
-                    <div class="input-group" >
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" >Tipo De pagamento</span>
-                        </div>
-                        <input style="width: 20px; height: 20px; margin-top: 7px;" type="radio" id="cartao" name="pagamento" value="cartao" class="form-control">
-                        <label for="cartao">Cartão</label><br>
-                        <input style="width: 20px; height: 20px; margin-top: 7px;" type="radio" id="dinheiro" name="pagamento" value="dinheiro" class="form-control">
-                        <label for="dinheiro">Dinheiro</label><br>
+                            %>
 
+
+                        </tr>
+
+
+
+                    </c:forEach>
+                </tbody>
+
+            </table>
+
+
+            <hr class="border-dark">
+            <div class="col-7">
+                <div class="input-group" >
+                    <div class="input-group-prepend">
+                        <span class="" >Tipo De pagamento</span>
                     </div>
-                    
-                    
-
-
-                    <br>
-                    <Lable>Valor final:</Lable>
-                    <input type="text" name="valorCaixa" style="margin-left: 7%" readonly="true"><br><br>
-
-
-                    <input class="btn btn-primary" type="submit" value="Finalizar">
-                    <input class="btn btn-danger m-2" type="reset" value="Cancelar">
-                    <button type="reset" class="btn btn-danger m-1" onclick="resetTabela()">Limpar Carrinho</button>
+                    <input style="width: 20px; height: 20px; margin-top: 7px;" type="radio" id="cartao" name="pagamento" value="cartao" class="form-control">
+                    <label for="cartao">Cartão</label><br>
+                    <input style="width: 20px; height: 20px; margin-top: 7px;" type="radio" id="dinheiro" name="pagamento" value="dinheiro" class="form-control">
+                    <label for="dinheiro">Dinheiro</label><br>
 
                 </div>
 
 
-            </div><!-- fim tabelas e pesquisa -->
+                <br>
+                <h4> <lable>Valor final:</lable>
+                    <span id="total"></span></h4></br></br>
+              
 
-            <br>
-        </div>
-        <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
-        <%@include file="rodape.jsp" %>
+                    <input class="btn btn-primary" type="submit" onclick="finalizaVenda()" value="Finalizar">
+                <button type="reset" class="btn btn-danger m-1" onclick="resetTabela()">Limpar Carrinho</button>
 
-    </body>
+            </div>
+            
+           
+            
+            
+
+
+        </div><!-- fim tabelas e pesquisa -->
+
+        <br>
+    </div>
+    
+    <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
+    <%@include file="rodape.jsp" %>
+    <script type="text/javascript" src="js/carrinho.js"></script>
+
+</body>
 
 </html>

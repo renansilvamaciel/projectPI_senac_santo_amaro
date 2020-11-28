@@ -68,7 +68,7 @@
 
                 $('#modalAtualiza').modal('show');
             }
-            //função para realizar a chmada ao servlet=>DeleteProduto
+            //função para realizar a chamada ao servlet=>DeleteProduto
             function atualizarProduto() {
                 var idProduto = $("#idProdutoAtualiza").val();
                 console.log("atualizar produto cujo id é: ", idProduto);

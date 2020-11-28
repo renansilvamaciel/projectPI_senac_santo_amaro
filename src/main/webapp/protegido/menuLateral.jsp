@@ -32,7 +32,7 @@
                                         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                                         Venda<span class="sr-only">(atual)</span>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="<c:url value="/protegido/VendaSimples.jsp"/>">Venda Simples</a>
+                                            <a class="dropdown-item" href="<c:url value="/Venda"/>">Venda Simples</a>
                                             <a class="dropdown-item" href="<c:url value="/protegido/VendaPlanos.jsp"/>">Venda De Planos</a>
                                             <a class="dropdown-item" href="<c:url value="/protegido/VendaAssinantes.jsp"/>">Venda Para Assinantes</a>
                                         </div>

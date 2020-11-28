@@ -18,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,7 +31,24 @@ public class RelatorioVenda extends HttpServlet {
             throws ServletException, IOException {
 
         RelatorioDAO relatorioDAO = new RelatorioDAO();
-        int filial = Integer.parseInt(request.getParameter("filial"));
+        
+        
+        HttpSession sessao = request.getSession();
+        Funcionario usuario = (Funcionario) sessao.getAttribute("usuario");
+        int filial ;
+        
+        if(usuario.getFilial()==1){
+            filial = Integer.parseInt(request.getParameter("filial")); 
+        }
+       
+        else {
+            filial = usuario.getFilial();
+        }
+        
+        
+       
+        
+        
         int filtro = Integer.parseInt(request.getParameter("filtro"));
         String date1 = (request.getParameter("date1"));
         String date2 = (request.getParameter("date2"));

@@ -40,13 +40,16 @@ public class UsuarioDAO {
             if (rs.next()) {
                 String nome = rs.getString("nome");
                 String cargo = rs.getString("cargo");
-                int id_filial = rs.getInt("id_filial");
+                int filial = rs.getInt("id_filial");
+                int id_funcionario = rs.getInt("id_funcionario");
                 
              funcionario = new Funcionario();
              funcionario.setNome(nome);
              funcionario.setCargo(cargo);
-             funcionario.setFilial(id_filial);
+             funcionario.setFilial(filial);
              funcionario.setCpf(login);
+             funcionario.setId_funcionario(id_funcionario);
+             
 
 
             }

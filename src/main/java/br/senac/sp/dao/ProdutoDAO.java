@@ -101,7 +101,11 @@ public class ProdutoDAO {
                 String filial = rs.getString("id_filial");
                 produto = new Produto(id_produto, nome, familia, quantidade, preco, descricao, filial);       
             }
-   
+            
+            
+            conexao.closeConnection();
+            con.close();
+            ps.close();
 
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
