@@ -217,10 +217,6 @@
         <url-pattern>/FuncionarioDeleta</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>VendaAssinantes</servlet-name>
-        <url-pattern>/VendaAssinantes</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>FilialServlet</servlet-name>
         <url-pattern>/FilialServlet</url-pattern>
     </servlet-mapping>

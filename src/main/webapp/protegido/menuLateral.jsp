@@ -34,7 +34,6 @@
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="<c:url value="/Venda"/>">Venda Simples</a>
                                             <a class="dropdown-item" href="<c:url value="/protegido/VendaPlanos.jsp"/>">Venda De Planos</a>
-                                            <a class="dropdown-item" href="<c:url value="/protegido/VendaAssinantes.jsp"/>">Venda Para Assinantes</a>
                                         </div>
                                     </a>
                                 </div>
