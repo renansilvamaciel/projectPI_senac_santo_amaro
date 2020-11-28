@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="true"%>
 <!DOCTYPE html>
 <html>
 
@@ -41,6 +41,9 @@
 
                 <form action="<c:url value="..//VendaPlanoBusca"/>" method="POST" id="formaVendaPlanos">
                     <div>
+                        <input type="text" value="${sessionScope.usuario.filial}" name="filial" id="filial" hidden="">
+                        <input type="text" value="${sessionScope.usuario.id_funcionario}" name="idFuncionario" id="idFuncionario" hidden="">
+
 
                         <select class="form-control form-control-sm" id="assinatura" name="assinatura" onchange="valorTotalPlano()">
                             <option value="">Planos</option>
@@ -71,7 +74,7 @@
                     </div>
 
                     <br>
-                    
+
                     <c:forEach var="cliente" items="${listarClientes}">
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -96,7 +99,7 @@
                     <input type="text" value="" class="form-control" id="valorFinalPlano" name="valorFinalPlano" hidden="">
 
                     <br>
-                    
+
                     <div class="form-grup form-inline">
                         <input class="btn btn-primary" type="submit" value="Finalizar">
                         <input class="btn btn-danger m-2" type="reset" onclick="voltarIndex()" value="Cancelar">

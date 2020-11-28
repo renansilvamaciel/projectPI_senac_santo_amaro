@@ -30,7 +30,6 @@ public class VendaPlanoBusca extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         try {
             Cliente cliente = new Cliente();
             ClientesDAO clientesDAO = new ClientesDAO();
@@ -53,23 +52,22 @@ public class VendaPlanoBusca extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        VendaPlanoDAO vendaPlanoDAO = new VendaPlanoDAO();
-        VendaPlanos vendaPlanos = new VendaPlanos();
-        vendaPlanos.setCpf(request.getParameter("cpfCliente"));
-        vendaPlanos.setTipo_assinatura(request.getParameter("tipo_assinatura"));
-        vendaPlanos.setAssinatura(request.getParameter("assinatura"));
-
         try {
 
+            VendaPlanoDAO vendaPlanoDAO = new VendaPlanoDAO();
+            VendaPlanos vendaPlanos = new VendaPlanos();
+            vendaPlanos.setCpf(request.getParameter("cpfCliente"));
+            vendaPlanos.setTipo_assinatura(request.getParameter("tipo_assinatura"));
+            vendaPlanos.setAssinatura(request.getParameter("assinatura"));
+            vendaPlanos.setId_filial(Integer.parseInt(request.getParameter("filial")));
+            vendaPlanos.setId_vendedor(Integer.parseInt(request.getParameter("idFuncionario")));
             vendaPlanos.setValor_total(Double.parseDouble(request.getParameter("valorFinalPlano")));
+
             vendaPlanoDAO.insertVenda(vendaPlanos);
-            response.sendRedirect("VendaPlanoBusca");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(VendaPlanoBusca.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+            response.sendRedirect("protegido/index.jsp");
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(VendaPlanoBusca.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
 }
