@@ -7,6 +7,7 @@ package br.senac.sp.dao;
 
 import br.senac.sp.conexaodb.ConexaoMysql;
 import br.senac.sp.entidade.Produto;
+import br.senac.sp.entidade.Venda;
 import br.senac.sp.servlet.ProdutoServlet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -59,5 +60,28 @@ public class VendaSimplesDAO {
         return ListaProduto;
 
     }
+        
+        
+    public static void addVenda(Venda venda) throws SQLException, ClassNotFoundException{
+            ConexaoMysql conexao = new ConexaoMysql();
+            Connection con = conexao.openConnection();
+            
+            String query = "insert into venda (id_vendedor, quantidade, valor_total, id_filial)" +
+                            "values (?, ?, ?, ?) ";
+            
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, venda.getId_funcionario());
+            ps.setInt(2, venda.getQuantidade());
+            ps.setDouble(3, venda.getValorFinal());
+            ps.setInt(4, venda.getId_filial());
+            
+            ps.execute();
+        
+    }
+
+        
+        
+        
+        
     
 }

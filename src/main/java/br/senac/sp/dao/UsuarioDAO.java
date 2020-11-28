@@ -41,12 +41,15 @@ public class UsuarioDAO {
                 String nome = rs.getString("nome");
                 String cargo = rs.getString("cargo");
                 int filial = rs.getInt("id_filial");
+                int id_funcionario = rs.getInt("id_funcionario");
                 
              funcionario = new Funcionario();
              funcionario.setNome(nome);
              funcionario.setCargo(cargo);
              funcionario.setFilial(filial);
              funcionario.setCpf(login);
+             funcionario.setId_funcionario(id_funcionario);
+             
 
 
             }

@@ -55,6 +55,44 @@
 
 
             }
+            
+            //obtem a quantidade de produtos na venda
+            function contaItensVenda(){
+                let vetorItens = document.querySelectorAll(".itens");
+                let soma =0;
+                
+                for(let posicao = 0 ; posicao < vetorItens.length; posicao++ ){
+                    soma = soma + parseInt( vetorItens[posicao].innerHTML);
+                }
+                //console.log(soma);
+                return soma;
+            }
+            
+            
+            
+            //funcao finaliza venda
+            function finalizaVenda() {
+                
+                
+                let idFuncionario = ${sessionScope.usuario.id_funcionario};
+                let quantidade = contaItensVenda();
+                let valorFinalLimpo = moedaParaFloat(document.querySelector("#total").innerHTML);
+                let id_filial = ${sessionScope.usuario.filial}               
+                console.log(id_filial);
+                
+                
+                $.post('Venda', {id_funcionario: idFuncionario, quantidade: quantidade, valorFinalLimpo: valorFinalLimpo, id_filial: id_filial
+                    }, function () {
+
+                    window.location.reload();
+
+                });
+
+                
+                
+            }
+            
+
 
 
 
@@ -76,9 +114,11 @@
             <br>
 
             <h4 class="text-center">Produtos</h4>
-            <h6>Bem vindo, ${sessionScope.usuario.nome}</h6>
-            <h6>Bem vindo, ${sessionScope.usuario.cargo}</h6>
-            <h6>Bem vindo, ${sessionScope.usuario.filial}</h6>
+            <h6>nomeFuncionario, ${sessionScope.usuario.nome}</h6>
+            <h6>cargo, ${sessionScope.usuario.cargo}</h6>
+            <h6>Filial, ${sessionScope.usuario.filial}</h6>
+            <h6>idFuncionario, ${sessionScope.usuario.id_funcionario}</h6>
+            
           
             
             <table class="table">
@@ -144,7 +184,7 @@
                             <td>${produto.nome}</td>
                             <td>${produto.preco}</td>
                             <td>${produto.descricao}</td>
-                            <td>${produto.quantidade}</td>
+                            <td class="itens">${produto.quantidade}</td>
                             <c:set var = "balance" value = "${produto.preco * produto.quantidade}"/>
 
                             <td class="totalItem"><fmt:formatNumber value = "${balance}" type = "currency"/></td>
@@ -195,7 +235,7 @@
                     <span id="total"></span></h4></br></br>
               
 
-                <input class="btn btn-primary" type="submit" value="Finalizar">
+                    <input class="btn btn-primary" type="submit" onclick="finalizaVenda()" value="Finalizar">
                 <button type="reset" class="btn btn-danger m-1" onclick="resetTabela()">Limpar Carrinho</button>
 
             </div>
