@@ -56,9 +56,6 @@ public class VendaServlet extends HttpServlet {
         int id_filial = Integer.parseInt(request.getParameter("id_filial"));
        
         
-
-       
-        
         Venda venda = new Venda(id_funcionario, quantidade, valorFinalLimpo, id_filial);
         
         try {

@@ -140,6 +140,10 @@
         <servlet-name>VendaServlet</servlet-name>
         <servlet-class>br.senac.sp.servlet.VendaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CarrinhoRemoveServlet</servlet-name>
+        <servlet-class>br.senac.sp.servlet.CarrinhoRemoveServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Produto</servlet-name>
         <url-pattern>/Produto</url-pattern>
@@ -263,6 +267,10 @@
     <servlet-mapping>
         <servlet-name>VendaServlet</servlet-name>
         <url-pattern>/Venda</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CarrinhoRemoveServlet</servlet-name>
+        <url-pattern>/CarrinhoRemoveServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

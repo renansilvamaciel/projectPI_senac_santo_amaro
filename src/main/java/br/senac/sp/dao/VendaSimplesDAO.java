@@ -75,7 +75,9 @@ public class VendaSimplesDAO {
             ps.setDouble(3, venda.getValorFinal());
             ps.setInt(4, venda.getId_filial());
             
-            ps.execute();
+            boolean teste = ps.execute();
+            System.out.println("teste " +teste);
+            
         
     }
 

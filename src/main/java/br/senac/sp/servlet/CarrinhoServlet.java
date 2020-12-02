@@ -80,9 +80,9 @@ public class CarrinhoServlet extends HttpServlet {
         }
         
         
-       
- 
-        sessao.setAttribute("listaProduto", listaProduto);
+        
+             
+         sessao.setAttribute("listaProduto", listaProduto);
 
 
     }

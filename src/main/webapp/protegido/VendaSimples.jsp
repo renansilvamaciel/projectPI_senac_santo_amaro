@@ -29,7 +29,7 @@
 
         </style>
 
-        
+
         <script lang="text/javascript">
 
             function adicionarProduto(id_produto) {
@@ -37,12 +37,12 @@
 
                 $.get("CarrinhoServlet?id=" + id_produto + "&operacao=" + true, function () {
                     console.log("ok");
-                   
+
                     window.location.reload();
 
 
                 });
-                
+
             }
 
 
@@ -53,45 +53,88 @@
                     window.location.reload();
                 });
 
-
             }
-            
+
             //obtem a quantidade de produtos na venda
-            function contaItensVenda(){
+            function contaItensVenda() {
                 let vetorItens = document.querySelectorAll(".itens");
-                let soma =0;
-                
-                for(let posicao = 0 ; posicao < vetorItens.length; posicao++ ){
-                    soma = soma + parseInt( vetorItens[posicao].innerHTML);
+                let soma = 0;
+
+                for (let posicao = 0; posicao < vetorItens.length; posicao++) {
+                    soma = soma + parseInt(vetorItens[posicao].innerHTML);
                 }
                 //console.log(soma);
                 return soma;
             }
-            
-            
-            
-            //funcao finaliza venda
-            function finalizaVenda() {
-                
-                
-                let idFuncionario = ${sessionScope.usuario.id_funcionario};
-                let quantidade = contaItensVenda();
-                let valorFinalLimpo = moedaParaFloat(document.querySelector("#total").innerHTML);
-                let id_filial = ${sessionScope.usuario.filial}               
-                console.log(id_filial);
-                
-                
-                $.post('Venda', {id_funcionario: idFuncionario, quantidade: quantidade, valorFinalLimpo: valorFinalLimpo, id_filial: id_filial
-                    }, function () {
+
+            function limpaCarrinho() {
+
+                $.get("CarrinhoRemoveServlet?remove=" + false, function () {
+                    console.log("ok");
 
                     window.location.reload();
+                    
+                    
+                    
 
                 });
-
-                
                 
             }
-            
+
+            //funcao finaliza venda
+            function finalizaVenda() {
+
+
+                let vetorItens = document.querySelectorAll(".itens");
+                if (vetorItens.length === 0) {
+
+                    //valida filial validações (Seleção)
+                    var caixa_filial = document.querySelector('.msg-descricao');
+                    alert("O carrinho está Vazio!!");
+
+                    //caixa_filial.innerHTML = 'Carrinho vazio';
+                    caixa_filial.style.display = 'block';
+
+
+                } else {
+
+
+                    let idFuncionario = ${sessionScope.usuario.id_funcionario};
+                    let quantidade = contaItensVenda();
+                    let valorFinalLimpo = moedaParaFloat(document.querySelector("#total").innerHTML);
+                    let id_filial = ${sessionScope.usuario.filial}
+                    console.log(id_filial);
+
+                    $.post('Venda', {id_funcionario: idFuncionario, quantidade: quantidade,
+                        valorFinalLimpo: valorFinalLimpo, id_filial: id_filial
+                    }, function () {
+                        
+                        msgVendaRealizada();
+                        limpaCarrinho();
+                        
+
+                    });
+
+
+
+
+                }
+            }
+
+
+            function msgVendaRealizada() {
+                //exibe a mensagem de venda realizada com sucesso
+                var caixa_filial = document.querySelector('.msg-descricao');
+
+                //caixa_filial.innerHTML = 'Venda Realizada !';
+                caixa_filial.style.display = 'block';
+                
+              alert("Venda realizada com sucesso! ");
+            }
+
+
+
+
 
 
 
@@ -118,9 +161,9 @@
             <h6>cargo, ${sessionScope.usuario.cargo}</h6>
             <h6>Filial, ${sessionScope.usuario.filial}</h6>
             <h6>idFuncionario, ${sessionScope.usuario.id_funcionario}</h6>
-            
-          
-            
+
+
+
             <table class="table">
                 <tr class="table-item">
                     <th >Id</th>
@@ -232,24 +275,24 @@
 
                 <br>
                 <h4> <lable>Valor final:</lable>
-                    <span id="total"></span></h4></br></br>
-              
+                    <span id="total"></span></h4></br>
 
-                    <input class="btn btn-primary" type="submit" onclick="finalizaVenda()" value="Finalizar">
-                <button type="reset" class="btn btn-danger m-1" onclick="resetTabela()">Limpar Carrinho</button>
+                <h1><span class="msg-erro msg-descricao"></span></h1>
+                <input class="btn btn-primary" type="submit" onclick="finalizaVenda()" value="Finalizar">
+                <button type="reset" class="btn btn-danger m-1" onclick="limpaCarrinho()">Limpar Carrinho</button>
 
             </div>
-            
-           
-            
-            
+
+
+
+
 
 
         </div><!-- fim tabelas e pesquisa -->
 
         <br>
     </div>
-    
+
     <!--  FIM -----  corpo que deve ser alterardo de acordo com a pagina -->
     <%@include file="rodape.jsp" %>
     <script type="text/javascript" src="js/carrinho.js"></script>
