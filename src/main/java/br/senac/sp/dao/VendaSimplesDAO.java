@@ -80,19 +80,25 @@ public class VendaSimplesDAO {
     }
 
     public static void addDetalhesVenda(Produto produto, int id_venda) throws SQLException, ClassNotFoundException {
-        ConexaoMysql conexao = new ConexaoMysql();
-        Connection con = conexao.openConnection();
 
-        String query = "insert into detalhes (id_venda, nome_produto, quantidade) values (?, ?, ?)";
+        try {
+            ConexaoMysql conexao = new ConexaoMysql();
+            Connection con = conexao.openConnection();
 
-        PreparedStatement ps = con.prepareStatement(query);
-        System.out.println("nome do produto = " + produto.getNome());
+            String query = "insert into detalhes (id_venda,nome,quantidade) values (?, ?, ?)";
 
-        ps.setInt(1, id_venda);
-        ps.setString(2, produto.getNome());
-        ps.setInt(3, produto.getQuantidade());
+            PreparedStatement ps = con.prepareStatement(query);
+            System.out.println("nome do produto = " + produto.getNome());
 
-        ps.execute();
+            ps.setInt(1, id_venda);
+            ps.setString(2, "café");
+            ps.setInt(3, produto.getQuantidade());
+
+            ps.execute();
+            
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(ProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 
