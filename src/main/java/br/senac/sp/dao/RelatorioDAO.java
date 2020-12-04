@@ -38,11 +38,11 @@ public class RelatorioDAO {
                 Relatorio relatorio = new Relatorio();
 
                 relatorio.setId_venda(rs.getInt("id_venda"));
-                relatorio.setId_vendedor(rs.getInt("id_vendedor"));
+                relatorio.setNome_vendedor(rs.getString("vendedor"));
                 relatorio.setQuantidade(rs.getInt("quantidade"));
                 relatorio.setValor_total(rs.getDouble("valor_total"));
                 relatorio.setData_hoje(rs.getString("data_hoje"));
-                relatorio.setNome(rs.getString("id_filial"));
+                relatorio.setNome(rs.getString("filial"));
                 listarVenda.add(relatorio);
 
             }
@@ -77,7 +77,7 @@ public class RelatorioDAO {
                 produto.setNome(rs.getString("nome"));
                 produto.setPreco(rs.getDouble("preco"));
                 produto.setQuantidade(rs.getInt("quantidade"));
-                produto.setFilial(rs.getString("id_filial"));
+                produto.setFilial(rs.getString("filial"));
   
                 listarProduto.add(produto);
 
@@ -115,7 +115,7 @@ public class RelatorioDAO {
                 funcionario.setNome(rs.getString("nome"));
                 funcionario.setCpf(rs.getString("cpf"));
                 funcionario.setQuantidade(rs.getInt("quantidade"));
-                funcionario.setFilial(rs.getInt("id_filial"));
+                funcionario.setNome_filial(rs.getString("filial"));
                 
                 listarFuncionarios.add(funcionario);
 

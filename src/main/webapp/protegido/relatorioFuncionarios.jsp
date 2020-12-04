@@ -74,7 +74,7 @@
                             <td>${funcionario.nome}</td>
                             <td>${funcionario.cpf}</td>
                             <td>${funcionario.quantidade}</td>
-                            <td>${funcionario.filial}</td>
+                            <td>${funcionario.nome_filial}</td>
                         </tr>
                     </c:forEach>
 

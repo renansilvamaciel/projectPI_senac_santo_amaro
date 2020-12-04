@@ -64,7 +64,7 @@
             <table class="table table-sm table-striped table-bordered" id='tabelaRolagem'>
                 <thead class="">
                 <th scope="col">Nº Da venda</th>
-                <th scope="col">ID Funcionario</th>
+                <th scope="col">Funcionario</th>
                 <th scope="col">Quantidade</th>
                 <th scope="col">Preço</th>
                 <th scope="col">Data</th>
@@ -74,7 +74,7 @@
                     <c:forEach var="relatorio" items="${listarVenda}">
                         <tr class="col-md-auto">
                             <td>${relatorio.id_venda}</td>
-                            <td>${relatorio.id_vendedor}</td>
+                            <td>${relatorio.nome_vendedor}</td>
                             <td>${relatorio.quantidade}</td>
                             <td>${relatorio.valor_total}</td>
                             <td>${relatorio.data_hoje}</td>

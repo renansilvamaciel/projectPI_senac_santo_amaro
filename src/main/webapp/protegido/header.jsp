@@ -20,7 +20,7 @@
                 <!-- Imagem e texto -->
                 <nav class="navbar bg-dark  col-12">
                     <a class="navbar-brand">
-                        <img src="img/311844-ffffff.svg" width="50" height="50" class="p-0" alt="">
+                        <img src="../img/311844-ffffff.svg" width="50" height="50" class="p-0" alt="">
                         <span class="text-white">Coffee Shop</span>
                     </a>
                 </nav>

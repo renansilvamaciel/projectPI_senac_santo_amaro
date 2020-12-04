@@ -17,7 +17,7 @@ import lombok.Setter;
 public class Relatorio {
 
     private int id_venda;
-    private int id_vendedor;
+    private String nome_vendedor;
     private String nome_produto;
     private int quantidade;
     private double valor_total;
@@ -29,14 +29,12 @@ public class Relatorio {
         
     }
 
-    public Relatorio(int id_venda, int id_vendedor, String nome_produto, int quantidade, double valor_total, String data_hoje, int id_filial, String nome) {
+    public Relatorio(int id_venda, String nome_vendedor, int quantidade, double valor_total, String data_hoje, String nome) {
         this.id_venda = id_venda;
-        this.id_vendedor = id_vendedor;
-        this.nome_produto = nome_produto;
+        this.nome_vendedor = nome_vendedor;
         this.quantidade = quantidade;
         this.valor_total = valor_total;
         this.data_hoje = data_hoje;
-        this.id_filial = id_filial;
         this.nome = nome;
     }
     

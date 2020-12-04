@@ -31,24 +31,17 @@ public class RelatorioVenda extends HttpServlet {
             throws ServletException, IOException {
 
         RelatorioDAO relatorioDAO = new RelatorioDAO();
-        
-        
+
         HttpSession sessao = request.getSession();
         Funcionario usuario = (Funcionario) sessao.getAttribute("usuario");
-        int filial ;
-        
-        if(usuario.getFilial()==1){
-            filial = Integer.parseInt(request.getParameter("filial")); 
-        }
-       
-        else {
+        int filial;
+
+        if (usuario.getFilial() == 1) {
+            filial = Integer.parseInt(request.getParameter("filial"));
+        } else {
             filial = usuario.getFilial();
         }
-        
-        
-       
-        
-        
+
         int filtro = Integer.parseInt(request.getParameter("filtro"));
         String date1 = (request.getParameter("date1"));
         String date2 = (request.getParameter("date2"));
@@ -56,7 +49,12 @@ public class RelatorioVenda extends HttpServlet {
         switch (filtro) {
             case 1:
                 if (filial == 0) {
-                    String query = "select * from venda where date(data_hoje) >=  '" + date1 + "'  and date(data_hoje) <= '" + date2 + "'";
+                    // String query = "select * from venda where date(data_hoje) >=  '" + date1 + "'  and date(data_hoje) <= '" + date2 + "'";
+
+                    String query = "select venda.id_venda, funcionario.nome as vendedor, venda.quantidade, venda.valor_total, venda.data_hoje, filial.nome as filial from venda "
+                            + "inner join filial on venda.id_filial = filial.id_filial "
+                            + "inner join funcionario on venda.id_vendedor = funcionario.id_funcionario "
+                            + "where date(data_hoje) >= '" + date1 + "' and date(data_hoje) <= '" + date2 + "'";
 
                     List<Relatorio> listarVenda = relatorioDAO.listVenda(query);
                     request.setAttribute("listarVenda", listarVenda);
@@ -65,7 +63,14 @@ public class RelatorioVenda extends HttpServlet {
                             .getRequestDispatcher("/protegido/relatorio.jsp");
                     requestDispatcher.forward(request, response);
                 } else {
-                    String query = "select * from venda where id_filial = " + filial + " and date(data_hoje) >=  '" + date1 + "'  and date(data_hoje) <= '" + date2 + "'";
+                   // String query = "select * from venda where id_filial = " + filial + " and date(data_hoje) >=  '" + date1 + "'  and date(data_hoje) <= '" + date2 + "'";
+                   
+                   String query = "select venda.id_venda, funcionario.nome as vendedor, venda.quantidade, venda.valor_total, venda.data_hoje, filial.nome as filial from venda "
+                            + "inner join filial on venda.id_filial = filial.id_filial "
+                            + "inner join funcionario on venda.id_vendedor = funcionario.id_funcionario "
+                            + "where date(data_hoje) >= '" + date1 + "' and date(data_hoje) <= '" + date2 + "' "
+                            + "and venda.id_filial = " + filial;
+                   
 
                     List<Relatorio> listarVenda = relatorioDAO.listVenda(query);
                     request.setAttribute("listarVenda", listarVenda);
@@ -77,9 +82,11 @@ public class RelatorioVenda extends HttpServlet {
                 }
             case 2:
                 if (filial == 0) {
-                    String query = "select produto.id_produto, produto.nome, produto.preco, sum(detalhes.quantidade) as quantidade, produto.id_filial from produto "
-                            + "inner join detalhes on produto.nome = detalhes.nome_produto "
-                            + "inner join venda on detalhes.id_venda = venda.id_venda where date(data_hoje) >= '" + date1 + "' and date(data_hoje) <= '" + date2
+                    String query = "select produto.id_produto, produto.nome, produto.preco, sum(detalhes.quantidade) as quantidade, filial.nome as filial from produto "
+                            + "inner join detalhes on produto.nome = detalhes.nome "
+                            + "inner join venda on detalhes.id_venda = venda.id_venda "
+                            + "inner join filial on venda.id_filial = filial.id_filial "
+                            + "where date(data_hoje) >= '" + date1 + "' and date(data_hoje) <= '" + date2
                             + "' group by produto.nome";
 
                     List<Produto> listarProduto = relatorioDAO.listProduto(query);
@@ -89,9 +96,11 @@ public class RelatorioVenda extends HttpServlet {
                             .getRequestDispatcher("/protegido/relatorioProduto.jsp");
                     requestDispatcher.forward(request, response);
                 } else {
-                    String query = "select produto.id_produto, produto.nome, produto.preco, sum(detalhes.quantidade) as quantidade, produto.id_filial from produto "
-                            + "inner join detalhes on produto.nome = detalhes.nome_produto "
-                            + "inner join venda on detalhes.id_venda = venda.id_venda where venda.id_filial = " + filial + " and date(data_hoje) >= '" + date1 + "' and date(data_hoje) <= '" + date2
+                    String query = "select produto.id_produto, produto.nome, produto.preco, sum(detalhes.quantidade) as quantidade, filial.nome as filial from produto "
+                            + "inner join detalhes on produto.nome = detalhes.nome "
+                            + "inner join venda on detalhes.id_venda = venda.id_venda "
+                            + "inner join filial on venda.id_filial = filial.id_filial "
+                            + "where venda.id_filial = " + filial + " and date(data_hoje) >= '" + date1 + "' and date(data_hoje) <= '" + date2
                             + "' group by produto.nome";
 
                     List<Produto> listarProduto = relatorioDAO.listProduto(query);
@@ -105,8 +114,10 @@ public class RelatorioVenda extends HttpServlet {
 
             case 3:
                 if (filial == 0) {
-                    String query = "select funcionario.id_funcionario, funcionario.nome, funcionario.cpf, count(venda.id_vendedor) as quantidade, funcionario.id_filial from funcionario "
-                            + "inner join venda on funcionario.id_funcionario = venda.id_vendedor where date(data_hoje) >= '" + date1 + "' and date(data_hoje) <=  '" + date2
+                    String query = "select funcionario.id_funcionario, funcionario.nome, funcionario.cpf, count(venda.id_vendedor) as quantidade, filial.nome as filial from funcionario "
+                            + "inner join venda on funcionario.id_funcionario = venda.id_vendedor "
+                            + "inner join filial on venda.id_filial = filial.id_filial "
+                            + "where date(data_hoje) >= '" + date1 + "' and date(data_hoje) <=  '" + date2
                             + "' group by venda.id_vendedor";
 
                     List<Funcionario> listarFuncionarios = relatorioDAO.listarFuncionarios(query);
@@ -116,8 +127,10 @@ public class RelatorioVenda extends HttpServlet {
                             .getRequestDispatcher("/protegido/relatorioFuncionarios.jsp");
                     requestDispatcher.forward(request, response);
                 } else {
-                    String query = "select funcionario.id_funcionario, funcionario.nome, funcionario.cpf, count(venda.id_vendedor) as quantidade, funcionario.id_filial from funcionario "
-                            + "inner join venda on funcionario.id_funcionario = venda.id_vendedor where venda.id_filial = " + filial + " and date(data_hoje) >= '" + date1 + "' and date(data_hoje) <= '" + date2
+                    String query = "select funcionario.id_funcionario, funcionario.nome, funcionario.cpf, count(venda.id_vendedor) as quantidade, filial.nome as filial from funcionario "
+                            + "inner join venda on funcionario.id_funcionario = venda.id_vendedor "
+                            + "inner join filial on venda.id_filial = filial.id_filial "
+                            + "where venda.id_filial = " + filial + " and date(data_hoje) >= '" + date1 + "' and date(data_hoje) <= '" + date2
                             + "' group by venda.id_vendedor";
 
                     List<Funcionario> listarFuncionarios = relatorioDAO.listarFuncionarios(query);
