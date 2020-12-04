@@ -5,6 +5,7 @@
  */
 package br.senac.sp.filter;
 
+import br.senac.sp.entidade.Funcionario;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -24,35 +25,80 @@ import javax.servlet.http.HttpSession;
  * @author Juliano
  */
 public class AutorizacaoFilter implements Filter {
-    
+
     private static final boolean debug = true;
 
     // The filter configuration object we are associated with.  If
     // this value is null, this filter instance is not currently
     // configured. 
     private FilterConfig filterConfig = null;
-    
+
     public AutorizacaoFilter() {
-    }    
-    
+    }
+
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
-        
+
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
-        
+
         HttpSession sessao = httpRequest.getSession();
-        if(sessao.getAttribute("usuario") == null){
-            httpResponse.sendRedirect(httpRequest.getContextPath()+"/Login.jsp");
+        if (sessao.getAttribute("usuario") == null) {
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/Login.jsp");
         }
-       // sessao.setAttribute("usuario", usuario);
-        
-        
-        
-        
-        
-    }    
-    
+        // sessao.setAttribute("usuario", usuario);
+
+        Funcionario usuario = (Funcionario) sessao.getAttribute("usuario");
+        String url = httpRequest.getRequestURI();
+
+        // ****GERENTE***
+        if (url.contains("relatorio.jsp") && !usuario.isGerente()) {
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/AcessoNaoAutorizado.jsp");
+        }
+
+        // ****FUNCIONARIO****
+        if (url.contains("Venda") && !usuario.isVendedor()) {
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/AcessoNaoAutorizado.jsp");
+        }
+
+        if (url.contains("VendaPlanos.jsp") && !usuario.isVendedor()) {
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/AcessoNaoAutorizado.jsp");
+        }
+
+        if (url.contains("VendaAssinantes.jsp") && !usuario.isVendedor()) {
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/AcessoNaoAutorizado.jsp");
+        }
+
+        if (url.contains("Cliente.jsp") && !usuario.isVendedor()) {
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/AcessoNaoAutorizado.jsp");
+        }
+
+        if (url.contains("ClienteServlet") && !usuario.isVendedor()) {
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/AcessoNaoAutorizado.jsp");
+        }
+
+        // ****BACKOFFICE****
+        if (url.contains("Funcionario.jsp") && !usuario.isBackoffice()) {
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/AcessoNaoAutorizado.jsp");
+        }
+
+        if (url.contains("FuncionarioServlet") && !usuario.isBackoffice()) {
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/AcessoNaoAutorizado.jsp");
+        }
+        if (url.contains("/Produto") && !usuario.isBackoffice()) {
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/AcessoNaoAutorizado.jsp");
+        }
+
+        if (url.contains("/PlanoServlet") && !usuario.isBackoffice()) {
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/AcessoNaoAutorizado.jsp");
+        }
+
+        if (url.contains("/FilialServlet") && !usuario.isBackoffice()) {
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/AcessoNaoAutorizado.jsp");
+        }
+
+    }
+
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
 
@@ -70,13 +116,13 @@ public class AutorizacaoFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-        
+
         if (debug) {
             log("AutorizacaoFilter:doFilter()");
         }
-        
+
         doBeforeProcessing(request, response);
-        
+
         Throwable problem = null;
         try {
             chain.doFilter(request, response);
@@ -87,7 +133,7 @@ public class AutorizacaoFilter implements Filter {
             problem = t;
             t.printStackTrace();
         }
-        
+
         doAfterProcessing(request, response);
 
         // If there was a problem, we want to rethrow it if it is
@@ -122,16 +168,16 @@ public class AutorizacaoFilter implements Filter {
     /**
      * Destroy method for this filter
      */
-    public void destroy() {        
+    public void destroy() {
     }
 
     /**
      * Init method for this filter
      */
-    public void init(FilterConfig filterConfig) {        
+    public void init(FilterConfig filterConfig) {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
-            if (debug) {                
+            if (debug) {
                 log("AutorizacaoFilter:Initializing filter");
             }
         }
@@ -150,20 +196,20 @@ public class AutorizacaoFilter implements Filter {
         sb.append(")");
         return (sb.toString());
     }
-    
+
     private void sendProcessingError(Throwable t, ServletResponse response) {
-        String stackTrace = getStackTrace(t);        
-        
+        String stackTrace = getStackTrace(t);
+
         if (stackTrace != null && !stackTrace.equals("")) {
             try {
                 response.setContentType("text/html");
                 PrintStream ps = new PrintStream(response.getOutputStream());
-                PrintWriter pw = new PrintWriter(ps);                
+                PrintWriter pw = new PrintWriter(ps);
                 pw.print("<html>\n<head>\n<title>Error</title>\n</head>\n<body>\n"); //NOI18N
 
                 // PENDING! Localize this for next official release
-                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");                
-                pw.print(stackTrace);                
+                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");
+                pw.print(stackTrace);
                 pw.print("</pre></body>\n</html>"); //NOI18N
                 pw.close();
                 ps.close();
@@ -180,7 +226,7 @@ public class AutorizacaoFilter implements Filter {
             }
         }
     }
-    
+
     public static String getStackTrace(Throwable t) {
         String stackTrace = null;
         try {
@@ -194,9 +240,9 @@ public class AutorizacaoFilter implements Filter {
         }
         return stackTrace;
     }
-    
+
     public void log(String msg) {
-        filterConfig.getServletContext().log(msg);        
+        filterConfig.getServletContext().log(msg);
     }
-    
+
 }

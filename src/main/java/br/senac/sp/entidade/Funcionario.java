@@ -36,5 +36,18 @@ public class Funcionario extends Pessoa {
     public Funcionario() {
 
     }
+    
+    
+    public boolean isVendedor() {
+        return this.cargo.equalsIgnoreCase("Vendedor");
+    }
+    
+    public boolean isGerente() {
+        return this.cargo.equalsIgnoreCase("Gerente");
+    }
+    
+    public boolean isBackoffice() {
+        return this.cargo.equalsIgnoreCase("Backoffice");
+    }
 
 }
