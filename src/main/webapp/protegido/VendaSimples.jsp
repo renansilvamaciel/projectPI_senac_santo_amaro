@@ -144,20 +144,16 @@
 
             <h1 class="text-center"><b>Venda Simples</b></h1><br>
 
-
+          <!--
             <form class="form-inline center" action="<c:url value="..//BuscaProdutoVenda"/>" method="GET">
 
                 <input class="form-control " type="search" placeholder="Pesquisar Produto" name="nome_produto" aria-label="Pesquisar">
                 <button class="btn btn-outline-success pt-2 " type="submit">Pesquisar</button>
-            </form>
+            </form> -->
 
             <br>
 
             <h4 class="text-center">Produtos</h4>
-            <h6>nomeFuncionario, ${sessionScope.usuario.nome}</h6>
-            <h6>cargo, ${sessionScope.usuario.cargo}</h6>
-            <h6>Filial, ${sessionScope.usuario.filial}</h6>
-            <h6>idFuncionario, ${sessionScope.usuario.id_funcionario}</h6>
 
 
 

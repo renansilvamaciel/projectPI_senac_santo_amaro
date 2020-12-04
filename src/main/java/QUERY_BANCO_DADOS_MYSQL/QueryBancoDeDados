@@ -69,7 +69,7 @@ CREATE TABLE funcionario (
 	bairro varchar(20) not null,
     email varchar(50) null,
     telefone varchar(15) not null,
-    senha varchar (50) not null,
+    senha varchar (100) not null,
 	id_filial int unsigned,
 	cargo varchar(20) not null,
 	PRIMARY KEY (id_funcionario),
@@ -77,7 +77,7 @@ CREATE TABLE funcionario (
 );
 
 create table venda(
-	id_venda int,
+	id_venda int auto_increment,
 	id_vendedor int not null,
 	quantidade int not null,
 	valor_total double(10,2) not null,
@@ -89,11 +89,15 @@ create table venda(
 
  create table detalhes(
 	 id_venda int,
-	 nome_produto varchar(50),
+	 nome varchar(45),
 	 quantidade int not null,
 	 FOREIGN KEY (id_venda) REFERENCES venda (id_venda),
-	 FOREIGN KEY (nome_produto) REFERENCES produto (nome)
+	     
+	constraint fk_nome_produto foreign key(nome)
+	references produto(nome)
+     
  );
+ 
 
 create table planos_ativo (
 	id_cliente int,
@@ -109,7 +113,7 @@ create table planos (
     valor int not null,
 	PRIMARY KEY (nome)
 ); 
-/*
+
 create table venda_plano(
 id_venda int auto_increment,
 cpf varchar(15) not null,
@@ -123,19 +127,6 @@ FOREIGN KEY (assinatura) REFERENCES planos (nome),
 FOREIGN KEY (cpf) REFERENCES cliente (cpf),
 FOREIGN KEY (id_filial) REFERENCES filial (id_filial),
 primary key(id_venda)
-);*/
-
-
-create table venda_plano(
-id_venda int auto_increment,
-cpf varchar(15) not null,
-id_vendedor int null,
-data_hoje datetime NOT NULL  DEFAULT CURRENT_TIMESTAMP,
-assinatura varchar(15) not null,
-tipo_assinatura varchar(15) not null,
-valor_total double(10,2) not null,
-id_filial int,
-primary key(id_venda)
 );
 
 delimiter $$
@@ -148,7 +139,7 @@ delimiter $$;
 delimiter $$
 create trigger Atualiza_estoque after insert on detalhes for each row
 begin
-update produto set quantidade = quantidade - new.quantidade where nome_produto = new.nome_produto;
+update produto set quantidade = quantidade - new.quantidade where nome = new.nome;
 end $$
 delimiter $$;
 
@@ -173,4 +164,4 @@ insert into filial (nome, cnpj, estado, rua, cep, numero, bairro) values
 insert into funcionario (nome, sexo, data_nascimento, cpf, rua, cep, numero_casa, bairro, email, telefone, senha, id_filial, cargo) values
                         ("Lucas","masculino","31/08/1999","123","", "", 3 ,"", "", "", "$2a$12$I3BuRM1XNmyjlz2BtiJ7aeNR64Tq/XmWTw2U1sEOcWBL8gLJRv6u2", 1, "Vendedor"),   
                         ("Marcos","masculino","31/08/1999","456","", "", 3 ,"", "", "", "$2a$12$6z/xW0gErJty9R3PepnM8uXjyC4eMPx1isVMRLXgeNn2p6yIrtRFu", 1, "Gerente"),   
-                        ("Pedro","masculino","31/08/1999","789","", "", 3 ,"", "", "", "$2a$12$D/ZwAErqSiKtYH41gXd12e97aymPgRAR/IxUpJY00TIgTtmRkQGQG", 1, "Backoffice");
+                        ("Pedro","masculino","31/08/1999","789","", "", 3 ,"", "", "", "$2a$12$D/ZwAErqSiKtYH41gXd12e97aymPgRAR/IxUpJY00TIgTtmRkQGQG", 1, "Backoffice");  
