@@ -24,17 +24,16 @@ import java.util.logging.Logger;
  */
 public class UsuarioDAO {
 
-    public static Funcionario getUsuario(String login, String senha) {
+    public static Funcionario getUsuario(String login) {
         Funcionario funcionario = null;
 
         try {
             ConexaoMysql conexao = new ConexaoMysql();
 
             Connection connection = conexao.openConnection();
-            String query = "select * from funcionario where cpf = ? and senha = ?";
+            String query = "select * from funcionario where cpf = ?";
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setString(1, login);
-            ps.setString(2, senha);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
@@ -42,6 +41,7 @@ public class UsuarioDAO {
                 String cargo = rs.getString("cargo");
                 int filial = rs.getInt("id_filial");
                 int id_funcionario = rs.getInt("id_funcionario");
+                String senha = rs.getString("senha");
                 
              funcionario = new Funcionario();
              funcionario.setNome(nome);
@@ -49,6 +49,7 @@ public class UsuarioDAO {
              funcionario.setFilial(filial);
              funcionario.setCpf(login);
              funcionario.setId_funcionario(id_funcionario);
+             funcionario.setSenha(senha);
              
 
 

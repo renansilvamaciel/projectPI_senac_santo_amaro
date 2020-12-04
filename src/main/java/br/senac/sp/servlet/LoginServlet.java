@@ -27,9 +27,9 @@ public class LoginServlet extends HttpServlet {
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
         
-        Funcionario funcionario = UsuarioDAO.getUsuario(login, senha);
+        Funcionario funcionario = UsuarioDAO.getUsuario(login);
         
-        if (funcionario != null) {
+        if (funcionario != null && funcionario.validarSenha(senha)) {
             HttpSession sessao = request.getSession();
             sessao.setAttribute("usuario", funcionario);
             

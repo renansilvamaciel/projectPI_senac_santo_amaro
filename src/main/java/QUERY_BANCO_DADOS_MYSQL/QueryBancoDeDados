@@ -171,6 +171,6 @@ insert into filial (nome, cnpj, estado, rua, cep, numero, bairro) values
 
 
 insert into funcionario (nome, sexo, data_nascimento, cpf, rua, cep, numero_casa, bairro, email, telefone, senha, id_filial, cargo) values
-                        ("Lucas","masculino","31/08/1999","123","", "", 3 ,"", "", "", "123", 1, "Vendedor"),   
-                        ("Marcos","masculino","31/08/1999","456","", "", 3 ,"", "", "", "456", 1, "Gerente"),   
-                        ("Pedro","masculino","31/08/1999","789","", "", 3 ,"", "", "", "789", 1, "Backoffice");   
+                        ("Lucas","masculino","31/08/1999","123","", "", 3 ,"", "", "", "$2a$12$I3BuRM1XNmyjlz2BtiJ7aeNR64Tq/XmWTw2U1sEOcWBL8gLJRv6u2", 1, "Vendedor"),   
+                        ("Marcos","masculino","31/08/1999","456","", "", 3 ,"", "", "", "$2a$12$6z/xW0gErJty9R3PepnM8uXjyC4eMPx1isVMRLXgeNn2p6yIrtRFu", 1, "Gerente"),   
+                        ("Pedro","masculino","31/08/1999","789","", "", 3 ,"", "", "", "$2a$12$D/ZwAErqSiKtYH41gXd12e97aymPgRAR/IxUpJY00TIgTtmRkQGQG", 1, "Backoffice");
